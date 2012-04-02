@@ -485,17 +485,12 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="container">
-
-                    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-
-                    <!-- Be sure to leave the brand out there if you want it shown -->
                     <a class="brand" href="#">StarmapJS</a>
-
                     <ul class="nav">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b class="caret"></b></a>
@@ -505,39 +500,32 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                                 <li><a href="#" onclick="alert('function not implemented yet')">Project 6014</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color stars using<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="colortype = 0; paintPaper();">..their truespace colors</a></li>
+                                <li><a href="#" onclick="colortype = 1; paintPaper();">..available minerals (value)</a></li>
+                                <li><a href="#" onclick="colortype = 2; paintPaper();">..available biological data (units)</a></li>
+                            </ul>
+                        </li>
                         <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
                             <input id="findstar" type="text" placeholder="Search for stars here"/>
                         </form>
                     </ul>
-
-                    <!-- Everything you want hidden at 940px or less, place within here -->
-                    <div class="nav-collapse">
-                        <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    </div>
-
                 </div>
             </div>
-            
             <div id="raphael"></div>
-            <div style="padding:10px">
-
-                <span>Colorize stars with:</span>
-                <div class="btn-group" data-toggle="buttons-radio">
-                    <button type="button" class="btn btn-primary active" onclick="colortype = 0; paintPaper();">Their truespace color</button>
-                    <button type="button" class="btn btn-primary" onclick="colortype = 1; paintPaper();">Available minerals (value)</button>
-                    <button type="button" class="btn btn-primary" onclick="colortype = 2; paintPaper();">Available bio data (units)</button>
-                </div>
+        </div>
+        <div class="modal" id="myModal">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3 id="modalHeader">Modal header</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
-                    <div class="modal" id="myModal">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-    <h3 id="modalHeader">Modal header</h3>
-  </div>
-  <div class="modal-body" id="modalBody">
-  </div>
-  <div class="modal-footer">
-  </div>
-</div>
+        <a href="http://github.com/jorisvddonk/StarmapJS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
     </body>
 </html>
