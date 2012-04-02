@@ -29,7 +29,49 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
         <style type="text/css">
             .popover-inner {
                 width: 600px;                
-            }            
+            }
+            .badge-planet-hazard0 {
+                background-color: #468847;
+            }
+            .badge-planet-hazard1 {
+                background-color: #468847;
+            }
+            .badge-planet-hazard2 {
+                background-color: #468847;
+            }
+            .badge-planet-hazard2-weather { /* Weather is dangerous! */
+                background-color: #f89406;
+            }
+            .badge-planet-hazard3 {
+                background-color: #f89406;
+            }
+            .badge-planet-hazard3-weather { /* Weather is dangerous! */
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard4 {
+                background-color: #f89406;
+            }
+            .badge-planet-hazard4-weather { /* Weather is dangerous! */
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard5 {
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard6 {
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard7 {
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard8 {
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard9 {
+                background-color: #FF4A48;
+            }
+            .badge-planet-hazard10 {
+                background-color: #FF4A48;
+            }
         </style>
         <script src="starmap-data.js"></script>
         <script type="text/javascript">
@@ -431,6 +473,15 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 return (e.keyCode || event.which || event.charCode || 0) !== 13;
             }
             
+            function getHazardLevelCSS(level, type) {
+                level = parseInt(level);
+                return "badge-planet-hazard" + level + (type == undefined ? "" : " badge-planet-hazard-" + type + " badge-planet-hazard" + level + "-" + type);
+            }
+            
+            function getHazardBadge(value, type) {
+                return "<span class=\"badge " + getHazardLevelCSS(value, type) + "\">" + value + "</span>"; 
+            }
+            
             function drawStar(star, constellation) {
                 var gfx = paper.circle(tx(star.x),ty(star.y),(star.size+1)*3);
                 
@@ -458,7 +509,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     pd = planetdata[s];
                     if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
                         if (pd.Star == convertPrefix(star.id)) {
-                            table2inner += "<tr><td>" + pd.Planet + "</td><td>" + pd.Type + "</td><td>" + pd.MinVolume + "</td><td>" + pd.MinValue + "</td><td>" + pd.BioUnits + "</td><td>" + pd.Tectonics + "/" + pd.Weather + "/" + pd.Thermal + "/" + pd.BioHazard + "</td></tr>";
+                            table2inner += "<tr><td>" + pd.Planet + "</td><td>" + pd.Type + "</td><td>" + pd.MinVolume + "</td><td>" + pd.MinValue + "</td><td>" + pd.BioUnits + "</td><td>" + getHazardBadge(pd.Tectonics, "tectonics") +  getHazardBadge(pd.Weather, "weather") + getHazardBadge(pd.Thermal, "thermal") + (parseInt(pd.BioUnits) > 0? getHazardBadge(pd.BioHazard, "biological") : "") + "</td></tr>";
                             mintotal += parseInt(pd.MinValue);
                             biototal += parseInt(pd.BioUnits);
                             planettotal += 1;
@@ -519,7 +570,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
         <div class="modal" id="myModal">
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
-                <h3 id="modalHeader">Modal header</h3>
+                <h3 id="modalHeader">Loading starmap...</h3>
             </div>
             <div class="modal-body" id="modalBody">
             </div>
