@@ -107,7 +107,12 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             
-            function paintPaper() {
+            function paintPaper(ctype) {
+                if (ctype != undefined) {
+                    colortype = ctype;
+                    $(".colortype-icon").removeClass("icon-ok");
+                    $("#colortype-" + ctype).addClass("icon-ok");
+                }
                 paper.clear();
                 for (i in spheres) {
                     var sphere = spheres[i];
@@ -546,17 +551,17 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="alert('function not implemented yet')">Original Star Control 2</a></li>
-                                <li><a href="#" onclick="alert('function not implemented yet')">Spoilerific Star Control 2</a></li>
-                                <li><a href="#" onclick="alert('function not implemented yet')">Project 6014</a></li>
+                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-0" class="starmapdata-icon icon-ok"></i> Original Star Control 2</a></li>
+                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-1" class="starmapdata-icon"></i>Spoilerific Star Control 2</a></li>
+                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-2" class="starmapdata-icon"></i>Project 6014</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color stars using<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="colortype = 0; paintPaper();">..their truespace colors</a></li>
-                                <li><a href="#" onclick="colortype = 1; paintPaper();">..available minerals (value)</a></li>
-                                <li><a href="#" onclick="colortype = 2; paintPaper();">..available biological data (units)</a></li>
+                                <li><a href="#" onclick="paintPaper(0);"><i id="colortype-0" class="colortype-icon icon-ok"></i> Their truespace colors</a></li>
+                                <li><a href="#" onclick="paintPaper(1);"><i id="colortype-1" class="colortype-icon"></i> Available minerals (value)</a></li>
+                                <li><a href="#" onclick="paintPaper(2);"><i id="colortype-2" class="colortype-icon"></i> Available biological data (units)</a></li>
                             </ul>
                         </li>
                         <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
