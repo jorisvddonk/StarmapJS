@@ -53,14 +53,111 @@ var colormapping = [ //TODO: Do this in CSS?
     }
 ]
 
-var spheres = [
-//    {
-//        x: 8625,
-//        y: 7000,
-//        size: 1000,
-//        color: "#f00",
-//        name: "Test Sphere"       
-//    },
+var spheres = 
+    
+    {
+    
+    none: [],
+    newSpheres:  [
+{
+    name: "Ilwrath",
+    x: 4.8,
+    y: 170.0,
+    size: 141.0
+},
+{
+  name: "Arilou",
+  x: 43.8,
+  y: 637.2,
+  size: 25.0
+},
+{
+  name: "Kohr-Ah",
+  x: 600.0,
+  y: 625.0,
+  size: 266.6
+},
+{
+  name: "Druuge",
+  x: 950.0,
+  y: 279.2,
+  size: 140.0
+},
+{
+  name: "Mycon",
+  x: 639.2,
+  y: 220.0,
+  size: 107.0
+},
+{
+  name: "Orz",
+  x: 360.8,
+  y: 263.7,
+  size: 33.3
+},
+{
+  name: "Pkunk",
+  x: 50.2,
+  y: 40.1,
+  size: 66.6
+},
+{
+  name: "Spathi",
+  x: 254.9,
+  y: 360.0,
+  size: 100.0
+},
+{
+  name: "Supox",
+  x: 746.8,
+  y: 924.6,
+  size: 33.3
+},
+{
+  name: "Thraddash",
+  x: 253.5,
+  y: 835.8,
+  size: 83.3
+},
+{
+  name: "Umgah",
+  x: 179.8,
+  y: 600.0,
+  size: 83.3
+},
+{
+  name: "Ur-Quan",
+  x: 575.0,
+  y: 600.0,
+  size: 266.6
+},
+{
+  name: "Utwig",
+  x: 853.4,
+  y: 879.7,
+  size: 66.6
+},
+{
+  name: "Vux",
+  x: 441.2,
+  y: 155.8,
+  size: 90.0
+},
+{
+  name: "Yehat",
+  x: 497.0,
+  y: 4.0,
+  size: 75.0
+},
+{
+  name: "Zoq-Fot-Pik",
+  x: 376.1,
+  y: 533.3,
+  size: 32.0
+}    
+],
+
+oldSpheres: [
 {
     name: "Earthling",
     x: 177.0,
@@ -166,7 +263,7 @@ var spheres = [
     y: 0,
     size: 0
 },
-];
+]};
 
 var constellations = [
 {

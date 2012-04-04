@@ -13,7 +13,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
 -->
 <html>
     <head>
-        <title></title>
+        <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="raphael-min.js"></script>     
         <script src="jquery.js"></script>     
@@ -24,6 +24,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             var planetdata; //Filled in starmap-data.js
             var colortype = 0;
             var spheres; // Filled in starmap-data.js
+            var showingSpheres = "oldSpheres";
             var colormapping; // Filled in starmap-data.js
         </script>
         <style type="text/css">
@@ -106,6 +107,24 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 findStar($("#findstar").val());
             }
             
+            function setShowSpheres(selection) {
+                switch(selection) {
+                    case 0:
+                        showingSpheres = "oldSpheres";
+                        break;
+                    case 1:
+                        showingSpheres = "newSpheres";
+                        break;
+                    case 2:
+                        showingSpheres = "none";
+                        break;
+                    default:
+                        showingSpheres = "none";
+                        break;
+                }
+                $(".spheredata-icon").removeClass("icon-ok");
+                $("#spheredata-" + selection).addClass("icon-ok");
+            }
             
             function paintPaper(ctype) {
                 if (ctype != undefined) {
@@ -114,8 +133,8 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     $("#colortype-" + ctype).addClass("icon-ok");
                 }
                 paper.clear();
-                for (i in spheres) {
-                    var sphere = spheres[i];
+                for (i in spheres[showingSpheres]) {
+                    var sphere = spheres[showingSpheres][i];
                     drawSphere(sphere);
                 }
                 paintborder();
@@ -549,11 +568,11 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     <a class="brand" href="#">StarmapJS</a>
                     <ul class="nav">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b class="caret"></b></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap sphere selection<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-0" class="starmapdata-icon icon-ok"></i> Original Star Control 2</a></li>
-                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-1" class="starmapdata-icon"></i>Spoilerific Star Control 2</a></li>
-                                <li><a href="#" onclick="alert('function not implemented yet')"><i id="starmapdata-2" class="starmapdata-icon"></i>Project 6014</a></li>
+                                <li><a href="#" onclick="setShowSpheres(0); paintPaper();"><i id="spheredata-0" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free)</a></li>
+                                <li><a href="#" onclick="setShowSpheres(1); paintPaper();"><i id="spheredata-1" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!)</a></li>
+                                <li><a href="#" onclick="setShowSpheres(2); paintPaper();"><i id="spheredata-2" class="spheredata-icon"></i> None</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
