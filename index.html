@@ -228,10 +228,40 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 $(Rnode.node).tooltip({trigger:"hover"});
             }
             
-            function addClicktop(Rnode, title, content) {
-                $(Rnode.node).popover({title:title,content:content,trigger:"manual"});
-                //$(Rnode.node).click(function(){$(Rnode.node).popover('toggle');});
-                $(Rnode.node).click(function(){showModal(title,content)});
+            //Shows a modal dialog containing details for a star
+            function showModalDialogForStar() {
+                var star = $(this).data("star");
+                var constellation = $(this).data("constellation");
+               
+                var table2inner = "";    
+                var mintotal = 0;
+                var biototal = 0;
+                var planettotal = 0;
+                for (s in planetdata) {
+                    pd = planetdata[s];
+                    if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
+                        if (pd.Star == convertPrefix(star.id)) {
+                            table2inner += "<tr><td>" + pd.Planet + "</td><td>" + pd.Type + "</td><td>" + pd.MinVolume + "</td><td>" + pd.MinValue + "</td><td>" + pd.BioUnits + "</td><td>" + getHazardBadge(pd.Tectonics, "tectonics") +  getHazardBadge(pd.Weather, "weather") + getHazardBadge(pd.Thermal, "thermal") + (parseInt(pd.BioUnits) > 0? getHazardBadge(pd.BioHazard, "biological") : "") + "</td></tr>";
+                            mintotal += parseInt(pd.MinValue);
+                            biototal += parseInt(pd.BioUnits);
+                            planettotal += 1;
+                        }
+                    }
+                }
+                
+                var table = $("<div><table class=\"table table-striped table-bordered table-condensed\"><tbody>" +
+                    "<tr><th>Bio data</th><td>" + biototal + "</td></tr>" +
+                    "<tr><th>Mineral data</th><td>" + mintotal + "</td></tr>" + 
+                    "<tr><th>Number of worlds</th><td>" + planettotal + "</td></tr>" + 
+                    "</tbody></table>"
+                    + "</div>");
+                var table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
+                    table2inner + 
+                    "</tbody></table></div>");
+                
+                var title = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
+                var content = table.html() + table2.html();
+                showModal(title,content);
             }
             
             function drawConstellation(constellation) {
@@ -509,6 +539,9 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             function drawStar(star, constellation) {
                 var gfx = paper.circle(tx(star.x),ty(star.y),(star.size+1)*3);
                 
+                $(gfx.node).data("star",star);
+                $(gfx.node).data("constellation",constellation);
+                
                 var colordat;
                 switch(colortype) {
                     case 0:
@@ -525,33 +558,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 
                 addTooltip(gfx, (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
                 
-                var table2inner = "";    
-                var mintotal = 0;
-                var biototal = 0;
-                var planettotal = 0;
-                for (s in planetdata) {
-                    pd = planetdata[s];
-                    if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
-                        if (pd.Star == convertPrefix(star.id)) {
-                            table2inner += "<tr><td>" + pd.Planet + "</td><td>" + pd.Type + "</td><td>" + pd.MinVolume + "</td><td>" + pd.MinValue + "</td><td>" + pd.BioUnits + "</td><td>" + getHazardBadge(pd.Tectonics, "tectonics") +  getHazardBadge(pd.Weather, "weather") + getHazardBadge(pd.Thermal, "thermal") + (parseInt(pd.BioUnits) > 0? getHazardBadge(pd.BioHazard, "biological") : "") + "</td></tr>";
-                            mintotal += parseInt(pd.MinValue);
-                            biototal += parseInt(pd.BioUnits);
-                            planettotal += 1;
-                        }
-                    }
-                }
-                
-                var table = $("<div><table class=\"table table-striped table-bordered table-condensed\"><tbody>" +
-                    "<tr><th>Bio data</th><td>" + biototal + "</td></tr>" +
-                    "<tr><th>Mineral data</th><td>" + mintotal + "</td></tr>" + 
-                    "<tr><th>Number of worlds</th><td>" + planettotal + "</td></tr>" + 
-                    "</tbody></table>"
-                    + "</div>");
-                var table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
-                    table2inner + 
-                    "</tbody></table></div>");
-                addClicktop(gfx, (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name, table.html() + table2.html());
-                
+                $(gfx.node).click(showModalDialogForStar);
                 star._gfx = gfx;
             }
         </script>
