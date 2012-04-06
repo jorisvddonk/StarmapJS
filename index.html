@@ -235,11 +235,10 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                
                 var table2inner = "";    
                 var numplanets = 0;
-                for (s in star["planets"]) {
+                $.each(star["planets"], function(planetID, planet) {
                     numplanets += 1;
-                    pd = star["planets"][s];
-                    table2inner += "<tr><td>" + pd.Planet + "</td><td>" + pd.Type + "</td><td>" + pd.MinVolume + "</td><td>" + pd.MinValue + "</td><td>" + pd.BioUnits + "</td><td>" + getHazardBadge(pd.Tectonics, "tectonics") +  getHazardBadge(pd.Weather, "weather") + getHazardBadge(pd.Thermal, "thermal") + (parseInt(pd.BioUnits) > 0? getHazardBadge(pd.BioHazard, "biological") : "") + "</td></tr>";
-                }
+                    table2inner += "<tr><td>" + planetID + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : "") + "</td></tr>";
+                });
                 
                 var table = $("<div><table class=\"table table-striped table-bordered table-condensed\"><tbody>" +
                     "<tr><th>Bio data</th><td>" + star["planetsInfo"]["BioUnits"] + "</td></tr>" +
