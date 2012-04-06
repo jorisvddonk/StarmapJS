@@ -146,10 +146,6 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 $.each(starmapdata, function(i, constellation) {
                     drawConstellation(constellation);
                 });
-                //                for(i in constellations) {
-                //                    var constellation = constellations[i];
-                //                    drawConstellation(constellation);
-                //                }
             }
             
             //paints a grid
@@ -214,7 +210,6 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 gftx.toBack();
                 gftx.attr("font", "" + ts(sphere.size)*0.5 + "px " + '"Arial"');
                 addTooltip(gfx, sphere.name);
-                //addClicktop(gfx, "SoI for " + sphere.name + " with radius " + sphere.size + ", centered around " + sphere.x + "*" + sphere.y);
             }
             
             function findStar(text) {
@@ -265,18 +260,9 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 $.each(constellation["stars"], function(is, star){
                     drawStar(star,constellation);
                 });
-                //                for (is in constellation.stars) {
-                //                    var star = constellation.stars[is];
-                //                    drawStar(star,constellation);
-                //                }
                 $.each(constellation["lines"], function(il, cline) {
                     drawConstellationLine(cline, constellation);
                 });
-                //                for (il in constellation.lines) {
-                //                    var cline = constellation.lines[il];
-                //                    drawConstellationLine(cline, constellation);
-                //                }
-                //drawConstellationText(constellation);
             }
             
             //Transform Size (based on width)
