@@ -14,6 +14,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
 <html>
     <head>
         <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
+        <link type="text/css" rel="stylesheet" href="jquery.qtip.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="raphael-min.js"></script>     
         <script src="jquery.js"></script>     
@@ -103,19 +104,19 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             function checkFailIE() {
                 if ($.browser.msie) {
                     alert("Attention, interloper! Heed this recorded message!\r\n\r\n" + 
-                          "This message dialog speaks with the voice and authority of the Ur-Quan!\r\n" +
-                          "Your webbrowser does not meet standard Hierarchy Identification transmissions and is therefore deemed to be..\r\n" +
-                          "..Internet Explorer!\r\n\r\n" +
-                          "This is not permissible! Only different browsers (Google Chrome, Firefox) are tolerated!\r\n\r\n" +
-                          "You are commanded to switch browser immediately and await the arrival of the Ur-Quan!\r\n" +
-                          "Disobediance WILL be met with strange bugs and lack of functionality.");
+                        "This message dialog speaks with the voice and authority of the Ur-Quan!\r\n" +
+                        "Your webbrowser does not meet standard Hierarchy Identification transmissions and is therefore deemed to be..\r\n" +
+                        "..Internet Explorer!\r\n\r\n" +
+                        "This is not permissible! Only different browsers (Google Chrome, Firefox) are tolerated!\r\n\r\n" +
+                        "You are commanded to switch browser immediately and await the arrival of the Ur-Quan!\r\n" +
+                        "Disobediance WILL be met with strange bugs and lack of functionality.");
                 }
             }
             
             var timer;
             $(document).ready(new function() {
                 $('#findstar').live('keyup', function() {
-                    $("circle").tooltip('hide');
+                    $("circle").qtip('hide');
                     if(timer) {
                         clearTimeout(timer);
                         timer = null;
@@ -280,7 +281,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                                 });
                             }                            
                             if (showT) {
-                                $(b).tooltip('show');                
+                                $(b).qtip('show');                
                             }
                         }
                     });
@@ -372,8 +373,18 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function addTooltip(Rnode,text) {
-                //$(Rnode.node).attr("title", text);
-                $(Rnode.node).tooltip({trigger:"hover", title:text});
+                $(Rnode.node).qtip({
+                    content: {
+                        text: text
+                    },
+                    position: {
+                        my: "bottom center",
+                        at: "top center"
+                    },
+                    style: {
+                        classes: "ui-tooltip-tipsy"
+                    }
+                });
             }
             
             //Shows a modal dialog containing details for a star
@@ -747,5 +758,6 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             </div>
         </div>
         <a href="http://github.com/jorisvddonk/StarmapJS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+        <script type="text/javascript" src="jquery.qtip.js"></script>
     </body>
 </html>
