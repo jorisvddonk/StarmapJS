@@ -153,6 +153,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function parseTypeAhead() {
+                typeAheads = [];
                 $.each(starmapdata, function(constellationI, constellation){
                     $.each(constellation["stars"], function(starI, star){
                         typeAheads.push((star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
