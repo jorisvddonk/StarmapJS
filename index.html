@@ -165,6 +165,19 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     drawConstellation(constellation);
                 });
                 parseTypeAhead();
+                
+                //Paint the legend
+                switch(colortype) {
+                    case 0:
+                        renderMappingLegend();
+                        break;
+                    case 1:
+                        renderMappingLegend(mindata_mapping, "mineral value");
+                        break;
+                    case 2:
+                        renderMappingLegend(biodata_mapping, "biological units");
+                        break;
+                }
             }
             
             function parseTypeAhead() {
@@ -557,25 +570,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             
             function getColor_minData(star, constellation) {
                 var rvalue = getMinData(star, constellation);
-                if (rvalue >= 0 && rvalue < 500) {
-                    return "#00CEFF";
-                }
-                if (rvalue >= 500 && rvalue < 1000) {
-                    return "#00FF00";
-                }
-                if (rvalue >= 1000 && rvalue < 2000) {
-                    return "#FFFF00";
-                }
-                if (rvalue >= 2000 && rvalue < 4000) {
-                    return "#FF9C00";
-                }
-                if (rvalue >= 4000 && rvalue < 15000) {
-                    return "#FF0000";
-                }
-                else {
-                    console.log("Error: RVALUE IS " + rvalue + ", no mineral data mapped!");
-                    return "#BEBEBE";
-                }
+                return getColor_FromMapping(rvalue, mindata_mapping);
             }
             
             function getNumBodies(star, constellation) {
@@ -599,30 +594,21 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 return parseInt(star["planetsInfo"]["BioUnits"]);               
             }
             
+            function getColor_FromMapping(value, mapping) {
+                value = parseInt(value);
+                for (m in mapping) {
+                    cmap = mapping[m];
+                    if (value >= cmap.min && value <= cmap.max) {
+                        return cmap.color;
+                    }
+                }
+                console.log("Error: VALUE IS " + value + ", no color data mapped in " + mapping);
+                return "#BEBEBE";
+            }
+            
             function getColor_bioData(star, constellation) {
                 var rvalue = getBioData(star, constellation);
-                if (rvalue == 0) {
-                    return "#CCCCCC";
-                }
-                if (rvalue < 50) {
-                    return "#00CEFF";
-                }
-                if (rvalue < 100) {
-                    return "#00FF00";
-                }
-                if (rvalue < 200) {
-                    return "#FFFF00";
-                }
-                if (rvalue < 300) {
-                    return "#FF9C00";
-                }
-                if (rvalue < 400) {
-                    return "#FF0000";
-                }
-                else {
-                    console.log("Error: RVALUE IS " + rvalue + ", no mineral data mapped!");
-                    return "#BEBEBE";
-                }
+                return getColor_FromMapping(rvalue, biodata_mapping);
             }
             
           
@@ -674,6 +660,16 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             
             function getHazardBadge(value, type) {
                 return "<span class=\"badge " + getHazardLevelCSS(value, type) + "\">" + value + "</span>"; 
+            }
+            
+            function renderMappingLegend(mapping, type) {
+                $("#legendbody").children().remove();
+                if (mapping != undefined) {
+                    for (m in mapping) {
+                        cmap = mapping[m];
+                        $("#legendbody").append($("<tr><td><span class=\"label\" style=\"background-color:" + cmap.color + "; color:#000\">[" + cmap.min + ", " + cmap.max + "]</span>" + (type != undefined? " " + type : "") + "</td></td></tr>"));
+                    }
+                }
             }
             
             function drawStar(star, constellation) {
@@ -745,7 +741,14 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     </ul>
                 </div>
             </div>
-            <div id="raphael"></div>
+            <div id="raphael" style="float:left"></div>
+            <div id="rightdata" style="float:right; margin-right:100px; margin-top:20px;">
+                <h3>Star color legend</h3>
+                <table class="table table-striped table-bordered table-condensed">
+                    <tbody id="legendbody">
+                    </tbody>
+                </table>                
+            </div>
         </div>
         <div class="modal" id="myModal">
             <div class="modal-header">
