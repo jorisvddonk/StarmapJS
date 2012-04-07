@@ -118,13 +118,15 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             
             var timer;
             $(document).ready(new function() {
-                $('#findstar').live('keyup', function() {
+                $('#findstar').live('change', function() {
+                    console.log("WAT");
                     $("circle").qtip('hide');
-                    if(timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                    }
-                    timer = setTimeout(findStar_, 500);
+                    findStar_();
+                    //if(timer) {
+                    //    clearTimeout(timer);
+                    //    timer = null;
+                    //}
+                    //timer = setTimeout(findStar_, 500);
                 });
             });
             
@@ -275,7 +277,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     $("circle").each(function(a, b, c){
                         if ($(b).data("starname") != undefined) {
                             showT = false;
-                            if ($(b).data('starname').toLowerCase().indexOf(text) >= 0) {
+                            if ($(b).data('starname').toLowerCase() == text) {
                                 showT = true;                   
                             }      
                             if ($(b).data('star') != undefined) {
