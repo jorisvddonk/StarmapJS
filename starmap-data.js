@@ -13343,8 +13343,7 @@ var starmapdata = [{
                 "Day": "225",
                 "Atmosphere": "0",
                 "LifeChance": "-1440",
-                "DistFromStar": "1185",
-				"Homeworlds": ["Ilwrath"]
+                "DistFromStar": "1185"
             },
             "II": {
                 "Type": "Gas Giant",
@@ -75592,7 +75591,8 @@ var starmapdata = [{
                 "Day": "258",
                 "Atmosphere": "278",
                 "LifeChance": "560",
-                "DistFromStar": "1044"
+                "DistFromStar": "1044",
+				"Homeworlds": ["Ilwrath"]
             },
             "II": {
                 "Type": "Lanthanide",
