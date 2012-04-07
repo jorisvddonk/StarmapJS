@@ -216,16 +216,69 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 text = text.toLowerCase();
                 if (text != "") {
                     $("circle").each(function(a, b, c){
-                        if ($(b).attr('data-original-title').toLowerCase().indexOf(text) >= 0) {
-                            $(b).tooltip('show');    
-                        }                    
+                        if ($(b).data("starname") != undefined) {
+                            if ($(b).data('starname').toLowerCase().indexOf(text) >= 0) {
+                                $(b).tooltip('show');                                   
+                                unhighlightStar(b);
+                            }                    
+                        }
                     });
                 }
             }
             
+            function highlightStar(star) {
+                $(star).stop();
+                $(star).animate({},1,_anim_star_highlight_Off); //Initializes the looping animation
+            }
+            
+            function unhighlightStar(star) {
+                $(star).stop();
+                $(star).animate({"opacity": "1", "stroke-width":"1"},150);
+            }
+            
+            function _anim_star_highlight_On() {
+                $(this).animate({"opacity": "1", "stroke-width":"1"},150,_anim_star_highlight_Pause);
+            }
+            
+            function _anim_star_highlight_Pause() {
+                $(this).animate({"opacity": "1", "stroke-width":"1"},500,_anim_star_highlight_Off);
+            }
+            
+            function _anim_star_highlight_Off() {
+                $(this).animate({"opacity": "0.5", "stroke-width":"9"},150,_anim_star_highlight_On);
+            }
+            
+
+            
+            function unhighlightAll() {
+                $("circle").each(function(a, b, c){
+                    var star = $(b).data('star');
+                    if (star != undefined) {
+                        unhighlightStar(b);
+                    }
+                });
+            }
+            
+            function findRainbowWorlds() {
+                $("circle").each(function(a, b, c){
+                    var star = $(b).data('star');
+                    var fndR = false;
+                    if (star != undefined) {
+                        $.each(star["planets"], function(pIndex, planet) {
+                            if (planet.Type == "Rainbow") {
+                                fndR = true;
+                            }
+                        });
+                        if (fndR) {
+                            highlightStar(b);
+                        }
+                    }
+                });
+            }
+            
             function addTooltip(Rnode,text) {
-                $(Rnode.node).attr("title", text);
-                $(Rnode.node).tooltip({trigger:"hover"});
+                //$(Rnode.node).attr("title", text);
+                $(Rnode.node).tooltip({trigger:"hover", title:text});
             }
             
             //Shows a modal dialog containing details for a star
@@ -421,29 +474,11 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function getMinData(star, constellation) {
-                var rvalue = 0;
-                for (s in planetdata) {
-                    pd = planetdata[s];
-                    if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
-                        if (pd.Star == convertPrefix(star.id)) {
-                            rvalue += parseInt(pd.MinValue);
-                        }
-                    }
-                }
-                return rvalue;
+                return parseInt(star["planetsInfo"]["MinValue"]);
             }
             
             function getBioData(star, constellation) {
-                var rvalue = 0;
-                for (s in planetdata) {
-                    pd = planetdata[s];
-                    if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
-                        if (pd.Star == convertPrefix(star.id)) {
-                            rvalue += parseInt(pd.BioUnits);
-                        }
-                    }
-                }
-                return rvalue;                
+                return parseInt(star["planetsInfo"]["BioUnits"]);               
             }
             
             function getColor_bioData(star, constellation) {
@@ -526,7 +561,9 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             function drawStar(star, constellation) {
                 var gfx = paper.circle(tx(star.x),ty(star.y),(star.size+1)*3);
                 
+                var starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
                 $(gfx.node).data("star",star);
+                $(gfx.node).data("starname",starname);
                 $(gfx.node).data("constellation",constellation);
                 
                 var colordat;
@@ -543,8 +580,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 }
                 gfx.attr("fill", colordat);
                 
-                addTooltip(gfx, (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
-                
+                addTooltip(gfx, starname);
                 $(gfx.node).click(showModalDialogForStar);
             }
         </script>
@@ -579,6 +615,13 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                         <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
                             <input id="findstar" type="text" placeholder="Search for stars here"/>
                         </form>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Star highlighting<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="unhighlightAll();">Remove all highlights</a></li>
+                                <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
