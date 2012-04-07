@@ -1,5 +1,5 @@
-//Uses data from UQM ('map' tool) and Elestan's planet database (http://wiki.uqm.stack.nl/List_of_planets) (modified it slightly)
-//License: TODO
+// Slightly modified version of Elestan's Planetary Database (http://wiki.uqm.stack.nl/List_of_planets)
+// Licensed under Creative Commons Attribution 2.0 Generic (CC BY 2.0): http://creativecommons.org/licenses/by/2.0/
 
 var starmapdata = [{
     "name": "Andromedae",
