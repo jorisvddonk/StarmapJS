@@ -28,6 +28,9 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             //Starmap settings on load:
             var showingSpheres = "oldSpheres";
             var colortype = 0;
+            
+            //For the UI:
+            var typeAheads = []; //For search functionality
         </script>
         <script src="starmap-data.js"></script>
         <script src="starmap-spheres.js"></script>
@@ -89,7 +92,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             var height = s_height + (2*s_pad_y); //Canvas height
 
             window.onload = function () {                  
-                paper = Raphael("raphael", width,height);                
+                paper = Raphael("raphael", width,height);   
                 paintPaper();
                 $("#myModal").modal();
                 $("#myModal").modal('hide');
@@ -146,6 +149,28 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 $.each(starmapdata, function(i, constellation) {
                     drawConstellation(constellation);
                 });
+                parseTypeAhead();
+            }
+            
+            function parseTypeAhead() {
+                $.each(starmapdata, function(constellationI, constellation){
+                    $.each(constellation["stars"], function(starI, star){
+                        typeAheads.push((star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
+                        $.each(star["planets"], function(planetI, planet){
+                            if (planet["Homeworlds"] != undefined) {
+                                $.each(planet["Homeworlds"], function(hmwldI, hmwld){
+                                    typeAheads.push(hmwld);
+                                });
+                            }
+                            if (planet["Devices"] != undefined) {
+                                $.each(planet["Devices"], function(devI, devic){
+                                    typeAheads.push(devic);
+                                });
+                            }
+                        });
+                    });
+                });
+                $('#findstar').typeahead({source:typeAheads});
             }
             
             //paints a grid
@@ -217,10 +242,31 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 if (text != "") {
                     $("circle").each(function(a, b, c){
                         if ($(b).data("starname") != undefined) {
+                            showT = false;
                             if ($(b).data('starname').toLowerCase().indexOf(text) >= 0) {
-                                $(b).tooltip('show');                                   
-                                unhighlightStar(b);
-                            }                    
+                                showT = true;                   
+                            }      
+                            if ($(b).data('star') != undefined) {
+                                $.each($(b).data('star')["planets"], function(planI, planet){
+                                    if (planet["Homeworlds"] != undefined) {
+                                        $.each(planet["Homeworlds"], function(hmwldI, hmwld){
+                                            if (hmwld.toLowerCase().indexOf(text)>=0) {
+                                                showT = true;
+                                            }
+                                        });
+                                    }
+                                    if (planet["Devices"] != undefined) {
+                                        $.each(planet["Devices"], function(devI, devic){
+                                            if (devic.toLowerCase().indexOf(text)>=0) {
+                                                showT = true;
+                                            }
+                                        });
+                                    }
+                                });
+                            }                            
+                            if (showT) {
+                                $(b).tooltip('show');                
+                            }
                         }
                     });
                 }
@@ -659,7 +705,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                             </ul>
                         </li>
                         <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
-                            <input id="findstar" type="text" placeholder="Search for stars here"/>
+                            <input id="findstar" type="text" placeholder="Search for stars, devices and homeworlds here"/>
                         </form>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Star highlighting<b class="caret"></b></a>
