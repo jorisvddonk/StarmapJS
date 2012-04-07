@@ -276,6 +276,40 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 });
             }
             
+            function findDevices() {
+                $("circle").each(function(a, b, c){
+                    var star = $(b).data('star');
+                    var fndR = false;
+                    if (star != undefined) {
+                        $.each(star["planets"], function(pIndex, planet) {
+                            if (planet.Devices != undefined) {
+                                fndR = true;
+                            }
+                        });
+                        if (fndR) {
+                            highlightStar(b);
+                        }
+                    }
+                });
+            }
+            
+            function findHomeworlds() {
+                $("circle").each(function(a, b, c){
+                    var star = $(b).data('star');
+                    var fndR = false;
+                    if (star != undefined) {
+                        $.each(star["planets"], function(pIndex, planet) {
+                            if (planet.Homeworlds != undefined) {
+                                fndR = true;
+                            }
+                        });
+                        if (fndR) {
+                            highlightStar(b);
+                        }
+                    }
+                });
+            }
+            
             function addTooltip(Rnode,text) {
                 //$(Rnode.node).attr("title", text);
                 $(Rnode.node).tooltip({trigger:"hover", title:text});
@@ -290,7 +324,19 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 var numplanets = 0;
                 $.each(star["planets"], function(planetID, planet) {
                     numplanets += 1;
-                    table2inner += "<tr><td>" + planetID + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : "") + "</td></tr>";
+                    devicesStr = " ";
+                    homeworldsStr = " "
+                    if (planet["Devices"] != undefined) {
+                        $.each(planet["Devices"], function(deviceIndex, device) {
+                            devicesStr += " <span class=\"label\">Device: " + device + "</span>";
+                        });
+                    }
+                    if (planet["Homeworlds"] != undefined) {
+                        $.each(planet["Homeworlds"], function(homeworldIndex, homeworld) {
+                            homeworldsStr += " <span class=\"label label-info\">" + homeworld + " Homeworld</span>";
+                        });
+                    }
+                    table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : "") + "</td></tr>";
                 });
                 
                 var table = $("<div><table class=\"table table-striped table-bordered table-condensed\"><tbody>" +
@@ -620,6 +666,8 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                             <ul class="dropdown-menu">
                                 <li><a href="#" onclick="unhighlightAll();">Remove all highlights</a></li>
                                 <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
+                                <li><a href="#" onclick="findHomeworlds();">Highlight stars with Alien Homeworlds</a></li>
+                                <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
                             </ul>
                         </li>
                     </ul>

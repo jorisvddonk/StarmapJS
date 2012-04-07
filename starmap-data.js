@@ -8,7 +8,7 @@ var starmapdata = [{
         "y": 700,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 898,
             "MinValue": 4317,
@@ -210,7 +210,7 @@ var starmapdata = [{
         "y": 710.4,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 60,
             "MinValue": 180,
@@ -241,7 +241,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -251,7 +251,7 @@ var starmapdata = [{
         "y": 900,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1775,
             "MinValue": 8734,
@@ -579,7 +579,7 @@ var starmapdata = [{
         "y": 891,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 182,
             "MinValue": 356,
@@ -634,7 +634,7 @@ var starmapdata = [{
         "y": 885.4,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 220,
             "MinValue": 2764,
@@ -710,7 +710,7 @@ var starmapdata = [{
         "y": 883.3,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 739,
             "MinValue": 2049,
@@ -870,7 +870,7 @@ var starmapdata = [{
         "y": 891.7,
         "color": "WHITE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 948,
             "MinValue": 4270,
@@ -1219,7 +1219,7 @@ var starmapdata = [{
         "y": 910.5,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 411,
             "MinValue": 3409,
@@ -1439,22 +1439,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }]
 }, {
@@ -1464,7 +1464,7 @@ var starmapdata = [{
         "y": 850.7,
         "color": "YELLOW",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1204,
             "MinValue": 3444,
@@ -1666,7 +1666,7 @@ var starmapdata = [{
         "y": 856.9,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1079,
             "MinValue": 5292,
@@ -2036,7 +2036,7 @@ var starmapdata = [{
         "y": 857.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1215,
             "MinValue": 3061,
@@ -2490,7 +2490,7 @@ var starmapdata = [{
         "y": 850.4,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 182,
             "MinValue": 544,
@@ -2521,16 +2521,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }]
 }, {
@@ -2540,7 +2540,7 @@ var starmapdata = [{
         "y": 863.8,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 26,
             "MinValue": 56,
@@ -2574,14 +2574,14 @@ var starmapdata = [{
         "y": 869.3,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1762,
             "MinValue": 6032,
             "BioUnits": 102
         },
         "planets": {
-            "I": {
+            "I (Fahz)": {
                 "Type": "Water",
                 "Hazard": "5",
                 "Tectonics": "4",
@@ -2600,7 +2600,8 @@ var starmapdata = [{
                 "Day": "169",
                 "Atmosphere": "100",
                 "LifeChance": "810",
-                "DistFromStar": "890"
+                "DistFromStar": "890",
+				"Homeworlds": ["Utwig"]
             },
             "I-a": {
                 "Type": "Carbide",
@@ -3007,7 +3008,7 @@ var starmapdata = [{
         "y": 879.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 734,
             "MinValue": 3022,
@@ -3251,7 +3252,7 @@ var starmapdata = [{
         "y": 881.2,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 266,
             "MinValue": 1175,
@@ -3327,7 +3328,7 @@ var starmapdata = [{
         "y": 864.5,
         "color": "BLUE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 307,
             "MinValue": 944,
@@ -3487,7 +3488,7 @@ var starmapdata = [{
         "y": 856.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 161,
             "MinValue": 1075,
@@ -3542,7 +3543,7 @@ var starmapdata = [{
         "y": 857.8,
         "color": "WHITE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 670,
             "MinValue": 3526,
@@ -3741,25 +3742,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "G"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }]
 }, {
@@ -3769,7 +3770,7 @@ var starmapdata = [{
         "y": 974.5,
         "color": "BLUE",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 430,
             "MinValue": 1351,
@@ -3845,7 +3846,7 @@ var starmapdata = [{
         "y": 974.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 246,
             "MinValue": 826,
@@ -3879,7 +3880,7 @@ var starmapdata = [{
         "y": 974.1,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 767,
             "MinValue": 2326,
@@ -4312,7 +4313,7 @@ var starmapdata = [{
         "y": 968.6,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 697,
             "MinValue": 3993,
@@ -4451,7 +4452,7 @@ var starmapdata = [{
         "y": 979,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 150,
             "MinValue": 388,
@@ -4629,16 +4630,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }]
 }, {
@@ -4648,7 +4649,7 @@ var starmapdata = [{
         "y": 84.3,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 396,
             "MinValue": 2895,
@@ -4703,7 +4704,7 @@ var starmapdata = [{
         "y": 93.7,
         "color": "YELLOW",
         "size": 2,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 716,
             "MinValue": 2422,
@@ -4800,7 +4801,7 @@ var starmapdata = [{
         "y": 94.2,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 50,
             "MinValue": 184,
@@ -4834,7 +4835,7 @@ var starmapdata = [{
         "y": 75,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 495,
             "MinValue": 1311,
@@ -4994,7 +4995,7 @@ var starmapdata = [{
         "y": 82.1,
         "color": "BLUE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 166,
             "MinValue": 364,
@@ -5046,19 +5047,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "A"
     }]
 }, {
@@ -5068,7 +5069,7 @@ var starmapdata = [{
         "y": 175,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 61,
             "MinValue": 193,
@@ -5102,7 +5103,7 @@ var starmapdata = [{
         "y": 183.3,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 254,
             "MinValue": 1493,
@@ -5199,7 +5200,7 @@ var starmapdata = [{
         "y": 168.7,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 475,
             "MinValue": 1127,
@@ -5419,13 +5420,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -5435,7 +5436,7 @@ var starmapdata = [{
         "y": 158.3,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 45,
             "MinValue": 135,
@@ -5469,7 +5470,7 @@ var starmapdata = [{
         "y": 154.8,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 236,
             "MinValue": 1086,
@@ -5503,7 +5504,7 @@ var starmapdata = [{
         "y": 167,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 260,
             "MinValue": 1401,
@@ -5600,7 +5601,7 @@ var starmapdata = [{
         "y": 168.7,
         "color": "RED",
         "size": 1,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 142,
             "MinValue": 270,
@@ -5655,7 +5656,7 @@ var starmapdata = [{
         "y": 173.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 189,
             "MinValue": 567,
@@ -5728,16 +5729,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }]
 }, {
@@ -5747,7 +5748,7 @@ var starmapdata = [{
         "y": 208.3,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1131,
             "MinValue": 5230,
@@ -5991,7 +5992,7 @@ var starmapdata = [{
         "y": 201.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 389,
             "MinValue": 952,
@@ -6109,7 +6110,7 @@ var starmapdata = [{
         "y": 200.9,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1371,
             "MinValue": 7343,
@@ -6416,7 +6417,7 @@ var starmapdata = [{
         "y": 193.7,
         "color": "WHITE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1940,
             "MinValue": 11005,
@@ -6804,13 +6805,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }]
 }, {
@@ -6820,7 +6821,7 @@ var starmapdata = [{
         "y": 266.6,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 702,
             "MinValue": 2868,
@@ -7085,7 +7086,7 @@ var starmapdata = [{
         "y": 275.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 338,
             "MinValue": 835,
@@ -7245,7 +7246,7 @@ var starmapdata = [{
         "y": 290,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 483,
             "MinValue": 1842,
@@ -7405,7 +7406,7 @@ var starmapdata = [{
         "y": 250.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 172,
             "MinValue": 435,
@@ -7481,7 +7482,7 @@ var starmapdata = [{
         "y": 269.6,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 272,
             "MinValue": 676,
@@ -7641,7 +7642,7 @@ var starmapdata = [{
         "y": 287.5,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 81,
             "MinValue": 228,
@@ -7717,7 +7718,7 @@ var starmapdata = [{
         "y": 286.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 763,
             "MinValue": 3125,
@@ -8021,25 +8022,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "G"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "A"
     }]
 }, {
@@ -8049,7 +8050,7 @@ var starmapdata = [{
         "y": 233.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 450,
             "MinValue": 831,
@@ -8230,7 +8231,7 @@ var starmapdata = [{
         "y": 231.2,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 757,
             "MinValue": 3236,
@@ -8256,7 +8257,8 @@ var starmapdata = [{
                 "Day": "229",
                 "Atmosphere": "0",
                 "LifeChance": "0",
-                "DistFromStar": "409"
+                "DistFromStar": "409",
+                "Devices": ["Sun Device"]
             },
             "II": {
                 "Type": "Selenic",
@@ -8369,7 +8371,7 @@ var starmapdata = [{
         "y": 272.9,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 662,
             "MinValue": 3619,
@@ -8395,7 +8397,8 @@ var starmapdata = [{
                 "Day": "282",
                 "Atmosphere": "0",
                 "LifeChance": "-1040",
-                "DistFromStar": "409"
+                "DistFromStar": "409",
+                "Devices": ["Deep Child Egg Case Fragments"]
             },
             "II": {
                 "Type": "Plutonic",
@@ -8424,7 +8427,7 @@ var starmapdata = [{
         "y": 275,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1671,
             "MinValue": 9100,
@@ -8794,7 +8797,7 @@ var starmapdata = [{
         "y": 262.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 90,
             "MinValue": 270,
@@ -8933,7 +8936,7 @@ var starmapdata = [{
         "y": 245.8,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 238,
             "MinValue": 772,
@@ -9048,22 +9051,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }]
 }, {
@@ -9073,7 +9076,7 @@ var starmapdata = [{
         "y": 71.8,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 279,
             "MinValue": 612,
@@ -9212,7 +9215,7 @@ var starmapdata = [{
         "y": 74.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 227,
             "MinValue": 909,
@@ -9309,7 +9312,7 @@ var starmapdata = [{
         "y": 78.7,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 600,
             "MinValue": 2180,
@@ -9490,7 +9493,7 @@ var starmapdata = [{
         "y": 78.2,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 233,
             "MinValue": 595,
@@ -9671,7 +9674,7 @@ var starmapdata = [{
         "y": 80.1,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 704,
             "MinValue": 2347,
@@ -9870,16 +9873,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }]
 }, {
@@ -9889,7 +9892,7 @@ var starmapdata = [{
         "y": 404.1,
         "color": "YELLOW",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 621,
             "MinValue": 1631,
@@ -10049,7 +10052,7 @@ var starmapdata = [{
         "y": 408.3,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 974,
             "MinValue": 3033,
@@ -10293,7 +10296,7 @@ var starmapdata = [{
         "y": 393.7,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 953,
             "MinValue": 3824,
@@ -10495,7 +10498,7 @@ var starmapdata = [{
         "y": 383.3,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 871,
             "MinValue": 1743,
@@ -10718,7 +10721,7 @@ var starmapdata = [{
         "y": 393.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 326,
             "MinValue": 862,
@@ -10794,7 +10797,7 @@ var starmapdata = [{
         "y": 412.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 505,
             "MinValue": 897,
@@ -10912,7 +10915,7 @@ var starmapdata = [{
         "y": 422.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 359,
             "MinValue": 607,
@@ -11093,7 +11096,7 @@ var starmapdata = [{
         "y": 402,
         "color": "RED",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 554,
             "MinValue": 1315,
@@ -11295,7 +11298,7 @@ var starmapdata = [{
         "y": 393.7,
         "color": "RED",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 319,
             "MinValue": 1131,
@@ -11389,31 +11392,31 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "I"
     }]
 }, {
@@ -11423,7 +11426,7 @@ var starmapdata = [{
         "y": 514.5,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 644,
             "MinValue": 2082,
@@ -11520,7 +11523,7 @@ var starmapdata = [{
         "y": 512.2,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 312,
             "MinValue": 970,
@@ -11596,7 +11599,7 @@ var starmapdata = [{
         "y": 501.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 422,
             "MinValue": 854,
@@ -11693,7 +11696,7 @@ var starmapdata = [{
         "y": 493.1,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 197,
             "MinValue": 681,
@@ -11808,16 +11811,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }]
 }, {
@@ -11827,7 +11830,7 @@ var starmapdata = [{
         "y": 516.6,
         "color": "ORANGE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 57,
             "MinValue": 114,
@@ -11861,7 +11864,7 @@ var starmapdata = [{
         "y": 517.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 365,
             "MinValue": 2042,
@@ -12042,7 +12045,7 @@ var starmapdata = [{
         "y": 531.8,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 40,
             "MinValue": 120,
@@ -12073,13 +12076,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -12089,7 +12092,7 @@ var starmapdata = [{
         "y": 543.7,
         "color": "GREEN",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 260,
             "MinValue": 2080,
@@ -12123,7 +12126,7 @@ var starmapdata = [{
         "y": 543.7,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1738,
             "MinValue": 7982,
@@ -12493,7 +12496,7 @@ var starmapdata = [{
         "y": 547.9,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 84,
             "MinValue": 176,
@@ -12566,10 +12569,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }]
 }, {
@@ -12579,7 +12582,7 @@ var starmapdata = [{
         "y": 518.7,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 225,
             "MinValue": 645,
@@ -12697,7 +12700,7 @@ var starmapdata = [{
         "y": 525,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 534,
             "MinValue": 1401,
@@ -12857,7 +12860,7 @@ var starmapdata = [{
         "y": 506.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 981,
             "MinValue": 2993,
@@ -13101,7 +13104,7 @@ var starmapdata = [{
         "y": 514.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 493,
             "MinValue": 1503,
@@ -13240,7 +13243,7 @@ var starmapdata = [{
         "y": 518.5,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 169,
             "MinValue": 3323,
@@ -13292,19 +13295,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -13314,7 +13317,7 @@ var starmapdata = [{
         "y": 99.3,
         "color": "RED",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1411,
             "MinValue": 11476,
@@ -13340,7 +13343,8 @@ var starmapdata = [{
                 "Day": "225",
                 "Atmosphere": "0",
                 "LifeChance": "-1440",
-                "DistFromStar": "1185"
+                "DistFromStar": "1185",
+				"Homeworlds": ["Ilwrath"]
             },
             "II": {
                 "Type": "Gas Giant",
@@ -13600,7 +13604,7 @@ var starmapdata = [{
         "y": 90.5,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1074,
             "MinValue": 3377,
@@ -13886,7 +13890,7 @@ var starmapdata = [{
         "y": 111.5,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 448,
             "MinValue": 1461,
@@ -13962,7 +13966,7 @@ var starmapdata = [{
         "y": 126,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1105,
             "MinValue": 3921,
@@ -14206,7 +14210,7 @@ var starmapdata = [{
         "y": 86.6,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 157,
             "MinValue": 572,
@@ -14240,7 +14244,7 @@ var starmapdata = [{
         "y": 77.9,
         "color": "RED",
         "size": 1,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 708,
             "MinValue": 2193,
@@ -14418,19 +14422,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }]
 }, {
@@ -14440,7 +14444,7 @@ var starmapdata = [{
         "y": 583.3,
         "color": "GREEN",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1516,
             "MinValue": 4687,
@@ -14684,7 +14688,7 @@ var starmapdata = [{
         "y": 575,
         "color": "RED",
         "size": 1,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1458,
             "MinValue": 10447,
@@ -15051,7 +15055,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -15061,7 +15065,7 @@ var starmapdata = [{
         "y": 198.6,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1638,
             "MinValue": 5829,
@@ -15087,7 +15091,8 @@ var starmapdata = [{
                 "Day": "251",
                 "Atmosphere": "13",
                 "LifeChance": "0",
-                "DistFromStar": "1085"
+                "DistFromStar": "1085",
+                "Devices": ["Shofixti Maidens"]
             },
             "II": {
                 "Type": "Gas Giant",
@@ -15494,7 +15499,7 @@ var starmapdata = [{
         "y": 200,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 594,
             "MinValue": 1123,
@@ -15735,7 +15740,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -15745,7 +15750,7 @@ var starmapdata = [{
         "y": 447.9,
         "color": "WHITE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 2285,
             "MinValue": 11739,
@@ -16136,7 +16141,7 @@ var starmapdata = [{
         "y": 404.1,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1129,
             "MinValue": 4334,
@@ -16422,7 +16427,7 @@ var starmapdata = [{
         "y": 408.3,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 506,
             "MinValue": 1900,
@@ -16561,7 +16566,7 @@ var starmapdata = [{
         "y": 430.6,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1232,
             "MinValue": 4872,
@@ -16931,7 +16936,7 @@ var starmapdata = [{
         "y": 470.8,
         "color": "BLUE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 426,
             "MinValue": 2508,
@@ -17049,7 +17054,7 @@ var starmapdata = [{
         "y": 468.7,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 782,
             "MinValue": 2199,
@@ -17272,7 +17277,7 @@ var starmapdata = [{
         "y": 425,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 720,
             "MinValue": 1466,
@@ -17513,25 +17518,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "D"
     }]
 }, {
@@ -17541,7 +17546,7 @@ var starmapdata = [{
         "y": 710.4,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 727,
             "MinValue": 6653,
@@ -17785,7 +17790,7 @@ var starmapdata = [{
         "y": 703.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 500,
             "MinValue": 1298,
@@ -17987,7 +17992,7 @@ var starmapdata = [{
         "y": 704.1,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 509,
             "MinValue": 2472,
@@ -18105,7 +18110,7 @@ var starmapdata = [{
         "y": 712.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 50,
             "MinValue": 136,
@@ -18139,7 +18144,7 @@ var starmapdata = [{
         "y": 720.1,
         "color": "YELLOW",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 785,
             "MinValue": 2011,
@@ -18362,7 +18367,7 @@ var starmapdata = [{
         "y": 722.9,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 101,
             "MinValue": 808,
@@ -18417,7 +18422,7 @@ var starmapdata = [{
         "y": 714.5,
         "color": "BLUE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 1159,
             "MinValue": 4752,
@@ -18640,7 +18645,7 @@ var starmapdata = [{
         "y": 695.8,
         "color": "BLUE",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 112,
             "MinValue": 534,
@@ -18674,7 +18679,7 @@ var starmapdata = [{
         "y": 687.5,
         "color": "GREEN",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 1062,
             "MinValue": 5668,
@@ -19023,7 +19028,7 @@ var starmapdata = [{
         "y": 675,
         "color": "BLUE",
         "size": 0,
-        "id": "J",
+        "id": "J", //Kappa
         "planetsInfo": {
             "MinVolume": 956,
             "MinValue": 4356,
@@ -19264,31 +19269,31 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "I"
     }, {
-        "from": "I",
+        "from": "I", //Iota
         "to": "J"
     }]
 }, {
@@ -19298,7 +19303,7 @@ var starmapdata = [{
         "y": 654.1,
         "color": "RED",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1506,
             "MinValue": 4799,
@@ -19794,7 +19799,7 @@ var starmapdata = [{
         "y": 671.6,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 174,
             "MinValue": 4350,
@@ -19849,7 +19854,7 @@ var starmapdata = [{
         "y": 662.5,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 779,
             "MinValue": 1613,
@@ -20093,7 +20098,7 @@ var starmapdata = [{
         "y": 652,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1134,
             "MinValue": 4299,
@@ -20442,7 +20447,7 @@ var starmapdata = [{
         "y": 672.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 48,
             "MinValue": 144,
@@ -20473,22 +20478,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }]
 }, {
@@ -20498,7 +20503,7 @@ var starmapdata = [{
         "y": 597.9,
         "color": "GREEN",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1852,
             "MinValue": 6053,
@@ -20973,7 +20978,7 @@ var starmapdata = [{
         "y": 609.3,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1256,
             "MinValue": 6897,
@@ -21217,7 +21222,7 @@ var starmapdata = [{
         "y": 627,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1197,
             "MinValue": 4903,
@@ -21377,7 +21382,7 @@ var starmapdata = [{
         "y": 614.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 792,
             "MinValue": 2283,
@@ -21705,7 +21710,7 @@ var starmapdata = [{
         "y": 598,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 683,
             "MinValue": 1543,
@@ -21907,7 +21912,7 @@ var starmapdata = [{
         "y": 598.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 731,
             "MinValue": 3129,
@@ -22211,22 +22216,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }]
 }, {
@@ -22236,7 +22241,7 @@ var starmapdata = [{
         "y": 645.8,
         "color": "WHITE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1487,
             "MinValue": 8370,
@@ -22480,7 +22485,7 @@ var starmapdata = [{
         "y": 660.2,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 28,
             "MinValue": 64,
@@ -22514,7 +22519,7 @@ var starmapdata = [{
         "y": 620.8,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 186,
             "MinValue": 1116,
@@ -22545,10 +22550,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }]
 }, {
@@ -22558,7 +22563,7 @@ var starmapdata = [{
         "y": 262.5,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 18,
             "MinValue": 54,
@@ -22592,14 +22597,14 @@ var starmapdata = [{
         "y": 263.1,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1286,
             "MinValue": 5770,
             "BioUnits": 0
         },
         "planets": {
-            "I": {
+            "I (Syra)": {
                 "Type": "Shattered",
                 "Hazard": "7",
                 "Tectonics": "7",
@@ -22618,7 +22623,9 @@ var starmapdata = [{
                 "Day": "207",
                 "Atmosphere": "0",
                 "LifeChance": "-340",
-                "DistFromStar": "409"
+                "DistFromStar": "409",
+                "Devices": ["Deep Child Egg Case Fragments"],
+				"Homeworlds": ["Syreen (old)"]
             },
             "I-a": {
                 "Type": "Infrared",
@@ -22920,7 +22927,7 @@ var starmapdata = [{
         "y": 252,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 565,
             "MinValue": 1610,
@@ -23224,10 +23231,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -23237,7 +23244,7 @@ var starmapdata = [{
         "y": 981.2,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 616,
             "MinValue": 1658,
@@ -23307,7 +23314,7 @@ var starmapdata = [{
                 "LifeChance": "360",
                 "DistFromStar": "3271"
             },
-            "IV": {
+            "IV (Source)": {
                 "Type": "Gas Giant",
                 "Hazard": "8",
                 "Tectonics": "2",
@@ -23326,7 +23333,9 @@ var starmapdata = [{
                 "Day": "142",
                 "Atmosphere": "65535",
                 "LifeChance": "-1",
-                "DistFromStar": "4117"
+                "DistFromStar": "4117",
+                "Devices": ["Slylandro Probe Self-Destruct Code"],
+                "Homeworlds": ["Slylandro"]
             },
             "IV-a": {
                 "Type": "Urea",
@@ -23418,7 +23427,7 @@ var starmapdata = [{
         "y": 947.9,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 590,
             "MinValue": 1566,
@@ -23536,7 +23545,7 @@ var starmapdata = [{
         "y": 939.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 43,
             "MinValue": 129,
@@ -23570,7 +23579,7 @@ var starmapdata = [{
         "y": 912.5,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 274,
             "MinValue": 898,
@@ -23835,7 +23844,7 @@ var starmapdata = [{
         "y": 997.9,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 447,
             "MinValue": 1520,
@@ -24205,7 +24214,7 @@ var starmapdata = [{
         "y": 993.7,
         "color": "RED",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 431,
             "MinValue": 709,
@@ -24509,19 +24518,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "D",
+        "from": "D", //Delta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }]
 }, {
@@ -24531,7 +24540,7 @@ var starmapdata = [{
         "y": 563.2,
         "color": "BLUE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 945,
             "MinValue": 2533,
@@ -24754,7 +24763,7 @@ var starmapdata = [{
         "y": 578.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 702,
             "MinValue": 1773,
@@ -24977,7 +24986,7 @@ var starmapdata = [{
         "y": 600,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1309,
             "MinValue": 4309,
@@ -25284,7 +25293,7 @@ var starmapdata = [{
         "y": 593.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1292,
             "MinValue": 3726,
@@ -25591,7 +25600,7 @@ var starmapdata = [{
         "y": 587.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 616,
             "MinValue": 1245,
@@ -25730,7 +25739,7 @@ var starmapdata = [{
         "y": 603.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 187,
             "MinValue": 403,
@@ -25848,7 +25857,7 @@ var starmapdata = [{
         "y": 595.8,
         "color": "RED",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 160,
             "MinValue": 598,
@@ -25966,7 +25975,7 @@ var starmapdata = [{
         "y": 625.5,
         "color": "RED",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 429,
             "MinValue": 1769,
@@ -26144,25 +26153,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "H"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "F"
     }]
 }, {
@@ -26172,7 +26181,7 @@ var starmapdata = [{
         "y": 629.1,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1256,
             "MinValue": 7702,
@@ -26458,7 +26467,7 @@ var starmapdata = [{
         "y": 668.7,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 716,
             "MinValue": 2492,
@@ -26618,7 +26627,7 @@ var starmapdata = [{
         "y": 622.9,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 433,
             "MinValue": 999,
@@ -26883,7 +26892,7 @@ var starmapdata = [{
         "y": 591.6,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 461,
             "MinValue": 1007,
@@ -27040,16 +27049,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }]
 }, {
@@ -27059,7 +27068,7 @@ var starmapdata = [{
         "y": 458.3,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 691,
             "MinValue": 3492,
@@ -27198,7 +27207,7 @@ var starmapdata = [{
         "y": 464.5,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 795,
             "MinValue": 4019,
@@ -27442,7 +27451,7 @@ var starmapdata = [{
         "y": 470.8,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 70,
             "MinValue": 103,
@@ -27476,7 +27485,7 @@ var starmapdata = [{
         "y": 471.7,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 625,
             "MinValue": 1561,
@@ -27657,7 +27666,7 @@ var starmapdata = [{
         "y": 458.3,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 115,
             "MinValue": 181,
@@ -27730,19 +27739,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }]
 }, {
@@ -27752,7 +27761,7 @@ var starmapdata = [{
         "y": 645.8,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 463,
             "MinValue": 942,
@@ -27996,7 +28005,7 @@ var starmapdata = [{
         "y": 650,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 14,
             "MinValue": 350,
@@ -28027,7 +28036,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -28037,7 +28046,7 @@ var starmapdata = [{
         "y": 685.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 63,
             "MinValue": 189,
@@ -28071,7 +28080,7 @@ var starmapdata = [{
         "y": 693.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 640,
             "MinValue": 2109,
@@ -28396,7 +28405,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -28406,7 +28415,7 @@ var starmapdata = [{
         "y": 835.1,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 225,
             "MinValue": 554,
@@ -28503,7 +28512,7 @@ var starmapdata = [{
         "y": 839.5,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1158,
             "MinValue": 3008,
@@ -29020,7 +29029,7 @@ var starmapdata = [{
         "y": 805.6,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1307,
             "MinValue": 5590,
@@ -29285,7 +29294,7 @@ var starmapdata = [{
         "y": 835.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 943,
             "MinValue": 2759,
@@ -29311,7 +29320,8 @@ var starmapdata = [{
                 "Day": "252",
                 "Atmosphere": "97",
                 "LifeChance": "960",
-                "DistFromStar": "501"
+                "DistFromStar": "501",
+				"Homeworlds": ["Thraddash"]
             },
             "II": {
                 "Type": "Gas Giant",
@@ -29613,7 +29623,7 @@ var starmapdata = [{
         "y": 785.7,
         "color": "WHITE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1748,
             "MinValue": 7298,
@@ -29983,7 +29993,7 @@ var starmapdata = [{
         "y": 867.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 732,
             "MinValue": 1535,
@@ -30009,7 +30019,8 @@ var starmapdata = [{
                 "Day": "205",
                 "Atmosphere": "80",
                 "LifeChance": "560",
-                "DistFromStar": "332"
+                "DistFromStar": "332",
+                "Devices": ["Aqua Helix"]
             },
             "II": {
                 "Type": "Gas Giant",
@@ -30353,7 +30364,7 @@ var starmapdata = [{
         "y": 839,
         "color": "RED",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 280,
             "MinValue": 683,
@@ -30492,7 +30503,7 @@ var starmapdata = [{
         "y": 800,
         "color": "YELLOW",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 687,
             "MinValue": 3131,
@@ -30673,7 +30684,7 @@ var starmapdata = [{
         "y": 825,
         "color": "YELLOW",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 582,
             "MinValue": 2581,
@@ -30791,7 +30802,7 @@ var starmapdata = [{
         "y": 866.6,
         "color": "WHITE",
         "size": 0,
-        "id": "J",
+        "id": "J", //Kappa
         "planetsInfo": {
             "MinVolume": 897,
             "MinValue": 3783,
@@ -30972,7 +30983,7 @@ var starmapdata = [{
         "y": 839.5,
         "color": "GREEN",
         "size": 0,
-        "id": "K",
+        "id": "K", //Lambda
         "planetsInfo": {
             "MinVolume": 642,
             "MinValue": 2525,
@@ -31132,7 +31143,7 @@ var starmapdata = [{
         "y": 870.2,
         "color": "RED",
         "size": 0,
-        "id": "L",
+        "id": "L", //Mu
         "planetsInfo": {
             "MinVolume": 307,
             "MinValue": 801,
@@ -31271,7 +31282,7 @@ var starmapdata = [{
         "y": 886.1,
         "color": "RED",
         "size": 0,
-        "id": "M",
+        "id": "M", //Nu
         "planetsInfo": {
             "MinVolume": 324,
             "MinValue": 616,
@@ -31389,7 +31400,7 @@ var starmapdata = [{
         "y": 865.3,
         "color": "RED",
         "size": 0,
-        "id": "N",
+        "id": "N", //Xi
         "planetsInfo": {
             "MinVolume": 165,
             "MinValue": 493,
@@ -31483,49 +31494,49 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "J",
+        "from": "J", //Kappa
         "to": "M"
     }, {
-        "from": "M",
+        "from": "M", //Nu
         "to": "L"
     }, {
-        "from": "L",
+        "from": "L", //Mu
         "to": "J"
     }, {
-        "from": "J",
+        "from": "J", //Kappa
         "to": "N"
     }, {
-        "from": "N",
+        "from": "N", //Xi
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "K"
     }, {
-        "from": "K",
+        "from": "K", //Lambda
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "I"
     }, {
-        "from": "I",
+        "from": "I", //Iota
         "to": "H"
     }]
 }, {
@@ -31535,7 +31546,7 @@ var starmapdata = [{
         "y": 662.4,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1203,
             "MinValue": 4832,
@@ -31737,7 +31748,7 @@ var starmapdata = [{
         "y": 672.9,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 436,
             "MinValue": 532,
@@ -31831,7 +31842,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -31841,7 +31852,7 @@ var starmapdata = [{
         "y": 772.9,
         "color": "YELLOW",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 524,
             "MinValue": 2022,
@@ -31959,7 +31970,7 @@ var starmapdata = [{
         "y": 764.5,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1139,
             "MinValue": 3938,
@@ -32161,7 +32172,7 @@ var starmapdata = [{
         "y": 758.3,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 359,
             "MinValue": 5541,
@@ -32255,13 +32266,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -32271,7 +32282,7 @@ var starmapdata = [{
         "y": 787.5,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 359,
             "MinValue": 4221,
@@ -32410,7 +32421,7 @@ var starmapdata = [{
         "y": 802,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 698,
             "MinValue": 2445,
@@ -32654,7 +32665,7 @@ var starmapdata = [{
         "y": 806.2,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 303,
             "MinValue": 1651,
@@ -32772,7 +32783,7 @@ var starmapdata = [{
         "y": 797.9,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 563,
             "MinValue": 1317,
@@ -32890,7 +32901,7 @@ var starmapdata = [{
         "y": 791.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 645,
             "MinValue": 1438,
@@ -33071,7 +33082,7 @@ var starmapdata = [{
         "y": 800,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 650,
             "MinValue": 1751,
@@ -33273,7 +33284,7 @@ var starmapdata = [{
         "y": 787.5,
         "color": "RED",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 241,
             "MinValue": 513,
@@ -33367,22 +33378,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "G"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "F"
     }]
 }, {
@@ -33392,7 +33403,7 @@ var starmapdata = [{
         "y": 779.1,
         "color": "WHITE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1053,
             "MinValue": 4257,
@@ -33615,7 +33626,7 @@ var starmapdata = [{
         "y": 779.1,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 757,
             "MinValue": 4245,
@@ -33880,7 +33891,7 @@ var starmapdata = [{
         "y": 745.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 462,
             "MinValue": 2388,
@@ -34082,7 +34093,7 @@ var starmapdata = [{
         "y": 747.9,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 58,
             "MinValue": 257,
@@ -34113,16 +34124,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }]
 }, {
@@ -34132,7 +34143,7 @@ var starmapdata = [{
         "y": 38,
         "color": "ORANGE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 863,
             "MinValue": 3663,
@@ -34376,7 +34387,7 @@ var starmapdata = [{
         "y": 43.1,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 578,
             "MinValue": 1850,
@@ -34536,7 +34547,7 @@ var starmapdata = [{
         "y": 33.7,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 103,
             "MinValue": 323,
@@ -34633,7 +34644,7 @@ var starmapdata = [{
         "y": 34,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1037,
             "MinValue": 3346,
@@ -34814,7 +34825,7 @@ var starmapdata = [{
         "y": 46.8,
         "color": "BLUE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 168,
             "MinValue": 904,
@@ -34848,7 +34859,7 @@ var starmapdata = [{
         "y": 33.4,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 466,
             "MinValue": 2225,
@@ -35029,7 +35040,7 @@ var starmapdata = [{
         "y": 4.1,
         "color": "WHITE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 668,
             "MinValue": 4236,
@@ -35189,7 +35200,7 @@ var starmapdata = [{
         "y": 74.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 564,
             "MinValue": 1548,
@@ -35409,25 +35420,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "H"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "G"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "F"
     }]
 }, {
@@ -35437,7 +35448,7 @@ var starmapdata = [{
         "y": 14.6,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1241,
             "MinValue": 4051,
@@ -35660,7 +35671,7 @@ var starmapdata = [{
         "y": 8.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 184,
             "MinValue": 664,
@@ -35778,7 +35789,7 @@ var starmapdata = [{
         "y": 11.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 709,
             "MinValue": 1748,
@@ -35938,14 +35949,14 @@ var starmapdata = [{
         "y": 26.9,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 966,
             "MinValue": 3479,
             "BioUnits": 75
         },
         "planets": {
-            "I": {
+            "I (Kyabetsu)": {
                 "Type": "Selenic",
                 "Hazard": "4",
                 "Tectonics": "3",
@@ -35964,7 +35975,8 @@ var starmapdata = [{
                 "Day": "162",
                 "Atmosphere": "15",
                 "LifeChance": "610",
-                "DistFromStar": "964"
+                "DistFromStar": "964",
+				"Homeworlds": ["Shofixti"]
             },
             "II": {
                 "Type": "Selenic",
@@ -36077,7 +36089,7 @@ var starmapdata = [{
         "y": 30.1,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 87,
             "MinValue": 311,
@@ -36108,19 +36120,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "A"
     }]
 }, {
@@ -36130,7 +36142,7 @@ var starmapdata = [{
         "y": 366.3,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 46,
             "MinValue": 112,
@@ -36164,7 +36176,7 @@ var starmapdata = [{
         "y": 355.1,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 353,
             "MinValue": 1949,
@@ -36240,7 +36252,7 @@ var starmapdata = [{
         "y": 370.8,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 480,
             "MinValue": 3006,
@@ -36358,7 +36370,7 @@ var starmapdata = [{
         "y": 374.1,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 447,
             "MinValue": 1060,
@@ -36602,14 +36614,14 @@ var starmapdata = [{
         "y": 368.7,
         "color": "ORANGE",
         "size": 1,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 29,
             "MinValue": 281,
             "BioUnits": 32
         },
         "planets": {
-            "I": {
+            "I (Spathiwa)": {
                 "Type": "Water",
                 "Hazard": "1",
                 "Tectonics": "1",
@@ -36628,7 +36640,8 @@ var starmapdata = [{
                 "Day": "198",
                 "Atmosphere": "80",
                 "LifeChance": "0",
-                "DistFromStar": "5888"
+                "DistFromStar": "5888",
+                "Homeworlds": ["Spathi"]
             },
             "I-a": {
                 "Type": "Pellucid",
@@ -36649,7 +36662,9 @@ var starmapdata = [{
                 "Day": "283",
                 "Atmosphere": "10",
                 "LifeChance": "0",
-                "DistFromStar": "5888"
+                "DistFromStar": "5888",
+                "Devices": ["Umgah Hyperwave Broadcaster"],
+                "Homeworlds": ["Spathi (secondary)"]
             }
         }
     }, {
@@ -36657,7 +36672,7 @@ var starmapdata = [{
         "y": 375,
         "color": "WHITE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 244,
             "MinValue": 1768,
@@ -36733,7 +36748,7 @@ var starmapdata = [{
         "y": 395.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 427,
             "MinValue": 1623,
@@ -36890,25 +36905,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "D"
     }]
 }, {
@@ -36918,7 +36933,7 @@ var starmapdata = [{
         "y": 364.5,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1445,
             "MinValue": 6846,
@@ -37225,7 +37240,7 @@ var starmapdata = [{
         "y": 341.8,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 71,
             "MinValue": 213,
@@ -37298,7 +37313,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -37308,7 +37323,7 @@ var starmapdata = [{
         "y": 754.1,
         "color": "YELLOW",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 523,
             "MinValue": 1584,
@@ -37468,7 +37483,7 @@ var starmapdata = [{
         "y": 725,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 689,
             "MinValue": 2438,
@@ -37691,7 +37706,7 @@ var starmapdata = [{
         "y": 700,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 143,
             "MinValue": 575,
@@ -37767,7 +37782,7 @@ var starmapdata = [{
         "y": 718.4,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 53,
             "MinValue": 159,
@@ -37822,7 +37837,7 @@ var starmapdata = [{
         "y": 725.8,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 58,
             "MinValue": 1032,
@@ -37877,7 +37892,7 @@ var starmapdata = [{
         "y": 753.8,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 674,
             "MinValue": 1796,
@@ -38142,7 +38157,7 @@ var starmapdata = [{
         "y": 785.4,
         "color": "RED",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 492,
             "MinValue": 1284,
@@ -38281,7 +38296,7 @@ var starmapdata = [{
         "y": 784.9,
         "color": "RED",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 37,
             "MinValue": 201,
@@ -38315,7 +38330,7 @@ var starmapdata = [{
         "y": 799.3,
         "color": "RED",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 509,
             "MinValue": 1854,
@@ -38517,7 +38532,7 @@ var starmapdata = [{
         "y": 780.3,
         "color": "RED",
         "size": 0,
-        "id": "J",
+        "id": "J", //Kappa
         "planetsInfo": {
             "MinVolume": 1471,
             "MinValue": 5371,
@@ -38950,7 +38965,7 @@ var starmapdata = [{
         "y": 751.4,
         "color": "RED",
         "size": 0,
-        "id": "K",
+        "id": "K", //Lambda
         "planetsInfo": {
             "MinVolume": 452,
             "MinValue": 1638,
@@ -39212,40 +39227,40 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "I"
     }, {
-        "from": "I",
+        "from": "I", //Iota
         "to": "J"
     }, {
-        "from": "J",
+        "from": "J", //Kappa
         "to": "K"
     }, {
-        "from": "K",
+        "from": "K", //Lambda
         "to": "A"
     }]
 }, {
@@ -39255,7 +39270,7 @@ var starmapdata = [{
         "y": 893.4,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1141,
             "MinValue": 6015,
@@ -39562,7 +39577,7 @@ var starmapdata = [{
         "y": 895.8,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 550,
             "MinValue": 2710,
@@ -39701,7 +39716,7 @@ var starmapdata = [{
         "y": 904.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 443,
             "MinValue": 1386,
@@ -40008,7 +40023,7 @@ var starmapdata = [{
         "y": 895.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 710,
             "MinValue": 2436,
@@ -40252,7 +40267,7 @@ var starmapdata = [{
         "y": 912.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 747,
             "MinValue": 1133,
@@ -40496,7 +40511,7 @@ var starmapdata = [{
         "y": 937.2,
         "color": "YELLOW",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 786,
             "MinValue": 3735,
@@ -40669,7 +40684,8 @@ var starmapdata = [{
                 "Day": "206",
                 "Atmosphere": "0",
                 "LifeChance": "-940",
-                "DistFromStar": "5468"
+                "DistFromStar": "5468",
+                "Devices": ["Utwig Bomb"]
             },
             "VII": {
                 "Type": "Cimmerian",
@@ -40740,7 +40756,7 @@ var starmapdata = [{
         "y": 939.3,
         "color": "YELLOW",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 644,
             "MinValue": 2840,
@@ -40984,7 +41000,7 @@ var starmapdata = [{
         "y": 954.8,
         "color": "GREEN",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 711,
             "MinValue": 2493,
@@ -41165,7 +41181,7 @@ var starmapdata = [{
         "y": 950.5,
         "color": "WHITE",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 1294,
             "MinValue": 7379,
@@ -41367,7 +41383,7 @@ var starmapdata = [{
         "y": 958.9,
         "color": "GREEN",
         "size": 0,
-        "id": "J",
+        "id": "J", //Kappa
         "planetsInfo": {
             "MinVolume": 1516,
             "MinValue": 4736,
@@ -41716,7 +41732,7 @@ var starmapdata = [{
         "y": 937.4,
         "color": "GREEN",
         "size": 0,
-        "id": "K",
+        "id": "K", //Lambda
         "planetsInfo": {
             "MinVolume": 539,
             "MinValue": 1949,
@@ -41894,37 +41910,37 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "I"
     }, {
-        "from": "I",
+        "from": "I", //Iota
         "to": "J"
     }, {
-        "from": "J",
+        "from": "J", //Kappa
         "to": "K"
     }]
 }, {
@@ -41934,7 +41950,7 @@ var starmapdata = [{
         "y": 650,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 887,
             "MinValue": 3869,
@@ -42094,7 +42110,7 @@ var starmapdata = [{
         "y": 656.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 239,
             "MinValue": 239,
@@ -42170,7 +42186,7 @@ var starmapdata = [{
         "y": 625,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 353,
             "MinValue": 575,
@@ -42369,10 +42385,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -42382,7 +42398,7 @@ var starmapdata = [{
         "y": 416.6,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 269,
             "MinValue": 705,
@@ -42542,7 +42558,7 @@ var starmapdata = [{
         "y": 406.2,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 621,
             "MinValue": 1515,
@@ -42762,7 +42778,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -42772,7 +42788,7 @@ var starmapdata = [{
         "y": 329.1,
         "color": "RED",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1529,
             "MinValue": 4694,
@@ -42953,7 +42969,7 @@ var starmapdata = [{
         "y": 343.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 323,
             "MinValue": 715,
@@ -43071,7 +43087,7 @@ var starmapdata = [{
         "y": 333.3,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1238,
             "MinValue": 4401,
@@ -43315,7 +43331,7 @@ var starmapdata = [{
         "y": 316.6,
         "color": "YELLOW",
         "size": 1,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 556,
             "MinValue": 2064,
@@ -43538,7 +43554,7 @@ var starmapdata = [{
         "y": 295.1,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 204,
             "MinValue": 612,
@@ -43635,7 +43651,7 @@ var starmapdata = [{
         "y": 275,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 631,
             "MinValue": 1270,
@@ -43858,7 +43874,7 @@ var starmapdata = [{
         "y": 285.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 875,
             "MinValue": 3786,
@@ -44249,7 +44265,7 @@ var starmapdata = [{
         "y": 304.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 492,
             "MinValue": 1668,
@@ -44469,25 +44485,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }]
 }, {
@@ -44497,7 +44513,7 @@ var starmapdata = [{
         "y": 136.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 343,
             "MinValue": 639,
@@ -44636,7 +44652,7 @@ var starmapdata = [{
         "y": 135.4,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 143,
             "MinValue": 208,
@@ -44688,7 +44704,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -44698,7 +44714,7 @@ var starmapdata = [{
         "y": 320.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1790,
             "MinValue": 5881,
@@ -45173,7 +45189,7 @@ var starmapdata = [{
         "y": 295.8,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 479,
             "MinValue": 1274,
@@ -45333,7 +45349,7 @@ var starmapdata = [{
         "y": 297.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 178,
             "MinValue": 1011,
@@ -45364,13 +45380,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -45380,7 +45396,7 @@ var starmapdata = [{
         "y": 997.9,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 120,
             "MinValue": 392,
@@ -45477,7 +45493,7 @@ var starmapdata = [{
         "y": 954.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 386,
             "MinValue": 1193,
@@ -45655,7 +45671,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -45665,7 +45681,7 @@ var starmapdata = [{
         "y": 47.7,
         "color": "YELLOW",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 505,
             "MinValue": 1638,
@@ -45804,7 +45820,7 @@ var starmapdata = [{
         "y": 44.2,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 204,
             "MinValue": 538,
@@ -45880,7 +45896,7 @@ var starmapdata = [{
         "y": 52.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 494,
             "MinValue": 2176,
@@ -45906,7 +45922,9 @@ var starmapdata = [{
                 "Day": "165",
                 "Atmosphere": "101",
                 "LifeChance": "810",
-                "DistFromStar": "532"
+                "DistFromStar": "532",
+                "Devices": ["Clear Spindle"],
+                "Homeworlds": ["Pkunk"]
             },
             "I-a": {
                 "Type": "Halide",
@@ -45998,7 +46016,7 @@ var starmapdata = [{
         "y": 28.9,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 346,
             "MinValue": 1150,
@@ -46158,7 +46176,7 @@ var starmapdata = [{
         "y": 15.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 559,
             "MinValue": 935,
@@ -46339,7 +46357,7 @@ var starmapdata = [{
         "y": 56.5,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 680,
             "MinValue": 2850,
@@ -46412,22 +46430,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "A"
     }]
 }, {
@@ -46437,7 +46455,7 @@ var starmapdata = [{
         "y": 95.5,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 865,
             "MinValue": 2640,
@@ -46828,7 +46846,7 @@ var starmapdata = [{
         "y": 95.2,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 15,
             "MinValue": 45,
@@ -46862,7 +46880,7 @@ var starmapdata = [{
         "y": 85.7,
         "color": "ORANGE",
         "size": 1,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1067,
             "MinValue": 5594,
@@ -47103,13 +47121,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -47119,7 +47137,7 @@ var starmapdata = [{
         "y": 808.3,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 407,
             "MinValue": 2019,
@@ -47216,7 +47234,7 @@ var starmapdata = [{
         "y": 804.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 381,
             "MinValue": 1169,
@@ -47373,7 +47391,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -47383,7 +47401,7 @@ var starmapdata = [{
         "y": 264.8,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 200,
             "MinValue": 1000,
@@ -47438,7 +47456,7 @@ var starmapdata = [{
         "y": 280.4,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 398,
             "MinValue": 1604,
@@ -47493,7 +47511,7 @@ var starmapdata = [{
         "y": 283,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 75,
             "MinValue": 225,
@@ -47527,7 +47545,7 @@ var starmapdata = [{
         "y": 277.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 422,
             "MinValue": 1071,
@@ -47684,16 +47702,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }]
 }, {
@@ -47703,7 +47721,7 @@ var starmapdata = [{
         "y": 600,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 189,
             "MinValue": 982,
@@ -47758,7 +47776,7 @@ var starmapdata = [{
         "y": 589.5,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1126,
             "MinValue": 4881,
@@ -48002,7 +48020,7 @@ var starmapdata = [{
         "y": 604.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 456,
             "MinValue": 887,
@@ -48267,7 +48285,7 @@ var starmapdata = [{
         "y": 595.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 248,
             "MinValue": 1028,
@@ -48424,16 +48442,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }]
 }, {
@@ -48443,7 +48461,7 @@ var starmapdata = [{
         "y": 822.9,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1257,
             "MinValue": 4363,
@@ -48792,7 +48810,7 @@ var starmapdata = [{
         "y": 785.4,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 260,
             "MinValue": 2746,
@@ -48973,7 +48991,7 @@ var starmapdata = [{
         "y": 733.3,
         "color": "WHITE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1143,
             "MinValue": 7138,
@@ -49235,10 +49253,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -49248,7 +49266,7 @@ var starmapdata = [{
         "y": 858.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 487,
             "MinValue": 1674,
@@ -49429,7 +49447,7 @@ var starmapdata = [{
         "y": 866.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1029,
             "MinValue": 3084,
@@ -49694,7 +49712,7 @@ var starmapdata = [{
         "y": 881.2,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1023,
             "MinValue": 3023,
@@ -49872,10 +49890,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -49885,7 +49903,7 @@ var starmapdata = [{
         "y": 906.2,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 862,
             "MinValue": 4737,
@@ -50108,14 +50126,14 @@ var starmapdata = [{
         "y": 912.4,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 222,
             "MinValue": 942,
             "BioUnits": 69
         },
         "planets": {
-            "I": {
+            "I (Vlik)": {
                 "Type": "Water",
                 "Hazard": "5",
                 "Tectonics": "4",
@@ -50134,7 +50152,8 @@ var starmapdata = [{
                 "Day": "200",
                 "Atmosphere": "98",
                 "LifeChance": "960",
-                "DistFromStar": "778"
+                "DistFromStar": "778",
+				"Homeworlds": ["Supox"]
             },
             "I-a": {
                 "Type": "Super-Dense",
@@ -50184,7 +50203,7 @@ var starmapdata = [{
         "y": 910.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 46,
             "MinValue": 138,
@@ -50260,7 +50279,7 @@ var starmapdata = [{
         "y": 918.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 53,
             "MinValue": 53,
@@ -50336,7 +50355,7 @@ var starmapdata = [{
         "y": 922.9,
         "color": "WHITE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 201,
             "MinValue": 635,
@@ -50370,7 +50389,7 @@ var starmapdata = [{
         "y": 908.3,
         "color": "WHITE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 357,
             "MinValue": 1133,
@@ -50404,7 +50423,7 @@ var starmapdata = [{
         "y": 918.1,
         "color": "GREEN",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 239,
             "MinValue": 2027,
@@ -50498,25 +50517,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "D"
     }]
 }, {
@@ -50526,7 +50545,7 @@ var starmapdata = [{
         "y": 864.5,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1076,
             "MinValue": 3290,
@@ -50917,7 +50936,7 @@ var starmapdata = [{
         "y": 839.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 874,
             "MinValue": 3033,
@@ -51245,7 +51264,7 @@ var starmapdata = [{
         "y": 882.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 374,
             "MinValue": 954,
@@ -51384,7 +51403,7 @@ var starmapdata = [{
         "y": 897.9,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 175,
             "MinValue": 525,
@@ -51481,7 +51500,7 @@ var starmapdata = [{
         "y": 827,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 507,
             "MinValue": 2385,
@@ -51596,16 +51615,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "E"
     }]
 }, {
@@ -51615,7 +51634,7 @@ var starmapdata = [{
         "y": 164.5,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 151,
             "MinValue": 223,
@@ -51670,7 +51689,7 @@ var starmapdata = [{
         "y": 168.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 839,
             "MinValue": 2131,
@@ -51696,7 +51715,8 @@ var starmapdata = [{
                 "Day": "289",
                 "Atmosphere": "12",
                 "LifeChance": "760",
-                "DistFromStar": "215"
+                "DistFromStar": "215",
+				"Homeworlds": ["VUX"]
             },
             "I-a": {
                 "Type": "Super-Dense",
@@ -52040,7 +52060,7 @@ var starmapdata = [{
         "y": 156.2,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 943,
             "MinValue": 6059,
@@ -52386,13 +52406,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -52402,7 +52422,7 @@ var starmapdata = [{
         "y": 955.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 505,
             "MinValue": 1150,
@@ -52541,7 +52561,7 @@ var starmapdata = [{
         "y": 947.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 757,
             "MinValue": 1773,
@@ -52827,7 +52847,7 @@ var starmapdata = [{
         "y": 971.1,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 356,
             "MinValue": 671,
@@ -52945,7 +52965,7 @@ var starmapdata = [{
         "y": 979.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 51,
             "MinValue": 153,
@@ -52971,7 +52991,8 @@ var starmapdata = [{
                 "Day": "206",
                 "Atmosphere": "109",
                 "LifeChance": "810",
-                "DistFromStar": "563"
+                "DistFromStar": "563",
+                "Devices": ["VUX Beast"]
             },
             "II": {
                 "Type": "Pellucid",
@@ -53000,7 +53021,7 @@ var starmapdata = [{
         "y": 953.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1010,
             "MinValue": 2908,
@@ -53349,7 +53370,7 @@ var starmapdata = [{
         "y": 972.9,
         "color": "RED",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 433,
             "MinValue": 801,
@@ -53530,7 +53551,7 @@ var starmapdata = [{
         "y": 949.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 156,
             "MinValue": 563,
@@ -53606,7 +53627,7 @@ var starmapdata = [{
         "y": 960.4,
         "color": "RED",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 271,
             "MinValue": 3789,
@@ -53742,28 +53763,28 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }]
 }, {
@@ -53773,7 +53794,7 @@ var starmapdata = [{
         "y": 127,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 130,
             "MinValue": 507,
@@ -53828,7 +53849,7 @@ var starmapdata = [{
         "y": 104.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 611,
             "MinValue": 2431,
@@ -54090,7 +54111,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -54100,7 +54121,7 @@ var starmapdata = [{
         "y": 524.6,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1239,
             "MinValue": 6240,
@@ -54365,7 +54386,7 @@ var starmapdata = [{
         "y": 547.9,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 166,
             "MinValue": 360,
@@ -54459,7 +54480,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -54469,7 +54490,7 @@ var starmapdata = [{
         "y": 318.7,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 163,
             "MinValue": 485,
@@ -54608,7 +54629,7 @@ var starmapdata = [{
         "y": 288.7,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 708,
             "MinValue": 2329,
@@ -54978,7 +54999,7 @@ var starmapdata = [{
         "y": 295.8,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 366,
             "MinValue": 1255,
@@ -55240,10 +55261,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -55253,7 +55274,7 @@ var starmapdata = [{
         "y": 664.5,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 61,
             "MinValue": 1327,
@@ -55308,7 +55329,7 @@ var starmapdata = [{
         "y": 729.1,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 460,
             "MinValue": 1328,
@@ -55507,7 +55528,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -55517,7 +55538,7 @@ var starmapdata = [{
         "y": 232,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 86,
             "MinValue": 360,
@@ -55572,7 +55593,7 @@ var starmapdata = [{
         "y": 192.6,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 406,
             "MinValue": 2341,
@@ -55711,7 +55732,7 @@ var starmapdata = [{
         "y": 226.2,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 88,
             "MinValue": 309,
@@ -55766,7 +55787,7 @@ var starmapdata = [{
         "y": 235.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 589,
             "MinValue": 1395,
@@ -56007,16 +56028,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }]
 }, {
@@ -56026,7 +56047,7 @@ var starmapdata = [{
         "y": 718.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 127,
             "MinValue": 205,
@@ -56081,7 +56102,7 @@ var starmapdata = [{
         "y": 729.1,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 421,
             "MinValue": 1777,
@@ -56196,7 +56217,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -56206,7 +56227,7 @@ var starmapdata = [{
         "y": 779.1,
         "color": "BLUE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 838,
             "MinValue": 2910,
@@ -56261,7 +56282,7 @@ var starmapdata = [{
         "y": 770.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 453,
             "MinValue": 1253,
@@ -56484,7 +56505,7 @@ var starmapdata = [{
         "y": 718.7,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 112,
             "MinValue": 219,
@@ -56560,7 +56581,7 @@ var starmapdata = [{
         "y": 804.1,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 178,
             "MinValue": 606,
@@ -56678,7 +56699,7 @@ var starmapdata = [{
         "y": 833.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 45,
             "MinValue": 162,
@@ -56712,7 +56733,7 @@ var starmapdata = [{
         "y": 858.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 550,
             "MinValue": 1258,
@@ -56890,22 +56911,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "D"
     }]
 }, {
@@ -56915,7 +56936,7 @@ var starmapdata = [{
         "y": 540.4,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1089,
             "MinValue": 5835,
@@ -57138,7 +57159,7 @@ var starmapdata = [{
         "y": 531.5,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1351,
             "MinValue": 9153,
@@ -57361,7 +57382,7 @@ var starmapdata = [{
         "y": 526.1,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 400,
             "MinValue": 987,
@@ -57584,7 +57605,7 @@ var starmapdata = [{
         "y": 527.9,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 314,
             "MinValue": 792,
@@ -57681,7 +57702,7 @@ var starmapdata = [{
         "y": 541.6,
         "color": "WHITE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1772,
             "MinValue": 7718,
@@ -57988,7 +58009,7 @@ var starmapdata = [{
         "y": 561.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 60,
             "MinValue": 180,
@@ -58019,19 +58040,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "F"
     }]
 }, {
@@ -58041,7 +58062,7 @@ var starmapdata = [{
         "y": 666.8,
         "color": "GREEN",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1055,
             "MinValue": 3798,
@@ -58222,7 +58243,7 @@ var starmapdata = [{
         "y": 648.9,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1488,
             "MinValue": 5147,
@@ -58526,7 +58547,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -58536,7 +58557,7 @@ var starmapdata = [{
         "y": 218.7,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1725,
             "MinValue": 6940,
@@ -58822,7 +58843,7 @@ var starmapdata = [{
         "y": 222.9,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 152,
             "MinValue": 152,
@@ -58856,7 +58877,7 @@ var starmapdata = [{
         "y": 225,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 553,
             "MinValue": 1095,
@@ -58929,13 +58950,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -58945,7 +58966,7 @@ var starmapdata = [{
         "y": 877,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 174,
             "MinValue": 495,
@@ -59105,7 +59126,7 @@ var starmapdata = [{
         "y": 887.5,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 646,
             "MinValue": 4310,
@@ -59328,7 +59349,7 @@ var starmapdata = [{
         "y": 891.6,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 288,
             "MinValue": 1271,
@@ -59401,13 +59422,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -59417,7 +59438,7 @@ var starmapdata = [{
         "y": 606.5,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 7,
             "MinValue": 14,
@@ -59451,7 +59472,7 @@ var starmapdata = [{
         "y": 596.8,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 877,
             "MinValue": 3724,
@@ -59477,7 +59498,9 @@ var starmapdata = [{
                 "Day": "192",
                 "Atmosphere": "239",
                 "LifeChance": "560",
-                "DistFromStar": "1044"
+                "DistFromStar": "1044",
+                "Devices": ["Talking Pet"],
+                "Homeworlds": ["Umgah"]
             },
             "II": {
                 "Type": "Gas Giant",
@@ -59800,7 +59823,7 @@ var starmapdata = [{
         "y": 587.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 560,
             "MinValue": 2371,
@@ -59981,7 +60004,7 @@ var starmapdata = [{
         "y": 592.6,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 999,
             "MinValue": 2765,
@@ -60183,7 +60206,7 @@ var starmapdata = [{
         "y": 581.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 163,
             "MinValue": 163,
@@ -60217,7 +60240,7 @@ var starmapdata = [{
         "y": 605.8,
         "color": "YELLOW",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 618,
             "MinValue": 1508,
@@ -60398,7 +60421,7 @@ var starmapdata = [{
         "y": 632.9,
         "color": "YELLOW",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 520,
             "MinValue": 2417,
@@ -60579,7 +60602,7 @@ var starmapdata = [{
         "y": 630.8,
         "color": "GREEN",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 1126,
             "MinValue": 2048,
@@ -60844,7 +60867,7 @@ var starmapdata = [{
         "y": 637.9,
         "color": "BLUE",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 504,
             "MinValue": 1430,
@@ -60941,7 +60964,7 @@ var starmapdata = [{
         "y": 617.6,
         "color": "BLUE",
         "size": 0,
-        "id": "J",
+        "id": "J", //Kappa
         "planetsInfo": {
             "MinVolume": 839,
             "MinValue": 2890,
@@ -61227,7 +61250,7 @@ var starmapdata = [{
         "y": 607.3,
         "color": "YELLOW",
         "size": 0,
-        "id": "K",
+        "id": "K", //Lambda
         "planetsInfo": {
             "MinVolume": 33,
             "MinValue": 99,
@@ -61261,7 +61284,7 @@ var starmapdata = [{
         "y": 603.8,
         "color": "BLUE",
         "size": 0,
-        "id": "L",
+        "id": "L", //Mu
         "planetsInfo": {
             "MinVolume": 579,
             "MinValue": 2615,
@@ -61397,40 +61420,40 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "E"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "F"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "G"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "I"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "K"
     }, {
-        "from": "K",
+        "from": "K", //Lambda
         "to": "L"
     }, {
-        "from": "K",
+        "from": "K", //Lambda
         "to": "J"
     }]
 }, {
@@ -61440,7 +61463,7 @@ var starmapdata = [{
         "y": 800,
         "color": "GREEN",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1260,
             "MinValue": 2983,
@@ -61592,7 +61615,8 @@ var starmapdata = [{
                 "Day": "56052",
                 "Atmosphere": "93",
                 "LifeChance": "260",
-                "DistFromStar": "6200"
+                "DistFromStar": "6200",
+                "Devices": ["Ur-Quan Warp Pod"]
             },
             "VIII": {
                 "Type": "Azure",
@@ -61642,7 +61666,7 @@ var starmapdata = [{
         "y": 800,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 577,
             "MinValue": 1395,
@@ -61925,7 +61949,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -61935,7 +61959,7 @@ var starmapdata = [{
         "y": 762.5,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1425,
             "MinValue": 4981,
@@ -62242,7 +62266,7 @@ var starmapdata = [{
         "y": 745.8,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 813,
             "MinValue": 3711,
@@ -62357,7 +62381,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -62367,7 +62391,7 @@ var starmapdata = [{
         "y": 258.3,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 154,
             "MinValue": 455,
@@ -62422,7 +62446,7 @@ var starmapdata = [{
         "y": 266.6,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1309,
             "MinValue": 8037,
@@ -62708,7 +62732,7 @@ var starmapdata = [{
         "y": 279.1,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 563,
             "MinValue": 1462,
@@ -62973,7 +62997,7 @@ var starmapdata = [{
         "y": 285.4,
         "color": "WHITE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 588,
             "MinValue": 2755,
@@ -63133,7 +63157,7 @@ var starmapdata = [{
         "y": 240.7,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 347,
             "MinValue": 1096,
@@ -63356,7 +63380,7 @@ var starmapdata = [{
         "y": 280.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 222,
             "MinValue": 666,
@@ -63382,7 +63406,9 @@ var starmapdata = [{
                 "Day": "271",
                 "Atmosphere": "110",
                 "LifeChance": "810",
-                "DistFromStar": "256"
+                "DistFromStar": "256",
+                "Devices": ["Glowing Rod", "Rosy Sphere", "Wimbli's Trident"],
+                "Homeworlds": ["Druuge"]
             },
             "II": {
                 "Type": "Infrared",
@@ -63516,7 +63542,7 @@ var starmapdata = [{
         "y": 268.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 616,
             "MinValue": 1513,
@@ -63676,7 +63702,7 @@ var starmapdata = [{
         "y": 241.6,
         "color": "GREEN",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 371,
             "MinValue": 1013,
@@ -63773,7 +63799,7 @@ var starmapdata = [{
         "y": 231.2,
         "color": "GREEN",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 469,
             "MinValue": 1155,
@@ -63909,31 +63935,31 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "H"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "G"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "I"
     }]
 }, {
@@ -63943,7 +63969,7 @@ var starmapdata = [{
         "y": 439.5,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 543,
             "MinValue": 1740,
@@ -64061,7 +64087,7 @@ var starmapdata = [{
         "y": 418.2,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 489,
             "MinValue": 1484,
@@ -64284,7 +64310,7 @@ var starmapdata = [{
         "y": 414.5,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 435,
             "MinValue": 2687,
@@ -64357,10 +64383,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -64370,7 +64396,7 @@ var starmapdata = [{
         "y": 370.8,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 719,
             "MinValue": 2312,
@@ -64572,7 +64598,7 @@ var starmapdata = [{
         "y": 356.2,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 124,
             "MinValue": 620,
@@ -64648,7 +64674,7 @@ var starmapdata = [{
         "y": 360.4,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 409,
             "MinValue": 1166,
@@ -64766,7 +64792,7 @@ var starmapdata = [{
         "y": 358.3,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1053,
             "MinValue": 4099,
@@ -64965,16 +64991,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }]
 }, {
@@ -64984,7 +65010,7 @@ var starmapdata = [{
         "y": 345.8,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 91,
             "MinValue": 1118,
@@ -65060,7 +65086,7 @@ var starmapdata = [{
         "y": 354.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 80,
             "MinValue": 640,
@@ -65094,7 +65120,7 @@ var starmapdata = [{
         "y": 362.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 867,
             "MinValue": 2932,
@@ -65380,7 +65406,7 @@ var starmapdata = [{
         "y": 345.8,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 68,
             "MinValue": 148,
@@ -65411,16 +65437,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -65430,7 +65456,7 @@ var starmapdata = [{
         "y": 44.1,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 2130,
             "MinValue": 8055,
@@ -65863,7 +65889,7 @@ var starmapdata = [{
         "y": 47.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 817,
             "MinValue": 1952,
@@ -66149,7 +66175,7 @@ var starmapdata = [{
         "y": 55.4,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 340,
             "MinValue": 422,
@@ -66288,7 +66314,7 @@ var starmapdata = [{
         "y": 44,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 571,
             "MinValue": 1190,
@@ -66532,7 +66558,7 @@ var starmapdata = [{
         "y": 27,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 21,
             "MinValue": 63,
@@ -66566,7 +66592,7 @@ var starmapdata = [{
         "y": 33.8,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 118,
             "MinValue": 405,
@@ -66663,7 +66689,7 @@ var starmapdata = [{
         "y": 42.3,
         "color": "BLUE",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 865,
             "MinValue": 4059,
@@ -66883,25 +66909,25 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "B"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "G"
     }]
 }, {
@@ -66911,7 +66937,7 @@ var starmapdata = [{
         "y": 308.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 657,
             "MinValue": 2291,
@@ -67134,7 +67160,7 @@ var starmapdata = [{
         "y": 297.9,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 81,
             "MinValue": 81,
@@ -67168,7 +67194,7 @@ var starmapdata = [{
         "y": 295.8,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 12,
             "MinValue": 36,
@@ -67199,13 +67225,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -67215,7 +67241,7 @@ var starmapdata = [{
         "y": 500,
         "color": "BLUE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 969,
             "MinValue": 4765,
@@ -67396,7 +67422,7 @@ var starmapdata = [{
         "y": 500,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 133,
             "MinValue": 215,
@@ -67451,7 +67477,7 @@ var starmapdata = [{
         "y": 508.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1156,
             "MinValue": 3006,
@@ -67818,10 +67844,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }]
 }, {
@@ -67831,7 +67857,7 @@ var starmapdata = [{
         "y": 167.6,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 80,
             "MinValue": 265,
@@ -67865,7 +67891,7 @@ var starmapdata = [{
         "y": 161.4,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 43,
             "MinValue": 101,
@@ -67899,7 +67925,7 @@ var starmapdata = [{
         "y": 189.5,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 30,
             "MinValue": 270,
@@ -67951,10 +67977,10 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -67964,7 +67990,7 @@ var starmapdata = [{
         "y": 506.2,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 390,
             "MinValue": 970,
@@ -68166,7 +68192,7 @@ var starmapdata = [{
         "y": 529.1,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 743,
             "MinValue": 3435,
@@ -68326,7 +68352,7 @@ var starmapdata = [{
         "y": 508.3,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 428,
             "MinValue": 2569,
@@ -68423,7 +68449,7 @@ var starmapdata = [{
         "y": 458.3,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 352,
             "MinValue": 1052,
@@ -68496,16 +68522,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }]
 }, {
@@ -68515,7 +68541,7 @@ var starmapdata = [{
         "y": 568.7,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 0,
             "MinValue": 0,
@@ -68549,7 +68575,7 @@ var starmapdata = [{
         "y": 577.2,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 47,
             "MinValue": 295,
@@ -68583,7 +68609,7 @@ var starmapdata = [{
         "y": 590,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 887,
             "MinValue": 2899,
@@ -68929,13 +68955,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -68945,7 +68971,7 @@ var starmapdata = [{
         "y": 200,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 720,
             "MinValue": 3417,
@@ -69084,7 +69110,7 @@ var starmapdata = [{
         "y": 239.5,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 236,
             "MinValue": 1366,
@@ -69181,7 +69207,7 @@ var starmapdata = [{
         "y": 277,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 849,
             "MinValue": 2851,
@@ -69341,7 +69367,7 @@ var starmapdata = [{
         "y": 302,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 482,
             "MinValue": 2194,
@@ -69414,13 +69440,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }]
 }, {
@@ -69430,7 +69456,7 @@ var starmapdata = [{
         "y": 228.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 180,
             "MinValue": 548,
@@ -69506,7 +69532,7 @@ var starmapdata = [{
         "y": 230.9,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 121,
             "MinValue": 133,
@@ -69540,7 +69566,7 @@ var starmapdata = [{
         "y": 238.5,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 4,
             "MinValue": 100,
@@ -69571,13 +69597,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -69587,7 +69613,7 @@ var starmapdata = [{
         "y": 187.8,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 228,
             "MinValue": 1260,
@@ -69642,7 +69668,7 @@ var starmapdata = [{
         "y": 191.6,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1888,
             "MinValue": 12680,
@@ -69991,7 +70017,7 @@ var starmapdata = [{
         "y": 206.2,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 767,
             "MinValue": 3084,
@@ -70017,7 +70043,8 @@ var starmapdata = [{
                 "Day": "242",
                 "Atmosphere": "0",
                 "LifeChance": "-590",
-                "DistFromStar": "409"
+                "DistFromStar": "409",
+                "Devices": ["Deep Child Egg Case Fragments"]
             },
             "I-a": {
                 "Type": "Lanthanide",
@@ -70151,7 +70178,7 @@ var starmapdata = [{
         "y": 203.5,
         "color": "BLUE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 502,
             "MinValue": 1677,
@@ -70248,7 +70275,7 @@ var starmapdata = [{
         "y": 220.8,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 342,
             "MinValue": 1731,
@@ -70274,7 +70301,8 @@ var starmapdata = [{
                 "Day": "191",
                 "Atmosphere": "0",
                 "LifeChance": "0",
-                "DistFromStar": "409"
+                "DistFromStar": "409",
+				"Homeworlds": ["Mycon"]
             },
             "I-a": {
                 "Type": "Azure",
@@ -70408,7 +70436,7 @@ var starmapdata = [{
         "y": 220.8,
         "color": "BLUE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 999,
             "MinValue": 4134,
@@ -70649,19 +70677,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "D"
     }]
 }, {
@@ -70671,7 +70699,7 @@ var starmapdata = [{
         "y": 156.2,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1406,
             "MinValue": 6860,
@@ -70957,7 +70985,7 @@ var starmapdata = [{
         "y": 162.5,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 6,
             "MinValue": 150,
@@ -70991,7 +71019,7 @@ var starmapdata = [{
         "y": 120.8,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 608,
             "MinValue": 984,
@@ -71193,7 +71221,7 @@ var starmapdata = [{
         "y": 152,
         "color": "ORANGE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 403,
             "MinValue": 1930,
@@ -71434,13 +71462,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }]
 }, {
@@ -71450,7 +71478,7 @@ var starmapdata = [{
         "y": 37.3,
         "color": "ORANGE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 175,
             "MinValue": 327,
@@ -71526,7 +71554,7 @@ var starmapdata = [{
         "y": 58.4,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 539,
             "MinValue": 1998,
@@ -71749,7 +71777,7 @@ var starmapdata = [{
         "y": 60.8,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 527,
             "MinValue": 2479,
@@ -71867,7 +71895,7 @@ var starmapdata = [{
         "y": 28,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 230,
             "MinValue": 401,
@@ -71964,7 +71992,7 @@ var starmapdata = [{
         "y": 35.5,
         "color": "WHITE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1711,
             "MinValue": 8365,
@@ -72292,7 +72320,7 @@ var starmapdata = [{
         "y": 15,
         "color": "WHITE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 883,
             "MinValue": 6814,
@@ -72575,19 +72603,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "B",
+        "from": "B", //Beta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "C"
     }]
 }, {
@@ -72597,7 +72625,7 @@ var starmapdata = [{
         "y": 18,
         "color": "ORANGE",
         "size": 1,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 610,
             "MinValue": 3050,
@@ -72820,7 +72848,7 @@ var starmapdata = [{
         "y": 26.2,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 189,
             "MinValue": 847,
@@ -72854,7 +72882,7 @@ var starmapdata = [{
         "y": 29.4,
         "color": "YELLOW",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 810,
             "MinValue": 2102,
@@ -72880,7 +72908,8 @@ var starmapdata = [{
                 "Day": "151",
                 "Atmosphere": "75",
                 "LifeChance": "960",
-                "DistFromStar": "542"
+                "DistFromStar": "542",
+				"Homeworlds": ["Yehat"]
             },
             "I-a": {
                 "Type": "Azure",
@@ -73098,7 +73127,7 @@ var starmapdata = [{
         "y": 22.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 631,
             "MinValue": 2435,
@@ -73342,7 +73371,7 @@ var starmapdata = [{
         "y": 40.8,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 501,
             "MinValue": 1370,
@@ -73607,7 +73636,7 @@ var starmapdata = [{
         "y": 3.5,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 622,
             "MinValue": 2371,
@@ -73872,7 +73901,7 @@ var starmapdata = [{
         "y": 7.8,
         "color": "GREEN",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 53,
             "MinValue": 159,
@@ -73906,7 +73935,7 @@ var starmapdata = [{
         "y": 16.9,
         "color": "BLUE",
         "size": 0,
-        "id": "H",
+        "id": "H", //Theta
         "planetsInfo": {
             "MinVolume": 362,
             "MinValue": 1589,
@@ -73982,7 +74011,7 @@ var starmapdata = [{
         "y": 42.9,
         "color": "WHITE",
         "size": 0,
-        "id": "I",
+        "id": "I", //Iota
         "planetsInfo": {
             "MinVolume": 506,
             "MinValue": 5566,
@@ -74076,28 +74105,28 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "F",
+        "from": "F", //Zeta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "H"
     }, {
-        "from": "H",
+        "from": "H", //Theta
         "to": "I"
     }]
 }, {
@@ -74107,7 +74136,7 @@ var starmapdata = [{
         "y": 106.6,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 767,
             "MinValue": 1820,
@@ -74288,7 +74317,7 @@ var starmapdata = [{
         "y": 118.7,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 51,
             "MinValue": 255,
@@ -74343,7 +74372,7 @@ var starmapdata = [{
         "y": 114.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 600,
             "MinValue": 1531,
@@ -74524,7 +74553,7 @@ var starmapdata = [{
         "y": 96.8,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1238,
             "MinValue": 5901,
@@ -74831,7 +74860,7 @@ var starmapdata = [{
         "y": 89.5,
         "color": "BLUE",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1104,
             "MinValue": 4229,
@@ -75054,7 +75083,7 @@ var starmapdata = [{
         "y": 91.6,
         "color": "ORANGE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 705,
             "MinValue": 2637,
@@ -75253,19 +75282,19 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "C"
     }]
 }, {
@@ -75275,7 +75304,7 @@ var starmapdata = [{
         "y": 391.6,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 272,
             "MinValue": 1502,
@@ -75330,7 +75359,7 @@ var starmapdata = [{
         "y": 399.1,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 430,
             "MinValue": 1556,
@@ -75448,7 +75477,7 @@ var starmapdata = [{
         "y": 420.8,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 159,
             "MinValue": 409,
@@ -75521,13 +75550,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -75537,7 +75566,7 @@ var starmapdata = [{
         "y": 366.6,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1453,
             "MinValue": 5016,
@@ -75865,7 +75894,7 @@ var starmapdata = [{
         "y": 373.5,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1326,
             "MinValue": 5747,
@@ -76130,7 +76159,7 @@ var starmapdata = [{
         "y": 364.5,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 1735,
             "MinValue": 7307,
@@ -76647,7 +76676,7 @@ var starmapdata = [{
         "y": 377,
         "color": "WHITE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 867,
             "MinValue": 12080,
@@ -76807,7 +76836,7 @@ var starmapdata = [{
         "y": 351.9,
         "color": "RED",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 682,
             "MinValue": 2278,
@@ -77156,7 +77185,7 @@ var starmapdata = [{
         "y": 361.4,
         "color": "BLUE",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 524,
             "MinValue": 2106,
@@ -77271,22 +77300,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "B"
     }]
 }, {
@@ -77296,7 +77325,7 @@ var starmapdata = [{
         "y": 402,
         "color": "WHITE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1668,
             "MinValue": 6863,
@@ -77603,7 +77632,7 @@ var starmapdata = [{
         "y": 410.4,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 68,
             "MinValue": 68,
@@ -77637,7 +77666,7 @@ var starmapdata = [{
         "y": 418.7,
         "color": "BLUE",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 137,
             "MinValue": 668,
@@ -77710,13 +77739,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -77726,7 +77755,7 @@ var starmapdata = [{
         "y": 31.8,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1151,
             "MinValue": 3401,
@@ -78012,7 +78041,7 @@ var starmapdata = [{
         "y": 27,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 0,
             "MinValue": 0,
@@ -78046,7 +78075,7 @@ var starmapdata = [{
         "y": 31.8,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 308,
             "MinValue": 2502,
@@ -78245,13 +78274,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -78261,7 +78290,7 @@ var starmapdata = [{
         "y": 543.7,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 816,
             "MinValue": 3290,
@@ -78287,7 +78316,8 @@ var starmapdata = [{
                 "Day": "210",
                 "Atmosphere": "10",
                 "LifeChance": "760",
-                "DistFromStar": "706"
+                "DistFromStar": "706",
+				"Homeworlds": ["Zoq-Fot-Pik", "Zebranky (deceased)"]
             },
             "I-a": {
                 "Type": "Auric",
@@ -78358,7 +78388,7 @@ var starmapdata = [{
         "y": 562.5,
         "color": "ORANGE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 571,
             "MinValue": 2241,
@@ -78581,7 +78611,7 @@ var starmapdata = [{
         "y": 551.3,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 86,
             "MinValue": 285,
@@ -78633,13 +78663,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }]
 }, {
@@ -78649,7 +78679,7 @@ var starmapdata = [{
         "y": 406.5,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 497,
             "MinValue": 5547,
@@ -78767,7 +78797,7 @@ var starmapdata = [{
         "y": 397.2,
         "color": "RED",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 145,
             "MinValue": 481,
@@ -78861,7 +78891,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -78871,7 +78901,7 @@ var starmapdata = [{
         "y": 325,
         "color": "GREEN",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 1347,
             "MinValue": 3684,
@@ -79199,7 +79229,7 @@ var starmapdata = [{
         "y": 325.9,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 0,
             "MinValue": 0,
@@ -79233,7 +79263,7 @@ var starmapdata = [{
         "y": 327,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 341,
             "MinValue": 937,
@@ -79435,7 +79465,7 @@ var starmapdata = [{
         "y": 333.3,
         "color": "WHITE",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 578,
             "MinValue": 1458,
@@ -79571,13 +79601,13 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }]
 }, {
@@ -79587,7 +79617,7 @@ var starmapdata = [{
         "y": 350,
         "color": "BLUE",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 166,
             "MinValue": 1158,
@@ -79684,7 +79714,7 @@ var starmapdata = [{
         "y": 337.5,
         "color": "BLUE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 153,
             "MinValue": 1237,
@@ -79781,7 +79811,7 @@ var starmapdata = [{
         "y": 367.4,
         "color": "RED",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 365,
             "MinValue": 2391,
@@ -79962,7 +79992,7 @@ var starmapdata = [{
         "y": 362.5,
         "color": "RED",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1029,
             "MinValue": 3501,
@@ -80308,16 +80338,16 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "A"
     }]
 }, {
@@ -80327,7 +80357,7 @@ var starmapdata = [{
         "y": 177,
         "color": "YELLOW",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 176,
             "MinValue": 571,
@@ -80403,7 +80433,7 @@ var starmapdata = [{
         "y": 184.7,
         "color": "WHITE",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 325,
             "MinValue": 2039,
@@ -80521,7 +80551,7 @@ var starmapdata = [{
         "y": 191.9,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 607,
             "MinValue": 5277,
@@ -80681,7 +80711,7 @@ var starmapdata = [{
         "y": 195.3,
         "color": "YELLOW",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 484,
             "MinValue": 2378,
@@ -80799,7 +80829,7 @@ var starmapdata = [{
         "y": 183.8,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 1395,
             "MinValue": 7963,
@@ -81148,7 +81178,7 @@ var starmapdata = [{
         "y": 173.7,
         "color": "BLUE",
         "size": 1,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 1862,
             "MinValue": 7912,
@@ -81392,7 +81422,7 @@ var starmapdata = [{
         "y": 164.6,
         "color": "GREEN",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 669,
             "MinValue": 2305,
@@ -81633,28 +81663,28 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "C",
+        "from": "C", //Gamma
         "to": "A"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "B",
+        "from": "B", //Beta
         "to": "C"
     }, {
-        "from": "C",
+        "from": "C", //Gamma
         "to": "D"
     }, {
-        "from": "D",
+        "from": "D", //Delta
         "to": "F"
     }, {
-        "from": "F",
+        "from": "F", //Zeta
         "to": "E"
     }, {
-        "from": "E",
+        "from": "E", //Epsilon
         "to": "G"
     }, {
-        "from": "G",
+        "from": "G", //Eta
         "to": "F"
     }]
 }, {
@@ -81664,7 +81694,7 @@ var starmapdata = [{
         "y": 258.7,
         "color": "GREEN",
         "size": 2,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 337,
             "MinValue": 977,
@@ -81719,7 +81749,7 @@ var starmapdata = [{
         "y": 251.2,
         "color": "GREEN",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 1211,
             "MinValue": 6208,
@@ -81766,7 +81796,8 @@ var starmapdata = [{
                 "Day": "126",
                 "Atmosphere": "65535",
                 "LifeChance": "-1",
-                "DistFromStar": "2329"
+                "DistFromStar": "2329",
+				"Homeworlds": ["Androsynth (deceased?)"]
             },
             "II-a": {
                 "Type": "Alkali",
@@ -82026,7 +82057,7 @@ var starmapdata = [{
         "y": 253.7,
         "color": "GREEN",
         "size": 0,
-        "id": "C",
+        "id": "C", //Gamma
         "planetsInfo": {
             "MinVolume": 620,
             "MinValue": 3474,
@@ -82052,7 +82083,8 @@ var starmapdata = [{
                 "Day": "189",
                 "Atmosphere": "80",
                 "LifeChance": "960",
-                "DistFromStar": "798"
+                "DistFromStar": "798",
+				"Homeworlds": ["Orz"]
             },
             "II": {
                 "Type": "Copper",
@@ -82249,7 +82281,7 @@ var starmapdata = [{
         "y": 261.9,
         "color": "GREEN",
         "size": 0,
-        "id": "D",
+        "id": "D", //Delta
         "planetsInfo": {
             "MinVolume": 1040,
             "MinValue": 4086,
@@ -82359,7 +82391,9 @@ var starmapdata = [{
                 "Day": "199",
                 "Atmosphere": "0",
                 "LifeChance": "-740",
-                "DistFromStar": "1909"
+                "DistFromStar": "1909",
+                "Devices": ["Taalo Shield"],
+                "Homeworlds": ["Taalo (deceased)"]
             },
             "III": {
                 "Type": "Auric",
@@ -82514,7 +82548,7 @@ var starmapdata = [{
         "y": 266.6,
         "color": "GREEN",
         "size": 0,
-        "id": "E",
+        "id": "E", //Epsilon
         "planetsInfo": {
             "MinVolume": 107,
             "MinValue": 290,
@@ -82569,7 +82603,7 @@ var starmapdata = [{
         "y": 263.7,
         "color": "GREEN",
         "size": 0,
-        "id": "F",
+        "id": "F", //Zeta
         "planetsInfo": {
             "MinVolume": 1711,
             "MinValue": 9404,
@@ -82855,7 +82889,7 @@ var starmapdata = [{
         "y": 256.6,
         "color": "GREEN",
         "size": 0,
-        "id": "G",
+        "id": "G", //Eta
         "planetsInfo": {
             "MinVolume": 540,
             "MinValue": 2175,
@@ -83054,22 +83088,22 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "C"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "D"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "E"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "F"
     }, {
-        "from": "A",
+        "from": "A", //Alpha
         "to": "G"
     }]
 }, {
@@ -83079,7 +83113,7 @@ var starmapdata = [{
         "y": 174.6,
         "color": "RED",
         "size": 0,
-        "id": "A",
+        "id": "A", //Alpha
         "planetsInfo": {
             "MinVolume": 328,
             "MinValue": 870,
@@ -83323,7 +83357,7 @@ var starmapdata = [{
         "y": 181.2,
         "color": "YELLOW",
         "size": 0,
-        "id": "B",
+        "id": "B", //Beta
         "planetsInfo": {
             "MinVolume": 100,
             "MinValue": 100,
@@ -83354,7 +83388,7 @@ var starmapdata = [{
         }
     }],
     "lines": [{
-        "from": "A",
+        "from": "A", //Alpha
         "to": "B"
     }]
 }, {
@@ -84811,7 +84845,8 @@ var starmapdata = [{
                 "Day": "172",
                 "Atmosphere": "15",
                 "LifeChance": "860",
-                "DistFromStar": "199"
+                "DistFromStar": "199",
+                "Homeworlds": ["Burvixese (deceased)"]
             },
             "I-a": {
                 "Type": "Selenic",
@@ -84832,7 +84867,8 @@ var starmapdata = [{
                 "Day": "156",
                 "Atmosphere": "15",
                 "LifeChance": "860",
-                "DistFromStar": "199"
+                "DistFromStar": "199",
+                "Devices": ["Burvixese HyperWave Broadcaster"]
             },
             "II": {
                 "Type": "Chondrite",
@@ -85162,7 +85198,7 @@ var starmapdata = [{
             "BioUnits": 184
         },
         "planets": {
-            "I": {
+            "I (Gaia)": {
                 "Type": "Water",
                 "Hazard": "5",
                 "Tectonics": "1",
@@ -85181,7 +85217,9 @@ var starmapdata = [{
                 "Day": "244",
                 "Atmosphere": "45",
                 "LifeChance": "960",
-                "DistFromStar": "928"
+                "DistFromStar": "928",
+                "Devices": ["Syreen Shuttle"],
+                "Homeworlds": ["Syreen"]
             },
             "II": {
                 "Type": "Acid",
@@ -86725,7 +86763,8 @@ var starmapdata = [{
                 "Day": "267",
                 "Atmosphere": "0",
                 "LifeChance": "-940",
-                "DistFromStar": "3607"
+                "DistFromStar": "3607",
+				"Homeworlds": ["Chmmr", "Chenjesu (deceased)"]
             },
             "III": {
                 "Type": "Gas Giant",
@@ -87255,7 +87294,8 @@ var starmapdata = [{
                 "Day": "240",
                 "Atmosphere": "50",
                 "LifeChance": "0",
-                "DistFromStar": "512"
+                "DistFromStar": "512",
+				"Homeworlds": ["Earthling"]
             },
             "Earth-b": {
                 "Type": "Selenic",
@@ -87276,7 +87316,8 @@ var starmapdata = [{
                 "Day": "6960",
                 "Atmosphere": "0",
                 "LifeChance": "0",
-                "DistFromStar": "512"
+                "DistFromStar": "512",
+                "Devices": ["Moon Base"]
             },
             "Mars": {
                 "Type": "Dust",
@@ -87690,7 +87731,7 @@ var starmapdata = [{
             "BioUnits": 39
         },
         "planets": {
-            "I": {
+            "I (Unzervalt)": {
                 "Type": "Water",
                 "Hazard": "5",
                 "Tectonics": "1",
@@ -87709,7 +87750,8 @@ var starmapdata = [{
                 "Day": "212",
                 "Atmosphere": "49",
                 "LifeChance": "960",
-                "DistFromStar": "588"
+                "DistFromStar": "588",
+				"Homeworlds": ["Zelnick (Earthling)"]
             },
             "II": {
                 "Type": "Noble",
