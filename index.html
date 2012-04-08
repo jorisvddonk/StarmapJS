@@ -119,14 +119,8 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             var timer;
             $(document).ready(new function() {
                 $('#findstar').live('change', function() {
-                    console.log("WAT");
                     $("circle").qtip('hide');
                     findStar_();
-                    //if(timer) {
-                    //    clearTimeout(timer);
-                    //    timer = null;
-                    //}
-                    //timer = setTimeout(findStar_, 500);
                 });
             });
             
