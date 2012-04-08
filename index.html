@@ -8,16 +8,15 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT license (http://raphaeljs.com/license.html)
 -->
 <html>
     <head>
         <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
         <link type="text/css" rel="stylesheet" href="jquery.qtip.min.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="raphael-min.js"></script>     
         <script src="jquery.min.js"></script>     
+        <link rel="stylesheet" type="text/css" href="jquery.svg.css" />
+        <script type="text/javascript" src="jquery.svg.min.js"></script>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript">
@@ -32,6 +31,18 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             
             //For the UI:
             var typeAheads = []; //For search functionality
+            
+            //SVG:
+            var svg;
+            var svg_paper;
+            var svg_g_grid;
+            var svg_g_clines;
+            var svg_g_stars;
+            var svg_g_spheres;
+            var svg_gs_spheres;
+            
+            //SVGPan stuff
+            var _svgPanInjected = false;
         </script>
         <script src="starmap-data.js"></script>
         <script src="starmap-spheres.js"></script>
@@ -87,7 +98,10 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
         </style>
         <script type="text/javascript">
-            var paper;
+            $(function() {
+                $('#svgStarmap').svg({onLoad: paintPaper_SVG});
+            });
+
             var s_width = 750; //Inner starmap width in px
             var s_height = 750; //Inner starmap height in px
             var s_pad_x = 25; //Starmap border
@@ -96,9 +110,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             var height = s_height + (2*s_pad_y); //Canvas height
 
             window.onload = function () {                  
-                paper = Raphael("raphael", width,height);   
                 checkFailIE();
-                paintPaper();
                 $("#myModal").modal();
                 $("#myModal").modal('hide');
             }
@@ -119,7 +131,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             var timer;
             $(document).ready(new function() {
                 $('#findstar').live('change', function() {
-                    $("circle").qtip('hide');
+                    $(".circle-Star").qtip('hide');
                     findStar_();
                 });
             });
@@ -128,46 +140,54 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 findStar($("#findstar").val());
             }
             
-            function setShowSpheres(selection) {
-                switch(selection) {
-                    case 0:
-                        showingSpheres = "oldSpheres";
-                        break;
-                    case 1:
-                        showingSpheres = "newSpheres";
-                        break;
-                    case 2:
-                        showingSpheres = "none";
-                        break;
-                    default:
-                        showingSpheres = "none";
-                        break;
-                }
-                $(".spheredata-icon").removeClass("icon-ok");
-                $("#spheredata-" + selection).addClass("icon-ok");
-            }
-            
-            function paintPaper(ctype) {
-                if (ctype != undefined) {
-                    colortype = ctype;
-                    $(".colortype-icon").removeClass("icon-ok");
-                    $("#colortype-" + ctype).addClass("icon-ok");
-                }
-                paper.clear();
-                for (i in spheres[showingSpheres]) {
-                    var sphere = spheres[showingSpheres][i];
-                    drawSphere(sphere);
-                }
-                paintborder();
-                paintgrid();
-                $.each(starmapdata, function(i, constellation) {
-                    drawConstellation(constellation);
-                });
-                parseTypeAhead();
+            //Renders a starmap
+            function paintPaper_SVG(svgt) {
+                svgt.clear(false);
                 
+                svg = svgt;
+                svg_paper = svgt.group(null, "viewport", {transform:"translate(0,0)"});
+                svg_g_grid = svgt.group(svg_paper, "svg_grid");
+                svg_g_spheres = svgt.group(svg_paper, "svg_spheres");
+                svg_gs_spheres = {};
+                svg_g_clines = svgt.group(svg_paper, "svg_clines", {stroke: 'black', 'stroke-width': 1, "z-index": '-1'});
+                svg_g_stars = svgt.group(svg_paper, "svg_stars");
+        
+                for (sphereCI in spheres) {
+                    var grp = svgt.group(svg_g_spheres, sphereCI);
+                    svg_gs_spheres[sphereCI] = grp;
+                    var sphereCollection = spheres[sphereCI];
+                    for (sphereI in sphereCollection) {
+                        var sphere = sphereCollection[sphereI];
+                        drawSphere_SVG(grp, sphere);
+                    }
+                    $(grp).show();
+                }
+                
+                paintgrid_SVG();
+                $.each(starmapdata, function(i, constellation) {
+                    drawConstellation_SVG(constellation);
+                });
+        
+                parseTypeAhead();
+                ShowSpheres(); //Hide/show default/current Spheres of Influence
+                ShowStarColor(); //Set the star colors
+                
+                if (_svgPanInjected == false) {
+                    $("head").append($("<script type=\"text/javascript\" src=\"SVGPan.js\">")); //Inject SVGPan now
+                    _svgPanInjected = true;
+                }
+                
+                //Modify the width and height of the SVG so we can resize our window
+                $("svg").attr("height", "100%");
+                $("svg").attr("width", "100%");
+            }
+     
+            function paintLegend() {
                 //Paint the legend
+                $("#rightdata").show();
                 switch(colortype) {
                     case 0:
+                        $("#rightdata").hide();
                         renderMappingLegend();
                         break;
                     case 1:
@@ -177,6 +197,48 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                         renderMappingLegend(biodata_mapping, "biological units");
                         break;
                 }
+            }
+            
+            //Show a Sphere of Influece set
+            function ShowSpheres(selection) {
+                if (selection != undefined) {
+                    showingSpheres = selection;
+                }
+                for (sphereCI in spheres) {
+                    if (sphereCI == showingSpheres) {
+                        $(svg_gs_spheres[sphereCI]).show();
+                    } else {
+                        $(svg_gs_spheres[sphereCI]).hide();
+                    }
+                }
+                $(".spheredata-icon").removeClass("icon-ok");
+                $("#spheredata-" + showingSpheres).addClass("icon-ok");
+            }
+            
+            function ShowStarColor(selection) {
+                if (selection != undefined) {
+                    colortype = selection;
+                }
+                var funct = function(){};
+                switch(colortype) {
+                    case 0:
+                        funct = getColor_norm;
+                        break;
+                    case 1:
+                        funct = getColor_minData;
+                        break;
+                    case 2:
+                        funct = getColor_bioData;
+                        break;
+                }
+                $.each($(".circle-Star"), function(b, c){
+                    var _star = $(c).data('star');
+                    var _const = $(c).data('constellation');
+                    $(c).attr('fill',funct(_star,_const));
+                });
+                $(".colortype-icon").removeClass("icon-ok");
+                $("#colortype-" + colortype).addClass("icon-ok");
+                paintLegend();
             }
             
             function parseTypeAhead() {
@@ -200,19 +262,16 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 });
                 $('#findstar').typeahead({source:typeAheads});
             }
-            
-            //paints a grid
-            function paintgrid() {
+                        
+            function paintgrid_SVG() {
+                var g = svg.group(svg_g_grid, {stroke: 'black', 'stroke-width': 1, "stroke-opacity": '0.5'});
                 //Vertical lines:
                 for (var i = 0; i <= 10; i++) {
                     xf = s_pad_x + i*(s_width/10);
                     yf = s_pad_y;
                     xt = xf;
                     yt = s_pad_y + s_height;
-                    var gfx = draw_line(xf, yf, xt, yt);
-                    if (i > 0 && i < 10) {
-                        gfx.attr("stroke-opacity", 0.5);
-                    }
+                    svg.line(g, xf, yf, xt, yt);
                 }
                 //Horizontal lines:
                 for (var i = 0; i <= 10; i++) {
@@ -220,26 +279,8 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     yf = s_pad_y + i*(s_height/10);
                     xt = s_pad_x + s_width;
                     yt = yf;
-                    var gfx = draw_line(xf, yf, xt, yt);
-                    if (i > 0 && i < 10) {
-                        gfx.attr("stroke-opacity", 0.5);
-                    }
+                    svg.line(g, xf, yf, xt, yt);
                 }
-            }
-            
-            //Paint a white border to hide any Spheres of Influence
-            function paintborder() {
-                paint_rect(0,0,s_pad_x,height); //left
-                paint_rect(0,0,width,s_pad_y); //top
-                paint_rect(s_width+s_pad_x,0,s_pad_x,height); //right
-                paint_rect(0,s_height + s_pad_y,width,s_pad_y); //bottom
-            }
-            
-            //paints a white rectangle
-            function paint_rect(x,y,w,h) {
-                var g = paper.rect(x,y,w,h);
-                g.attr("fill", "#fff");
-                g.attr("stroke", "#fff");
             }
             
             function getColor(name) {
@@ -251,24 +292,15 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 return "#aaa";
             }
             
-            
-            function drawSphere(sphere) {
-                var gfx = paper.circle(tx(sphere.x),ty(sphere.y),ts(sphere.size));
-                gfx.attr("fill",getColor(sphere.name));
-                gfx.attr("fill-opacity","0.3");
-                gfx.toBack();
-                var gftx = paper.text(tx(sphere.x),ty(sphere.y),sphere.name);
-                gftx.attr("fill",getColor(sphere.name));
-                gftx.attr("fill-opacity","0.7");
-                gftx.toBack();
-                gftx.attr("font", "" + ts(sphere.size)*0.5 + "px " + '"Arial"');
-                addTooltip(gfx, sphere.name);
+            function drawSphere_SVG(grp, sphere) {
+                svg.text(grp,tx(sphere.x),ty(sphere.y),sphere.name, {fill:getColor(sphere.name), "text-anchor": "middle", "dominant-baseline": "mathematical", stroke:'black', strokeWidth: 0.0, "font-size": ts(sphere.size)*0.5 + "px"});
+                svg.circle(grp, tx(sphere.x),ty(sphere.y),ts(sphere.size), {fill: getColor(sphere.name), stroke: 'black', strokeWidth: 1, "fill-opacity": "0.3"}); 
             }
             
             function findStar(text) {
                 text = text.toLowerCase();
                 if (text != "") {
-                    $("circle").each(function(a, b, c){
+                    $(".circle-Star").each(function(a, b, c){
                         if ($(b).data("starname") != undefined) {
                             showT = false;
                             if ($(b).data('starname').toLowerCase() == text) {
@@ -325,7 +357,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
 
             
             function unhighlightAll() {
-                $("circle").each(function(a, b, c){
+                $(".circle-Star").each(function(a, b, c){
                     var star = $(b).data('star');
                     if (star != undefined) {
                         unhighlightStar(b);
@@ -334,7 +366,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function findRainbowWorlds() {
-                $("circle").each(function(a, b, c){
+                $(".circle-Star").each(function(a, b, c){
                     var star = $(b).data('star');
                     var fndR = false;
                     if (star != undefined) {
@@ -351,7 +383,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function findDevices() {
-                $("circle").each(function(a, b, c){
+                $(".circle-Star").each(function(a, b, c){
                     var star = $(b).data('star');
                     var fndR = false;
                     if (star != undefined) {
@@ -368,7 +400,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             }
             
             function findHomeworlds() {
-                $("circle").each(function(a, b, c){
+                $(".circle-Star").each(function(a, b, c){
                     var star = $(b).data('star');
                     var fndR = false;
                     if (star != undefined) {
@@ -384,14 +416,16 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 });
             }
             
-            function addTooltip(Rnode,text) {
-                $(Rnode.node).qtip({
+            function addTooltip_SVG(Rnode,text) {
+                $(Rnode).qtip({
                     content: {
                         text: text
                     },
                     position: {
                         my: "bottom center",
-                        at: "top center"
+                        at: "top center",
+                        target: Rnode,
+                        viewport: $(Rnode)
                     },
                     style: {
                         classes: "ui-tooltip-tipsy"
@@ -437,13 +471,13 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 var content = table.html() + table2.html();
                 showModal(title,content);
             }
-            
-            function drawConstellation(constellation) {
+
+            function drawConstellation_SVG(constellation) {
                 $.each(constellation["stars"], function(is, star){
-                    drawStar(star,constellation);
+                    drawStar_SVG(star,constellation);
                 });
                 $.each(constellation["lines"], function(il, cline) {
-                    drawConstellationLine(cline, constellation);
+                    drawConstellationLine_SVG(cline, constellation);
                 });
             }
             
@@ -462,32 +496,7 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 return (s_height/1000)*(1000-input)+s_pad_y;
             }
             
-            function drawConstellationText(constellation) {
-                var x = 0;
-                var y = 0;
-                var i = 0;
-                for (s in constellation.stars) {
-                    i = i + 1;
-                    x = x + constellation.stars[s].x;
-                    y = y + constellation.stars[s].y;
-                }
-                
-                if (i == 1) {
-                    var txx = tx(x);
-                    var tyy = ty(y);
-                    tyy += 8;
-                    var gfx = paper.text(txx,tyy,constellation.name);
-                    gfx.attr("font-style", "italic");
-                } else if (i >= 2) {
-                    var gfx = paper.text(tx(x/i),ty(y/i),constellation.name);
-                }
-            }
-            
-            function drawStartext(star, constellation) {
-                var gfx = paper.text(tx(star.x),ty(star.y),constellation.name);
-            }
-            
-            function drawConstellationLine(cline, constellation) {
+            function drawConstellationLine_SVG(cline, constellation) {
                 var sfrom;
                 var sto;
                 for (si in constellation["stars"]) {
@@ -499,18 +508,13 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                     }
                 }
                 if (sfrom != undefined && sto != undefined) {
-                    var gfx = draw_line(tx(sfrom.x),ty(sfrom.y),tx(sto.x),ty(sto.y));
-                    gfx.attr("stroke", "#000");
-                    gfx.attr("z-index", "-1");
-                    gfx.toBack();
+                    var gfx = svg.line(svg_g_clines, tx(sfrom.x),ty(sfrom.y),tx(sto.x),ty(sto.y));
+                    //                    gfx.attr("stroke", "#000");
+                    //                    gfx.attr("z-index", "-1");
+                    //                    gfx.toBack();
                 } else {
                     console.log("WARNING: constellationLine not drawn (constellation=" + constellation.name + ", from=" + cline.from + ", to=" + cline.to + ")");
                 }                
-            }
-            
-            //Draws a line from xf(rom), yf(rom) to xt(o), yt(o).
-            function draw_line(xf,yf,xt,yt) {
-                return paper.path("M" + xf + "," + yf + "L" + xt + "," + yt);
             }
             
             function convertPrefix(prefix) {
@@ -671,63 +675,43 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                 }
             }
             
-            function drawStar(star, constellation) {
-                var gfx = paper.circle(tx(star.x),ty(star.y),(star.size+1)*3);
-                
+            function drawStar_SVG(star, constellation) {
                 var starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
-                $(gfx.node).data("star",star);
-                $(gfx.node).data("starname",starname);
-                $(gfx.node).data("constellation",constellation);
-                
-                var colordat;
-                switch(colortype) {
-                    case 0:
-                        colordat = getColor_norm(star, constellation);
-                        break;
-                    case 1:
-                        colordat = getColor_minData(star, constellation);
-                        break;
-                    case 2:
-                        colordat = getColor_bioData(star, constellation);
-                        break;
-                }
-                gfx.attr("fill", colordat);
-                
-                addTooltip(gfx, starname);
-                $(gfx.node).click(showModalDialogForStar);
+                var gfx = svg.circle(svg_g_stars, tx(star.x),ty(star.y),(star.size+1)*3, {stroke: 'black', strokeWidth: 1, "class": "circle-Star"}); 
+                //Circle fill color defined elsewhere (showStarColor function)
+                $(gfx).data("star",star);
+                $(gfx).data("starname",starname);
+                $(gfx).data("constellation",constellation);
+                addTooltip_SVG(gfx, starname);
+                $(gfx).click(showModalDialogForStar);
             }
+            
         </script>
     </head>
     <body>
         <div class="navbar">
-            <div class="navbar-inner">
+            <div id="svgStarmap" style="float:left; position:absolute; bottom:0px; left:0px; right:0px; top:45px; overflow:hidden;"></div>
+            <div class="navbar-inner">                
                 <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#">StarmapJS</a>
-                    <ul class="nav">
+                    <a class="brand" href="#">StarmapJS v1.01</a>
+                    <span class="hidden-desktop">Sorry, StarmapJS's main menu currently does not display properly on low resolutions. If someone has more experience with the Bootstrap toolkit, let me know.</span>
+                    <ul class="nav nav-collapse">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap sphere selection<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="setShowSpheres(0); paintPaper();"><i id="spheredata-0" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free)</a></li>
-                                <li><a href="#" onclick="setShowSpheres(1); paintPaper();"><i id="spheredata-1" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!)</a></li>
-                                <li><a href="#" onclick="setShowSpheres(2); paintPaper();"><i id="spheredata-2" class="spheredata-icon"></i> None</a></li>
+                                <li><a href="#" onclick="ShowSpheres('oldSpheres');"><i id="spheredata-oldSpheres" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free)</a></li>
+                                <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!)</a></li>
+                                <li><a href="#" onclick="ShowSpheres('none');"><i id="spheredata-none" class="spheredata-icon"></i> None</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color stars using<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="paintPaper(0);"><i id="colortype-0" class="colortype-icon icon-ok"></i> Their truespace colors</a></li>
-                                <li><a href="#" onclick="paintPaper(1);"><i id="colortype-1" class="colortype-icon"></i> Available minerals (value)</a></li>
-                                <li><a href="#" onclick="paintPaper(2);"><i id="colortype-2" class="colortype-icon"></i> Available biological data (units)</a></li>
+                                <li><a href="#" onclick="ShowStarColor(0);"><i id="colortype-0" class="colortype-icon icon-ok"></i> Their truespace colors</a></li>
+                                <li><a href="#" onclick="ShowStarColor(1);"><i id="colortype-1" class="colortype-icon"></i> Available minerals (value)</a></li>
+                                <li><a href="#" onclick="ShowStarColor(2);"><i id="colortype-2" class="colortype-icon"></i> Available biological data (units)</a></li>
                             </ul>
                         </li>
-                        <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
-                            <input id="findstar" type="text" placeholder="Search for stars, devices and homeworlds here" autocomplete="off"/>
-                        </form>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Star highlighting<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -737,13 +721,22 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
                                 <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
                             </ul>
                         </li>
+                        <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
+                            <input id="findstar" type="text" placeholder="Search for stars/devices/homeworlds" autocomplete="off"/>
+                        </form>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/jorisvddonk/StarmapJS">GitHub Page</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div id="raphael" style="float:left"></div>
-            <div id="rightdata" style="float:right; margin-right:100px; margin-top:20px;">
-                <h3>Star color legend</h3>
-                <table class="table table-striped table-bordered table-condensed">
+
+            <div id="rightdata" style="position:absolute;bottom:0px;top:50px;right:0px;">
+                <h3 style="background:#fff">Star color legend</h3>
+                <table class="table table-striped table-bordered table-condensed" style="background:#fff">
                     <tbody id="legendbody">
                     </tbody>
                 </table>                
@@ -759,7 +752,6 @@ Uses RaphaelJS (http://raphaeljs.com/) which is also licensed under the MIT lice
             <div class="modal-footer">
             </div>
         </div>
-        <a href="http://github.com/jorisvddonk/StarmapJS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
         <script type="text/javascript" src="jquery.qtip.min.js"></script>
     </body>
 </html>
