@@ -81796,8 +81796,7 @@ var starmapdata = [{
                 "Day": "126",
                 "Atmosphere": "65535",
                 "LifeChance": "-1",
-                "DistFromStar": "2329",
-				"Homeworlds": ["Androsynth (deceased?)"]
+                "DistFromStar": "2329"
             },
             "II-a": {
                 "Type": "Alkali",
@@ -82936,7 +82935,8 @@ var starmapdata = [{
                 "Day": "259",
                 "Atmosphere": "72",
                 "LifeChance": "960",
-                "DistFromStar": "1044"
+                "DistFromStar": "1044",
+				"Homeworlds": ["Androsynth (deceased?)"]
             },
             "II-a": {
                 "Type": "Lanthanide",
