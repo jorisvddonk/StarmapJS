@@ -19,6 +19,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         <script type="text/javascript" src="jquery.svg.min.js"></script>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="SVGPan.js"></script>
         <script type="text/javascript">
             //Starmap data:
             var starmapdata; // Filled in starmap-data.js
@@ -40,9 +41,6 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             var svg_g_stars;
             var svg_g_spheres;
             var svg_gs_spheres;
-            
-            //SVGPan stuff
-            var _svgPanInjected = false;
         </script>
         <script src="starmap-data.js"></script>
         <script src="starmap-spheres.js"></script>
@@ -172,11 +170,8 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 ShowSpheres(); //Hide/show default/current Spheres of Influence
                 ShowStarColor(); //Set the star colors
                 
-                if (_svgPanInjected == false) {
-                    $("head").append($("<script type=\"text/javascript\" src=\"SVGPan.js\">")); //Inject SVGPan now
-                    _svgPanInjected = true;
-                }
-                
+                //Init SVGPan
+                initSVGPan();
                 //Modify the width and height of the SVG so we can resize our window
                 $("svg").attr("height", "100%");
                 $("svg").attr("width", "100%");

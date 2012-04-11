@@ -80,11 +80,15 @@ var zoomScale = 0.2; // Zoom sensitivity
 /// <====
 /// END OF CONFIGURATION 
 
-var root = document.getElementsByTagName("svg")[0];
+var root;
 
 var state = 'none', svgRoot = null, stateTarget, stateOrigin, stateTf;
 
-setupHandlers(root);
+// Initializes the SVGPan functionality
+function initSVGPan() {
+    root = document.getElementsByTagName("svg")[0];
+    setupHandlers(root);
+}
 
 /**
  * Register handlers
