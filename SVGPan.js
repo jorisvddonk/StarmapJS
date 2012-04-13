@@ -81,13 +81,15 @@ var zoomScale = 0.2; // Zoom sensitivity
 /// END OF CONFIGURATION 
 
 var root;
+var totalZoom = 1;
 
 var state = 'none', svgRoot = null, stateTarget, stateOrigin, stateTf;
 
 // Initializes the SVGPan functionality
 function initSVGPan() {
     root = document.getElementsByTagName("svg")[0];
-    setupHandlers(root);
+    totalZoom = 1;
+    setupHandlers(root);    
 }
 
 /**
@@ -190,6 +192,8 @@ function handleMouseWheel(evt) {
         delta = evt.detail / -9; // Mozilla
 
     var z = Math.pow(1 + zoomScale, delta);
+    
+    totalZoom = totalZoom * z;
 
     var g = getRoot(svgDoc);
 	
@@ -206,6 +210,16 @@ function handleMouseWheel(evt) {
         stateTf = g.getCTM().inverse();
 
     stateTf = stateTf.multiply(k.inverse());
+    
+    //var mltp = Math.max(totalZoom*0.5,1);
+    var mltp2 = Math.sqrt(totalZoom);
+    var mltp3 = Math.pow(totalZoom, 1/3);
+    $.each($(".circle-Star"),function(a,b){
+        var nsz = ((($(b).data('starsize')+1)*3))/mltp2;
+        $(b).attr("r",nsz);
+    });
+    $("#svg_stars").attr("stroke-width", 1/mltp3);
+    $("#svg_clines").attr("stroke-width",1/mltp3);
         
     repositionQTips();
 }

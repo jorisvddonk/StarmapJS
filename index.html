@@ -147,8 +147,8 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 svg_g_grid = svgt.group(svg_paper, "svg_grid");
                 svg_g_spheres = svgt.group(svg_paper, "svg_spheres");
                 svg_gs_spheres = {};
-                svg_g_clines = svgt.group(svg_paper, "svg_clines", {stroke: 'black', 'stroke-width': 1, "z-index": '-1'});
-                svg_g_stars = svgt.group(svg_paper, "svg_stars");
+                svg_g_clines = svgt.group(svg_paper, "svg_clines", {stroke: 'black', 'stroke-width': 1, 'stroke-opacity': 0.80, "z-index": '-1'});
+                svg_g_stars = svgt.group(svg_paper, "svg_stars", {stroke: 'black', 'stroke-width': 1});
         
                 for (sphereCI in spheres) {
                     var grp = svgt.group(svg_g_spheres, sphereCI);
@@ -503,7 +503,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                     }
                 }
                 if (sfrom != undefined && sto != undefined) {
-                    var gfx = svg.line(svg_g_clines, tx(sfrom.x),ty(sfrom.y),tx(sto.x),ty(sto.y));
+                    var gfx = svg.line(svg_g_clines, tx(sfrom.x),ty(sfrom.y),tx(sto.x),ty(sto.y), {"class": "line-cline"});
                     //                    gfx.attr("stroke", "#000");
                     //                    gfx.attr("z-index", "-1");
                     //                    gfx.toBack();
@@ -672,11 +672,12 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             
             function drawStar_SVG(star, constellation) {
                 var starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
-                var gfx = svg.circle(svg_g_stars, tx(star.x),ty(star.y),(star.size+1)*3, {stroke: 'black', strokeWidth: 1, "class": "circle-Star"}); 
+                var gfx = svg.circle(svg_g_stars, tx(star.x),ty(star.y),(star.size+1)*3, {stroke: 'black', "class": "circle-Star"}); 
                 //Circle fill color defined elsewhere (showStarColor function)
                 $(gfx).data("star",star);
                 $(gfx).data("starname",starname);
                 $(gfx).data("constellation",constellation);
+                $(gfx).data("starsize",star.size);
                 addTooltip_SVG(gfx, starname);
                 $(gfx).click(showModalDialogForStar);
             }
