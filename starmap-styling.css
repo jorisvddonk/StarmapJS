@@ -1,9 +1,59 @@
+/*----------------------
+  Planet Hazard Badges
+----------------------*/
+
+.badge-planet-hazard0 {
+    background-color: #468847;
+}
+.badge-planet-hazard1 {
+    background-color: #468847;
+}
+.badge-planet-hazard2 {
+    background-color: #468847;
+}
+.badge-planet-hazard2-weather { /* Weather is dangerous! */
+    background-color: #f89406;
+}
+.badge-planet-hazard3 {
+    background-color: #f89406;
+}
+.badge-planet-hazard3-weather { /* Weather is dangerous! */
+    background-color: #FF4A48;
+}
+.badge-planet-hazard4 {
+    background-color: #f89406;
+}
+.badge-planet-hazard4-weather { /* Weather is dangerous! */
+    background-color: #FF4A48;
+}
+.badge-planet-hazard5 {
+    background-color: #FF4A48;
+}
+.badge-planet-hazard6 {
+    background-color: #FF4A48;
+}
+.badge-planet-hazard7 {
+    background-color: #FF4A48;
+}
+.badge-planet-hazard8 {
+    background-color: #FF4A48;
+}
+.badge-planet-hazard9 {
+    background-color: #FF4A48;
+}
+.badge-planet-hazard10 {
+    background-color: #FF4A48;
+}
+
+
+/*----------------------
+  Spheres of Influence
+----------------------*/
 .SoI {
     stroke: black;
     stroke-Width: 1;
     fill-opacity: 0.1;
 }
-
 .SoI-text {
     fill-opacity: 0.3;
     text-anchor: middle;
