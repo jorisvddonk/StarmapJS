@@ -1,0 +1,98 @@
+.SoI {
+    stroke: black;
+    stroke-Width: 1;
+    fill-opacity: 0.3;
+}
+
+.SoI-text {
+    fill-opacity: 0.8;
+    text-anchor: middle;
+    dominant-baseline: mathematical;
+    stroke: black;
+    stroke-width: 0.5;
+    stroke-opacity: 0.25;
+    /* font-size generated on a per-Spheretext basis; declare one here to have a fixed font-size */
+}
+
+
+.SoI-Earthling{
+    fill:#f05015;
+}
+.SoI-Chenjesu{
+    fill:#6090e0;
+}
+.SoI-Mmrnmhrm{
+    fill:#e0e0e0;
+}
+.SoI-Mmrnmhrm-text{
+    fill:#808080;
+}
+.SoI-Ilwrath{
+    fill:#E00040;
+}
+.SoI-Spathi{
+    fill:#f0f000;
+}
+.SoI-Spathi-text{
+    fill:#909000;
+}
+.SoI-Androsynth{
+    fill:#e000f0;
+}
+.SoI-Shofixti{
+    fill:#e07038;
+}
+.SoI-Vux{
+    fill:#00f060;
+}
+.SoI-Yehat{
+    fill:#F01BF0;
+}
+.SoI-Mycon{
+    fill:#c0a810;
+}
+.SoI-Umgah{
+    fill:#30d0a0;
+}
+.SoI-Ur-Quan{
+    fill:#00AA22;    
+}
+.SoI-Ur-Quan-text{
+    fill-opacity: 0.6;
+}
+.SoI-Kohr-Ah-text {
+    fill-opacity: 0.4;
+}
+.SoI-Kohr-Ah{
+    fill:#666666;
+}
+.SoI-Thraddash{
+    fill:#AA2AFF;
+}
+.SoI-Pkunk{
+    fill:#552AFF;
+}
+.SoI-Supox{
+    fill:#DF3535;
+}
+.SoI-Utwig{
+    fill:#709BC5;
+}
+.SoI-Arilou{
+    fill:#0000FF;
+}
+.SoI-Orz{
+    fill:#14E9E9;
+}
+.SoI-Druuge{
+    fill:#DC143C;
+}
+.SoI-Zoq-Fot-Pik{
+    fill:#DC943C;
+}
+.SoI-Zoq-Fot-Pik-text{
+    fill:#9C643C;
+}
+.SoI-Unknown{
+    fill:#878787;
+}

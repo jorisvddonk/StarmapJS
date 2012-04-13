@@ -24,7 +24,6 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             //Starmap data:
             var starmapdata; // Filled in starmap-data.js
             var spheres; // Filled in starmap-spheres.js            
-            var colormapping; // Filled in starmap-colormapping.js (maps sphere names to colors)
             //
             //Starmap settings on load:
             var showingSpheres = "oldSpheres";
@@ -45,6 +44,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         <script src="starmap-data.js"></script>
         <script src="starmap-spheres.js"></script>
         <script src="starmap-colormapping.js"></script>
+        <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
         <style type="text/css">
             .popover-inner {
                 width: 600px;                
@@ -151,10 +151,14 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 svg_g_stars = svgt.group(svg_paper, "svg_stars", {stroke: 'black', 'stroke-width': 1});
         
                 for (sphereCI in spheres) {
-                    var grp = svgt.group(svg_g_spheres, sphereCI);
+                    var grp = svgt.group(svg_g_spheres, sphereCI);                    
                     svg_gs_spheres[sphereCI] = grp;
                     var sphereCollection = spheres[sphereCI];
-                    for (sphereI in sphereCollection) {
+                    for (sphereI in sphereCollection) { //Draw all texts first...
+                        var sphere = sphereCollection[sphereI];
+                        drawSphereText_SVG(grp, sphere);
+                    }
+                    for (sphereI in sphereCollection) { //..then draw the spheres; this prevents texts from overlaying another Sphere
                         var sphere = sphereCollection[sphereI];
                         drawSphere_SVG(grp, sphere);
                     }
@@ -278,18 +282,11 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 }
             }
             
-            function getColor(name) {
-                for (i in colormapping) {
-                    if (colormapping[i].name == name) {
-                        return colormapping[i].color;
-                    }
-                }
-                return "#aaa";
-            }
-            
             function drawSphere_SVG(grp, sphere) {
-                svg.text(grp,tx(sphere.x),ty(sphere.y),sphere.name, {fill:getColor(sphere.name), "text-anchor": "middle", "dominant-baseline": "mathematical", stroke:'black', strokeWidth: 0.0, "font-size": ts(sphere.size)*0.5 + "px"});
-                svg.circle(grp, tx(sphere.x),ty(sphere.y),ts(sphere.size), {fill: getColor(sphere.name), stroke: 'black', strokeWidth: 1, "fill-opacity": "0.3"}); 
+                svg.circle(grp, tx(sphere.x),ty(sphere.y),ts(sphere.size), {"class": "SoI SoI-" + sphere.name}); 
+            }
+            function drawSphereText_SVG(grp, sphere) {
+                svg.text(grp,tx(sphere.x),ty(sphere.y),sphere.name, {"font-size": ts(sphere.size)*0.5 + "px", "class": "SoI-text SoI-" + sphere.name.replace(" ","_") + " SoI-" + sphere.name.replace(" ","_") + "-text"});
             }
             
             function findStar(text) {
