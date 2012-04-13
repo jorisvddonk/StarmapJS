@@ -17,6 +17,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         <script src="jquery.min.js"></script>     
         <link rel="stylesheet" type="text/css" href="jquery.svg.css" />
         <script type="text/javascript" src="jquery.svg.min.js"></script>
+        <script type="text/javascript" src="jquery.svgdom-mod.js"></script>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="SVGPan.js"></script>
@@ -105,8 +106,8 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 svg_g_grid = svgt.group(svg_paper, "svg_grid");
                 svg_g_spheres = svgt.group(svg_paper, "svg_spheres");
                 svg_gs_spheres = {};
-                svg_g_clines = svgt.group(svg_paper, "svg_clines", {stroke: 'black', 'stroke-width': 1, 'stroke-opacity': 0.80, "z-index": '-1'});
-                svg_g_stars = svgt.group(svg_paper, "svg_stars", {stroke: 'black', 'stroke-width': 1});
+                svg_g_clines = svgt.group(svg_paper, "svg_clines");
+                svg_g_stars = svgt.group(svg_paper, "svg_stars");
         
                 for (sphereCI in spheres) {
                     var grp = svgt.group(svg_g_spheres, sphereCI);                    
@@ -221,7 +222,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             }
                         
             function paintgrid_SVG() {
-                var g = svg.group(svg_g_grid, {stroke: 'black', 'stroke-width': 1, "stroke-opacity": '0.5'});
+                var g = svg.group(svg_g_grid);
                 //Vertical lines:
                 for (var i = 0; i <= 10; i++) {
                     xf = s_pad_x + i*(s_width/10);
@@ -285,11 +286,13 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             function highlightStar(star) {
                 $(star).stop();
                 $(star).animate({},1,_anim_star_highlight_Off); //Initializes the looping animation
+                $(star).addClass("highlightedStar"); //In the future, we can use CSS3 animations for star highlights.
             }
             
             function unhighlightStar(star) {
                 $(star).stop();
                 $(star).animate({"opacity": "1", "stroke-width":"1"},150);
+                $(star).removeClass("highlightedStar");
             }
             
             function _anim_star_highlight_On() {
@@ -602,8 +605,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             }
             
             function checkEnter(e){
-                e = e || event;
-                return (e.keyCode || event.which || event.charCode || 0) !== 13;
+                return e.which !== 13;
             }
             
             function getHazardLevelCSS(level, type) {

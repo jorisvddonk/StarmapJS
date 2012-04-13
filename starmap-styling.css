@@ -1,4 +1,39 @@
 /*----------------------
+  Stars
+----------------------*/
+
+#svg_stars { /* Applied to the SVG-group of stars */
+    stroke: black;
+}
+
+.circle-Star { /* Applied to each star individually */
+}
+
+.highlightedStar { /* Optional CSS for highlighted stars */
+}  
+
+/*----------------------
+  Star constellation lines
+----------------------*/
+
+#svg_clines { /* Applied to the SVG-group of Constellation Lines (the lines between stars) */
+    stroke: black;
+    stroke-opacity: 0.8;
+    z-index: -1;
+    /* stroke-width is altered in SVGPan.js, so don't add it in here */
+}
+
+/*----------------------
+  Starmap grid
+----------------------*/
+
+#svg_grid { /* Applied to the lines on the Starmap grid */
+    stroke: black;
+    stroke-width: 1;
+    stroke-opacity: 0.5;    
+}
+
+/*----------------------
   Planet Hazard Badges
 ----------------------*/
 

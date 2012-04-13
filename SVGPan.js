@@ -103,10 +103,14 @@ function setupHandlers(root){
     //"onmouseout" : "handleMouseUp(evt)", // Decomment this to stop the pan functionality when dragging out of the SVG element
     });
 
-    if(navigator.userAgent.toLowerCase().indexOf('webkit') >= 0)
-        window.addEventListener('mousewheel', handleMouseWheel, false); // Chrome/Safari
-    else
-        window.addEventListener('DOMMouseScroll', handleMouseWheel, false); // Others
+    if ($.browser.msie || $.browser.opera || $.browser.webkit) {
+        window.addEventListener('mousewheel', handleMouseWheel, false); // MSIE/Opera/Webkit
+    } else if ($.browser.mozilla) {
+        window.addEventListener('DOMMouseScroll', handleMouseWheel, false); // FF
+    } else { // Screw it, we'll add them both just to be sure!
+        window.addEventListener('mousewheel', handleMouseWheel, false);
+        window.addEventListener('DOMMouseScroll', handleMouseWheel, false);
+    }
 }
 
 /**
@@ -220,7 +224,6 @@ function handleMouseWheel(evt) {
     });
     $("#svg_stars").attr("stroke-width", 1/mltp3);
     $("#svg_clines").attr("stroke-width",1/mltp3);
-        
     repositionQTips();
 }
 
@@ -306,5 +309,5 @@ function handleMouseUp(evt) {
 }
 
 function repositionQTips() {
-    $(".circle-Star").qtip('reposition');
+    $('.qtip.ui-tooltip').qtip('reposition');
 }
