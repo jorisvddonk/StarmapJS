@@ -1,11 +1,11 @@
 .SoI {
     stroke: black;
     stroke-Width: 1;
-    fill-opacity: 0.3;
+    fill-opacity: 0.1;
 }
 
 .SoI-text {
-    fill-opacity: 0.8;
+    fill-opacity: 0.3;
     text-anchor: middle;
     dominant-baseline: mathematical;
     stroke: black;
@@ -13,7 +13,6 @@
     stroke-opacity: 0.25;
     /* font-size generated on a per-Spheretext basis; declare one here to have a fixed font-size */
 }
-
 
 .SoI-Earthling{
     fill:#f05015;
@@ -56,12 +55,6 @@
 }
 .SoI-Ur-Quan{
     fill:#00AA22;    
-}
-.SoI-Ur-Quan-text{
-    fill-opacity: 0.6;
-}
-.SoI-Kohr-Ah-text {
-    fill-opacity: 0.4;
 }
 .SoI-Kohr-Ah{
     fill:#666666;
