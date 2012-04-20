@@ -99,7 +99,7 @@ function setupHandlers(root){
     setAttributes(root, {
         "onmouseup" : "handleMouseUp(evt)",
         "onmousedown" : "handleMouseDown(evt)",
-        "onmousemove" : "handleMouseMove(evt)",
+        "onmousemove" : "handleMouseMove(evt)"
     //"onmouseout" : "handleMouseUp(evt)", // Decomment this to stop the pan functionality when dragging out of the SVG element
     });
 
@@ -215,15 +215,7 @@ function handleMouseWheel(evt) {
 
     stateTf = stateTf.multiply(k.inverse());
     
-    //var mltp = Math.max(totalZoom*0.5,1);
-    var mltp2 = Math.sqrt(totalZoom);
-    var mltp3 = Math.pow(totalZoom, 1/3);
-    $.each($(".circle-Star"),function(a,b){
-        var nsz = ((($(b).data('starsize')+1)*3))/mltp2;
-        $(b).attr("r",nsz);
-    });
-    $("#svg_stars").attr("stroke-width", 1/mltp3);
-    $("#svg_clines").attr("stroke-width",1/mltp3);
+    resizeStars();
     repositionQTips();
 }
 
@@ -310,4 +302,16 @@ function handleMouseUp(evt) {
 
 function repositionQTips() {
     $('.qtip.ui-tooltip').qtip('reposition');
+}
+
+function resizeStars() {
+    //var mltp = Math.max(totalZoom*0.5,1);
+    var mltp2 = Math.sqrt(totalZoom);
+    var mltp3 = Math.pow(totalZoom, 1/3);
+    $.each($(".circle-Star"),function(a,b){
+        var nsz = ((($(b).data('starsize')+1)*3))/mltp2;
+        $(b).attr("r",nsz);
+    });
+    $("#svg_stars").attr("stroke-width", 1/mltp3);
+    $("#svg_clines").attr("stroke-width",1/mltp3);
 }

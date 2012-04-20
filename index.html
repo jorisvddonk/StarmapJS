@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 JavaScript Starmap
-    Work-in-progress (2012-03-18)
+    Work-in-progress
     No performance guarantees, no 'proper code' guarantees.
 
 Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this file only)
@@ -21,17 +21,22 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="SVGPan.js"></script>
+
         <script type="text/javascript">
-            //Starmap data:
-            var starmapdata; // Filled in starmap-data.js
+            var starmaps = {}; //filled in the various map JS files
+        </script>
+        <!--load sc2 starmap -->
+        <script src="map_sc2.js"></script>
+        <!-- load p6014 starmap -->
+        <script src="map_p6014.js"></script>
+        <script type="text/javascript">
+            var starmapdata;
             var spheres; // Filled in starmap-spheres.js            
             //
             //Starmap settings on load:
             var showingSpheres = "oldSpheres";
+            var showingStarmap = "sc2";
             var colortype = 0;
-            
-            //For the UI:
-            var typeAheads = []; //For search functionality
             
             //SVG:
             var svg;
@@ -42,7 +47,6 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             var svg_g_spheres;
             var svg_gs_spheres;
         </script>
-        <script src="starmap-data.js"></script>
         <script src="starmap-spheres.js"></script>
         <script src="starmap-colormapping.js"></script>
         <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
@@ -56,8 +60,29 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         </style>
         <script type="text/javascript">
             $(function() {
-                $('#svgStarmap').svg({onLoad: paintPaper_SVG});
+                $('#svgStarmap').svg({onLoad: initPaper}); //only run this once
             });
+            
+            //THIS FUNCTION SHOULD ONLY BE RUN ONCE!!
+            function initPaper(svgt) {
+                svg = svgt;
+                //Init SVGPan
+                initSVGPan();
+                //Modify the width and height of the SVG so we can resize our window
+                $("svg").attr("height", "100%");
+                $("svg").attr("width", "100%");
+                svg_paper = svg.group(null, "viewport", {transform:"translate(0,0)"});
+                displayStarmap(showingStarmap);
+            }
+            
+            function displayStarmap(starmapName) {
+                showingStarmap = starmapName;
+                starmapdata = starmaps[starmapName];
+                $(".starmapdata-icon").removeClass("icon-ok");
+                $("#starmapdata-" + starmapName).addClass("icon-ok");
+                
+                paintPaper_SVG();
+            }
 
             var s_width = 750; //Inner starmap width in px
             var s_height = 750; //Inner starmap height in px
@@ -65,52 +90,18 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             var s_pad_y = 25;
             var width = s_width + (2*s_pad_x); //Canvas width
             var height = s_height + (2*s_pad_y); //Canvas height
-
-            window.onload = function () {                  
-                checkFailIE();
-                $("#myModal").modal();
-                $("#myModal").modal('hide');
-            }
-            
-            //Check if the user is using a IE which may cause troubles
-            function checkFailIE() {
-                if ($.browser.msie) {
-                    alert("Attention, interloper! Heed this recorded message!\r\n\r\n" + 
-                        "This message dialog speaks with the voice and authority of the Ur-Quan!\r\n" +
-                        "Your webbrowser does not meet standard Hierarchy Identification transmissions and is therefore deemed to be..\r\n" +
-                        "..Internet Explorer!\r\n\r\n" +
-                        "This is not permissible! Only different browsers (Google Chrome, Firefox) are tolerated!\r\n\r\n" +
-                        "You are commanded to switch browser immediately and await the arrival of the Ur-Quan!\r\n" +
-                        "Disobediance WILL be met with strange bugs and lack of functionality.");
-                }
-            }
-            
-            var timer;
-            $(document).ready(new function() {
-                $('#findstar').live('change', function() {
-                    $(".circle-Star").qtip('hide');
-                    findStar_();
-                });
-            });
-            
-            function findStar_() {
-                findStar($("#findstar").val());
-            }
             
             //Renders a starmap
-            function paintPaper_SVG(svgt) {
-                svgt.clear(false);
-                
-                svg = svgt;
-                svg_paper = svgt.group(null, "viewport", {transform:"translate(0,0)"});
-                svg_g_grid = svgt.group(svg_paper, "svg_grid");
-                svg_g_spheres = svgt.group(svg_paper, "svg_spheres");
+            function paintPaper_SVG() {
+                $(svg_paper).empty();
+                svg_g_grid = svg.group(svg_paper, "svg_grid");
+                svg_g_spheres = svg.group(svg_paper, "svg_spheres");
                 svg_gs_spheres = {};
-                svg_g_clines = svgt.group(svg_paper, "svg_clines");
-                svg_g_stars = svgt.group(svg_paper, "svg_stars");
+                svg_g_clines = svg.group(svg_paper, "svg_clines");
+                svg_g_stars = svg.group(svg_paper, "svg_stars");
         
                 for (sphereCI in spheres) {
-                    var grp = svgt.group(svg_g_spheres, sphereCI);                    
+                    var grp = svg.group(svg_g_spheres, sphereCI);                    
                     svg_gs_spheres[sphereCI] = grp;
                     var sphereCollection = spheres[sphereCI];
                     for (sphereI in sphereCollection) { //Draw all texts first...
@@ -132,12 +123,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 parseTypeAhead();
                 ShowSpheres(); //Hide/show default/current Spheres of Influence
                 ShowStarColor(); //Set the star colors
-                
-                //Init SVGPan
-                initSVGPan();
-                //Modify the width and height of the SVG so we can resize our window
-                $("svg").attr("height", "100%");
-                $("svg").attr("width", "100%");
+                resizeStars(); //Recalculate star sizes (for when rerendering a starmap)
             }
      
             function paintLegend() {
@@ -159,6 +145,10 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             
             //Show a Sphere of Influece set
             function ShowSpheres(selection) {
+                if (selection == "oldSpheres" || selection == "newSpheres" && showingStarmap == "p6014") {
+                    alert("These spheres of Influence aren't available for the Project 6014 starmap!");
+                    return;
+                }
                 if (selection != undefined) {
                     showingSpheres = selection;
                 }
@@ -200,7 +190,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             }
             
             function parseTypeAhead() {
-                typeAheads = [];
+                var typeAheads = [];
                 $.each(starmapdata, function(constellationI, constellation){
                     $.each(constellation["stars"], function(starI, star){
                         typeAheads.push((star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
@@ -218,6 +208,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                         });
                     });
                 });
+                $("#findstar").removeData("typeahead");
                 $('#findstar').typeahead({source:typeAheads});
             }
                         
@@ -410,11 +401,16 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                     table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : "") + "</td></tr>";
                 });
                 
-                var table = $("<div><table class=\"table table-striped table-bordered table-condensed\"><tbody>" +
-                    "<tr><th>Bio data</th><td>" + star["planetsInfo"]["BioUnits"] + "</td></tr>" +
-                    "<tr><th>Mineral data</th><td>" + star["planetsInfo"]["MinValue"] + "</td></tr>" + 
-                    "<tr><th>Number of worlds</th><td>" + numplanets + "</td></tr>" + 
-                    "</tbody></table>"
+                var table_contents = "";
+                if (star["planetsInfo"] != undefined) {
+                    table_contents = "<tbody>" +
+                        "<tr><th>Bio data</th><td>" + star["planetsInfo"]["BioUnits"] + "</td></tr>" +
+                        "<tr><th>Mineral data</th><td>" + star["planetsInfo"]["MinValue"] + "</td></tr>" + 
+                        "<tr><th>Number of worlds</th><td>" + numplanets + "</td></tr>" + 
+                        "</tbody>";
+                }
+                
+                var table = $("<div><table class=\"table table-striped table-bordered table-condensed\">" + table_contents + "</table>"
                     + "</div>");
                 var table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
                     table2inner + 
@@ -639,6 +635,38 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 $(gfx).click(showModalDialogForStar);
             }
             
+
+            window.onload = function () {                  
+                checkFailIE();
+                $("#myModal").modal();
+                $("#myModal").modal('hide');
+            }
+            
+            //Check if the user is using a IE which may cause troubles
+            function checkFailIE() {
+                if ($.browser.msie) {
+                    alert("Attention, interloper! Heed this recorded message!\r\n\r\n" + 
+                        "This message dialog speaks with the voice and authority of the Ur-Quan!\r\n" +
+                        "Your webbrowser does not meet standard Hierarchy Identification transmissions and is therefore deemed to be..\r\n" +
+                        "..Internet Explorer!\r\n\r\n" +
+                        "This is not permissible! Only different browsers (Google Chrome, Firefox) are tolerated!\r\n\r\n" +
+                        "You are commanded to switch browser immediately and await the arrival of the Ur-Quan!\r\n" +
+                        "Disobediance WILL be met with strange bugs and lack of functionality.");
+                }
+            }
+            
+            var timer;
+            $(document).ready(new function() {
+                $('#findstar').live('change', function() {
+                    $(".circle-Star").qtip('hide');
+                    findStar_();
+                });
+            });
+            
+            function findStar_() {
+                findStar($("#findstar").val());
+            }
+            
         </script>
     </head>
     <body>
@@ -646,7 +674,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             <div id="svgStarmap" style="float:left; position:absolute; bottom:0px; left:0px; right:0px; top:45px; overflow:hidden; z-index:-1"></div>
             <div class="navbar-inner">                
                 <div class="container">
-                    <a class="brand" href="#">StarmapJS v1.04</a>
+                    <a class="brand" href="#">StarmapJS v1.05</a>
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
                         <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
                         <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
@@ -654,10 +682,17 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                     </a>
                     <ul class="nav nav-collapse">
                         <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="displayStarmap('sc2'); ShowSpheres('oldSpheres');"><i id="starmapdata-sc2" class="starmapdata-icon icon-ok"></i> Star Control 2</a></li>
+                                <li><a href="#" onclick="displayStarmap('p6014'); ShowSpheres('none');"><i id="starmapdata-p6014" class="starmapdata-icon"></i> Project 6014</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap sphere selection<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="ShowSpheres('oldSpheres');"><i id="spheredata-oldSpheres" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free)</a></li>
-                                <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!)</a></li>
+                                <li><a href="#" onclick="ShowSpheres('oldSpheres');"><i id="spheredata-oldSpheres" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free) <span class="label">SC2 only</span> </a></li>
+                                <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!) <span class="label">SC2 only</span></a></li>
                                 <li><a href="#" onclick="ShowSpheres('none');"><i id="spheredata-none" class="spheredata-icon"></i> None</a></li>
                             </ul>
                         </li>

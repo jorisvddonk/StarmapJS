@@ -1,7 +1,7 @@
 // Slightly modified version of Elestan's Planetary Database (http://wiki.uqm.stack.nl/List_of_planets)
 // Licensed under Creative Commons Attribution 2.0 Generic (CC BY 2.0): http://creativecommons.org/licenses/by/2.0/
 
-var starmapdata = [{
+starmaps["sc2"] = [{
     "name": "Andromedae",
     "stars": [{
         "x": 862.5,
@@ -18,23 +18,23 @@ var starmapdata = [{
             "I": {
                 "Type": "Rainbow",
                 "Hazard": "6",
-                "Tectonics": "1",
-                "Weather": "4",
+					"Tectonics": "1",
+					"Weather": "4",
                 "Thermal": "6",
                 "BioHazard": "1",
-                "BioUnits": "0",
-                "MinValue": "1111",
+					"BioUnits": "0",
+					"MinValue": "1111",
                 "MinVolume": "187",
                 "Fuel": "1.2",
-                "AxialTilt": "15",
-                "Density": "61",
-                "Radius": "101",
-                "Gravity": "61",
-                "Temp": "467",
-                "Day": "213",
-                "Atmosphere": "87",
-                "LifeChance": "260",
-                "DistFromStar": "256"
+					"AxialTilt": "15",
+					"Density": "61",
+					"Radius": "101",
+					"Gravity": "61",
+					"Temp": "467",
+					"Day": "213",
+					"Atmosphere": "87",
+					"LifeChance": "260",
+					"DistFromStar": "256"
             },
             "II": {
                 "Type": "Gas Giant",
