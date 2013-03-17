@@ -104,12 +104,12 @@ function setupHandlers(root){
     });
 
     if ($.browser.msie || $.browser.opera || $.browser.webkit) {
-        window.addEventListener('mousewheel', handleMouseWheel, false); // MSIE/Opera/Webkit
+        root.addEventListener('mousewheel', handleMouseWheel, false); // MSIE/Opera/Webkit
     } else if ($.browser.mozilla) {
-        window.addEventListener('DOMMouseScroll', handleMouseWheel, false); // FF
+        root.addEventListener('DOMMouseScroll', handleMouseWheel, false); // FF
     } else { // Screw it, we'll add them both just to be sure!
-        window.addEventListener('mousewheel', handleMouseWheel, false);
-        window.addEventListener('DOMMouseScroll', handleMouseWheel, false);
+        root.addEventListener('mousewheel', handleMouseWheel, false);
+        root.addEventListener('DOMMouseScroll', handleMouseWheel, false);
     }
 }
 
