@@ -398,7 +398,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                             homeworldsStr += " <span class=\"label label-info\">" + homeworld + " Homeworld</span>";
                         });
                     }
-                    table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : "") + "</td></tr>";
+                    table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") +  getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0? getHazardBadge(planet.BioHazard, "biological") : getHazardBadge("-", "biological")) + "</td></tr>";
                 });
                 
                 var table_contents = "";
