@@ -12,10 +12,10 @@ Simply clone this repo, then run a webserver locally, e.g. via `npx http-server 
 
 ## Changelog
 
-# 1.07
+## 1.07
 
 If no biological hazard data is available for a planet (because there are no biological signs at all), a grey '-' label is now shown, instead of nothing.
 
-# 1.06
+### 1.06
 
 ?
