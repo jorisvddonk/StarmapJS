@@ -15,5 +15,10 @@ module.exports = {
         "vue"
     ],
     "rules": {
-    }
+    },
+    "overrides": [
+        {
+          "excludedFiles": "src/vendor/*",
+        }
+      ]
 };
