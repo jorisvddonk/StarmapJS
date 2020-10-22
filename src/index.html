@@ -12,6 +12,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
 <html>
     <head>
         <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
+        <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
         <link type="text/css" rel="stylesheet" href="vendor/jquery.qtip.min.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="vendor/jquery.min.js"></script>     
@@ -87,6 +88,12 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                 <h3 style="background:#fff">Star color legend</h3>
                 <table class="table table-striped table-bordered table-condensed" style="background:#fff">
                     <tbody id="legendbody">
+                        <tr v-for="m in mapping">
+                            <td>
+                                <span class="label" :style="{ backgroundColor: m.color, color: '#000' }">[ {{ m.min }}, {{m.max}} ]</span>
+                                <span :if="type !== undefined">&nbsp;{{type}}</span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>                
             </div>

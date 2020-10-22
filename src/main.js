@@ -566,14 +566,25 @@ function getHazardBadge(value, type) {
     return "<span class=\"badge " + getHazardLevelCSS(value, type) + "\">" + value + "</span>";
 }
 
-function renderMappingLegend(mapping, type) {
-    $("#legendbody").children().remove();
-    if (mapping != undefined) {
-        for (const m in mapping) {
-            const cmap = mapping[m];
-            $("#legendbody").append($("<tr><td><span class=\"label\" style=\"background-color:" + cmap.color + "; color:#000\">[" + cmap.min + ", " + cmap.max + "]</span>" + (type != undefined ? " " + type : "") + "</td></td></tr>"));
+const Legend = {
+    data() {
+        return {
+            mapping: undefined,
+            type: undefined
+        }
+    },
+    methods: {
+        useLegend(mapping, type) {
+            this.mapping = mapping;
+            this.type = type;
         }
     }
+};  
+const legend = Vue.createApp(Legend).mount('#legendbody');
+
+function renderMappingLegend(mapping, type) {
+    legend.mapping = mapping;
+    legend.type = type;
 }
 
 function drawStar_SVG(star, constellation) {
