@@ -12,23 +12,23 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
 <html>
     <head>
         <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
-        <link type="text/css" rel="stylesheet" href="jquery.qtip.min.css" />
+        <link type="text/css" rel="stylesheet" href="vendor/jquery.qtip.min.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="jquery.min.js"></script>     
-        <link rel="stylesheet" type="text/css" href="jquery.svg.css" />
-        <script type="text/javascript" src="jquery.svg.min.js"></script>
-        <script type="text/javascript" src="jquery.svgdom-mod.js"></script>
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="SVGPan.js"></script>
+        <script src="vendor/jquery.min.js"></script>     
+        <link rel="stylesheet" type="text/css" href="vendor/jquery.svg.css" />
+        <script type="text/javascript" src="vendor/jquery.svg.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery.svgdom-mod.js"></script>
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/SVGPan.js"></script>
 
         <script type="text/javascript">
             var starmaps = {}; //filled in the various map JS files
         </script>
         <!--load sc2 starmap -->
-        <script src="map_sc2.js"></script>
+        <script src="data/map_sc2.js"></script>
         <!-- load p6014 starmap -->
-        <script src="map_p6014.js"></script>
+        <script src="data/map_p6014.js"></script>
         <script type="text/javascript">
             var starmapdata;
             var spheres; // Filled in starmap-spheres.js            
@@ -47,8 +47,8 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             var svg_g_spheres;
             var svg_gs_spheres;
         </script>
-        <script src="starmap-spheres.js"></script>
-        <script src="starmap-colormapping.js"></script>
+        <script src="data/starmap-spheres.js"></script>
+        <script src="data/starmap-colormapping.js"></script>
         <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
         <style type="text/css">
             .popover-inner {
@@ -744,6 +744,6 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
             <div class="modal-footer">
             </div>
         </div>
-        <script type="text/javascript" src="jquery.qtip.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery.qtip.min.js"></script>
     </body>
 </html>
