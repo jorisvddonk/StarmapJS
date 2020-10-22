@@ -8,7 +8,12 @@ The tool is available [here (raw.githack.com; version that tracks the master bra
 
 ## How to run locally
 
-Simply clone this repo, then run a webserver locally, e.g. via `npx http-server -c-1 -p 8081`
+Simply clone this repo, then run a webserver locally from within the `src` folder, e.g. via:
+
+```bash
+cd src
+npx http-server -c-1 -p 8081
+```
 
 ## Changelog
 
