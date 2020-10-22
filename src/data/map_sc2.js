@@ -1,7 +1,7 @@
 // Slightly modified version of Elestan's Planetary Database (http://wiki.uqm.stack.nl/List_of_planets)
 // Licensed under Creative Commons Attribution 2.0 Generic (CC BY 2.0): http://creativecommons.org/licenses/by/2.0/
 
-starmaps["sc2"] = [{
+export default [{
     "name": "Andromedae",
     "stars": [{
         "x": 862.5,

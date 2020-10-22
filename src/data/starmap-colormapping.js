@@ -1,6 +1,6 @@
 //TODO: Do this in CSS?
 
-var mindata_mapping = [
+export const mindata_mapping = [
     {
         min: 0,
         max: 499,
@@ -26,8 +26,9 @@ var mindata_mapping = [
         max: 15000,
         color: "#FF0000"
     }
-]
-var biodata_mapping = [
+];
+
+export const biodata_mapping = [
     {
         min: 0,
         max: 0,
@@ -58,4 +59,4 @@ var biodata_mapping = [
         max: 399,
         color: "#FF0000"
     }
-]
+];

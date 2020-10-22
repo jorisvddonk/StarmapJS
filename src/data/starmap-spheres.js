@@ -1,4 +1,4 @@
-var spheres = {
+export default {
     none: [],
     newSpheres:  [
     {
