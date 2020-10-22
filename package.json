@@ -1,0 +1,23 @@
+{
+  "name": "starmapjs",
+  "version": "1.0.7",
+  "description": "This is a fairly well-featured SVG starmap for [The Ur-Quan Masters](http://sc2.sourceforge.net/) and Project 6014.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorisvddonk/StarmapJS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jorisvddonk/StarmapJS/issues"
+  },
+  "homepage": "https://github.com/jorisvddonk/StarmapJS#readme",
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-plugin-vue": "^7.1.0"
+  }
+}
