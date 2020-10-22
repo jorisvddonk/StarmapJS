@@ -590,22 +590,8 @@ function drawStar_SVG(star, constellation) {
 
 
 window.onload = function () {
-    checkFailIE();
     $("#myModal").modal();
     $("#myModal").modal('hide');
-}
-
-//Check if the user is using a IE which may cause troubles
-function checkFailIE() {
-    if ($.browser.msie) {
-        alert("Attention, interloper! Heed this recorded message!\r\n\r\n" +
-            "This message dialog speaks with the voice and authority of the Ur-Quan!\r\n" +
-            "Your webbrowser does not meet standard Hierarchy Identification transmissions and is therefore deemed to be..\r\n" +
-            "..Internet Explorer!\r\n\r\n" +
-            "This is not permissible! Only different browsers (Google Chrome, Firefox) are tolerated!\r\n\r\n" +
-            "You are commanded to switch browser immediately and await the arrival of the Ur-Quan!\r\n" +
-            "Disobediance WILL be met with strange bugs and lack of functionality.");
-    }
 }
 
 let timer;
