@@ -1,3 +1,4 @@
+/* global $, resizeStars, initSVGPan */
 import map_sc2 from "./data/map_sc2.js";
 import map_p6014 from "./data/map_p6014.js";
 import starmap_spheres from "./data/starmap-spheres.js";
@@ -7,22 +8,22 @@ const starmaps = {
     sc2: map_sc2,
     p6014: map_p6014
 }; //filled in the various map JS files
-var starmapdata;
+let starmapdata;
 const spheres = starmap_spheres; // Filled in starmap-spheres.js            
 //
 //Starmap settings on load:
-var showingSpheres = "oldSpheres";
-var showingStarmap = "sc2";
-var colortype = 0;
+let showingSpheres = "oldSpheres";
+let showingStarmap = "sc2";
+let colortype = 0;
 
 //SVG:
-var svg;
-var svg_paper;
-var svg_g_grid;
-var svg_g_clines;
-var svg_g_stars;
-var svg_g_spheres;
-var svg_gs_spheres;
+let svg;
+let svg_paper;
+let svg_g_grid;
+let svg_g_clines;
+let svg_g_stars;
+let svg_g_spheres;
+let svg_gs_spheres;
 
 $(function () {
     $('#svgStarmap').svg({ onLoad: initPaper }); //only run this once
@@ -49,12 +50,12 @@ function displayStarmap(starmapName) {
     paintPaper_SVG();
 }
 
-var s_width = 750; //Inner starmap width in px
-var s_height = 750; //Inner starmap height in px
-var s_pad_x = 25; //Starmap border
-var s_pad_y = 25;
-var width = s_width + (2 * s_pad_x); //Canvas width
-var height = s_height + (2 * s_pad_y); //Canvas height
+let s_width = 750; //Inner starmap width in px
+let s_height = 750; //Inner starmap height in px
+let s_pad_x = 25; //Starmap border
+let s_pad_y = 25;
+let width = s_width + (2 * s_pad_x); //Canvas width
+let height = s_height + (2 * s_pad_y); //Canvas height
 
 //Renders a starmap
 function paintPaper_SVG() {
@@ -66,15 +67,15 @@ function paintPaper_SVG() {
     svg_g_stars = svg.group(svg_paper, "svg_stars");
 
     for (const sphereCI in spheres) {
-        var grp = svg.group(svg_g_spheres, sphereCI);
+        const grp = svg.group(svg_g_spheres, sphereCI);
         svg_gs_spheres[sphereCI] = grp;
-        var sphereCollection = spheres[sphereCI];
+        const sphereCollection = spheres[sphereCI];
         for (const sphereI in sphereCollection) { //Draw all texts first...
-            var sphere = sphereCollection[sphereI];
+            const sphere = sphereCollection[sphereI];
             drawSphereText_SVG(grp, sphere);
         }
         for (const sphereI in sphereCollection) { //..then draw the spheres; this prevents texts from overlaying another Sphere
-            var sphere = sphereCollection[sphereI];
+            const sphere = sphereCollection[sphereI];
             drawSphere_SVG(grp, sphere);
         }
         $(grp).show();
@@ -132,7 +133,7 @@ function ShowStarColor(selection) {
     if (selection != undefined) {
         colortype = selection;
     }
-    var funct = function () { };
+    let funct = function () { };
     switch (colortype) {
         case 0:
             funct = getColor_norm;
@@ -145,8 +146,8 @@ function ShowStarColor(selection) {
             break;
     }
     $.each($(".circle-Star"), function (b, c) {
-        var _star = $(c).data('star');
-        var _const = $(c).data('constellation');
+        const _star = $(c).data('star');
+        const _const = $(c).data('constellation');
         $(c).attr('fill', funct(_star, _const));
     });
     $(".colortype-icon").removeClass("icon-ok");
@@ -155,7 +156,7 @@ function ShowStarColor(selection) {
 }
 
 function parseTypeAhead() {
-    var typeAheads = [];
+    const typeAheads = [];
     $.each(starmapdata, function (constellationI, constellation) {
         $.each(constellation["stars"], function (starI, star) {
             typeAheads.push((star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name);
@@ -178,9 +179,9 @@ function parseTypeAhead() {
 }
 
 function paintgrid_SVG() {
-    var g = svg.group(svg_g_grid);
+    const g = svg.group(svg_g_grid);
     //Vertical lines:
-    for (var i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 10; i++) {
         const xf = s_pad_x + i * (s_width / 10);
         const yf = s_pad_y;
         const xt = xf;
@@ -188,7 +189,7 @@ function paintgrid_SVG() {
         svg.line(g, xf, yf, xt, yt);
     }
     //Horizontal lines:
-    for (var i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 10; i++) {
         const xf = s_pad_x;
         const yf = s_pad_y + i * (s_height / 10);
         const xt = s_pad_x + s_width;
@@ -207,9 +208,9 @@ function drawSphereText_SVG(grp, sphere) {
 function findStar(text) {
     text = text.toLowerCase();
     if (text != "") {
-        $(".circle-Star").each(function (a, b, c) {
+        $(".circle-Star").each(function (a, b) {
             if ($(b).data("starname") != undefined) {
-                showT = false;
+                let showT = false;
                 if ($(b).data('starname').toLowerCase() == text) {
                     showT = true;
                 }
@@ -266,8 +267,8 @@ function _anim_star_highlight_Off() {
 
 
 function unhighlightAll() {
-    $(".circle-Star").each(function (a, b, c) {
-        var star = $(b).data('star');
+    $(".circle-Star").each(function (a, b) {
+        const star = $(b).data('star');
         if (star != undefined) {
             unhighlightStar(b);
         }
@@ -275,9 +276,9 @@ function unhighlightAll() {
 }
 
 function findRainbowWorlds() {
-    $(".circle-Star").each(function (a, b, c) {
-        var star = $(b).data('star');
-        var fndR = false;
+    $(".circle-Star").each(function (a, b) {
+        let star = $(b).data('star');
+        let fndR = false;
         if (star != undefined) {
             $.each(star["planets"], function (pIndex, planet) {
                 if (planet.Type == "Rainbow") {
@@ -292,9 +293,9 @@ function findRainbowWorlds() {
 }
 
 function findDevices() {
-    $(".circle-Star").each(function (a, b, c) {
-        var star = $(b).data('star');
-        var fndR = false;
+    $(".circle-Star").each(function (a, b) {
+        let star = $(b).data('star');
+        let fndR = false;
         if (star != undefined) {
             $.each(star["planets"], function (pIndex, planet) {
                 if (planet.Devices != undefined) {
@@ -309,9 +310,9 @@ function findDevices() {
 }
 
 function findHomeworlds() {
-    $(".circle-Star").each(function (a, b, c) {
-        var star = $(b).data('star');
-        var fndR = false;
+    $(".circle-Star").each(function (a, b) {
+        let star = $(b).data('star');
+        let fndR = false;
         if (star != undefined) {
             $.each(star["planets"], function (pIndex, planet) {
                 if (planet.Homeworlds != undefined) {
@@ -344,11 +345,11 @@ function addTooltip_SVG(Rnode, text) {
 
 //Shows a modal dialog containing details for a star
 function showModalDialogForStar() {
-    var star = $(this).data("star");
-    var constellation = $(this).data("constellation");
+    let star = $(this).data("star");
+    let constellation = $(this).data("constellation");
 
-    var table2inner = "";
-    var numplanets = 0;
+    let table2inner = "";
+    let numplanets = 0;
     $.each(star["planets"], function (planetID, planet) {
         numplanets += 1;
         let devicesStr = " ";
@@ -366,7 +367,7 @@ function showModalDialogForStar() {
         table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") + getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0 ? getHazardBadge(planet.BioHazard, "biological") : getHazardBadge("-", "biological")) + "</td></tr>";
     });
 
-    var table_contents = "";
+    let table_contents = "";
     if (star["planetsInfo"] != undefined) {
         table_contents = "<tbody>" +
             "<tr><th>Bio data</th><td>" + star["planetsInfo"]["BioUnits"] + "</td></tr>" +
@@ -375,14 +376,14 @@ function showModalDialogForStar() {
             "</tbody>";
     }
 
-    var table = $("<div><table class=\"table table-striped table-bordered table-condensed\">" + table_contents + "</table>"
+    let table = $("<div><table class=\"table table-striped table-bordered table-condensed\">" + table_contents + "</table>"
         + "</div>");
-    var table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
+    let table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
         table2inner +
         "</tbody></table></div>");
 
-    var title = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
-    var content = table.html() + table2.html();
+    let title = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
+    let content = table.html() + table2.html();
     showModal(title, content);
 }
 
@@ -411,8 +412,8 @@ function ty(input) {
 }
 
 function drawConstellationLine_SVG(cline, constellation) {
-    var sfrom;
-    var sto;
+    let sfrom;
+    let sto;
     for (const si in constellation["stars"]) {
         if (constellation["stars"][si].id == cline.from) {
             sfrom = constellation["stars"][si];
@@ -422,7 +423,7 @@ function drawConstellationLine_SVG(cline, constellation) {
         }
     }
     if (sfrom != undefined && sto != undefined) {
-        var gfx = svg.line(svg_g_clines, tx(sfrom.x), ty(sfrom.y), tx(sto.x), ty(sto.y), { "class": "line-cline" });
+        const gfx = svg.line(svg_g_clines, tx(sfrom.x), ty(sfrom.y), tx(sto.x), ty(sto.y), { "class": "line-cline" });
         //                    gfx.attr("stroke", "#000");
         //                    gfx.attr("z-index", "-1");
         //                    gfx.toBack();
@@ -486,28 +487,15 @@ function convertPrefix(prefix) {
 }
 
 function getColor_minData(star, constellation) {
-    var rvalue = getMinData(star, constellation);
+    let rvalue = getMinData(star, constellation);
     return getColor_FromMapping(rvalue, mindata_mapping);
 }
 
-function getNumBodies(star, constellation) {
-    var rvalue = 0;
-    for (const s in planetdata) {
-        pd = planetdata[s];
-        if (pd.Cluster.toUpperCase() == constellation.name.toUpperCase()) {
-            if (pd.Star == convertPrefix(star.id)) {
-                rvalue += 1;
-            }
-        }
-    }
-    return rvalue;
-}
-
-function getMinData(star, constellation) {
+function getMinData(star) {
     return parseInt(star["planetsInfo"]["MinValue"]);
 }
 
-function getBioData(star, constellation) {
+function getBioData(star) {
     return parseInt(star["planetsInfo"]["BioUnits"]);
 }
 
@@ -524,12 +512,12 @@ function getColor_FromMapping(value, mapping) {
 }
 
 function getColor_bioData(star, constellation) {
-    var rvalue = getBioData(star, constellation);
+    let rvalue = getBioData(star, constellation);
     return getColor_FromMapping(rvalue, biodata_mapping);
 }
 
 
-function getColor_norm(star, constellation) {
+function getColor_norm(star) {
     if (star.color.toUpperCase() == "BLUE") {
         return "#1464FF";
     }
@@ -589,8 +577,8 @@ function renderMappingLegend(mapping, type) {
 }
 
 function drawStar_SVG(star, constellation) {
-    var starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
-    var gfx = svg.circle(svg_g_stars, tx(star.x), ty(star.y), (star.size + 1) * 3, { stroke: 'black', "class": "circle-Star" });
+    let starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
+    let gfx = svg.circle(svg_g_stars, tx(star.x), ty(star.y), (star.size + 1) * 3, { stroke: 'black', "class": "circle-Star" });
     //Circle fill color defined elsewhere (showStarColor function)
     $(gfx).data("star", star);
     $(gfx).data("starname", starname);
@@ -620,7 +608,7 @@ function checkFailIE() {
     }
 }
 
-var timer;
+let timer;
 $(document).ready(new function () {
     $('#findstar').live('change', function () {
         $(".circle-Star").qtip('hide');
@@ -640,3 +628,4 @@ window.findRainbowWorlds = findRainbowWorlds;
 window.unhighlightAll = unhighlightAll;
 window.findHomeworlds = findHomeworlds;
 window.findDevices = findDevices;
+window.checkEnter = checkEnter;
