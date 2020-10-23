@@ -423,10 +423,7 @@ function drawConstellationLine_SVG(cline, constellation) {
         }
     }
     if (sfrom != undefined && sto != undefined) {
-        const gfx = svg.line(svg_g_clines, tx(sfrom.x), ty(sfrom.y), tx(sto.x), ty(sto.y), { "class": "line-cline" });
-        //                    gfx.attr("stroke", "#000");
-        //                    gfx.attr("z-index", "-1");
-        //                    gfx.toBack();
+        svg.line(svg_g_clines, tx(sfrom.x), ty(sfrom.y), tx(sto.x), ty(sto.y), { "class": "line-cline" });
     } else {
         console.log("WARNING: constellationLine not drawn (constellation=" + constellation.name + ", from=" + cline.from + ", to=" + cline.to + ")");
     }
@@ -579,7 +576,7 @@ const Legend = {
             this.type = type;
         }
     }
-};  
+};
 const legend = Vue.createApp(Legend).mount('#legendbody');
 
 function renderMappingLegend(mapping, type) {
