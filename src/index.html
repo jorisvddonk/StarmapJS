@@ -131,6 +131,68 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         </div>
     </div>
 
+    <div id="starModal">
+        <div v-bind:class="{in: opened, modal: true, visible: opened, hidden: !opened}">
+            <div class="modal-header">
+                <a class="close" v-on:click="close()">×</a>
+                <h3 id="modalHeader">{{headerText}}</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <table v-if="star !== undefined" class="table table-striped table-bordered table-condensed">
+                    <tbody>
+                        <tr>
+                            <th>Bio data</th>
+                            <td>{{star.planetsInfo.BioUnits}}</td>
+                        </tr>
+                        <tr>
+                            <th>Mineral data</th>
+                            <td>{{star.planetsInfo.MinValue}} (volume: {{star.planetsInfo.MinVolume}})</td>
+                        </tr>
+                        <tr>
+                            <th>Number of worlds</th>
+                            <td>{{Object.entries(star.planets).length}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table v-if="star !== undefined" class="table table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Planet ID</th>
+                            <th>Type</th>
+                            <th>Minerals (volume)</th>
+                            <th>Minerals (value)</th>
+                            <th>Bio Data</th>
+                            <th>Hazards (Tec/Wet/Therm/Bio)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="entry in Object.entries(star.planets)">
+                            <td>{{entry[0]}}
+                                <device v-if="entry[1].Devices !== undefined" v-for="device in entry[1].Devices"
+                                    :device="device"></device>
+                                <homeworld v-if="entry[1].Homeworlds !== undefined"
+                                    v-for="homeworld in entry[1].Homeworlds" :homeworld="homeworld"></homeworld>
+                            </td>
+                            <td>{{entry[1].Type}}</td>
+                            <td>{{entry[1].MinVolume}}</td>
+                            <td>{{entry[1].MinValue}}</td>
+                            <td>{{entry[1].BioUnits}}</td>
+                            <td>
+                                <hazard hazard-type="tectonics" :hazard-value="entry[1].Tectonics"></hazard>
+                                <hazard hazard-type="weather" :hazard-value="entry[1].Weather"></hazard>
+                                <hazard hazard-type="thermal" :hazard-value="entry[1].Thermal"></hazard>
+                                <hazard hazard-type="biological"
+                                    :hazard-value="entry[1].BioUnits != 0 ? entry[1].BioHazard : undefined"></hazard>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="vendor/jquery.qtip.min.js"></script>
 </body>
 

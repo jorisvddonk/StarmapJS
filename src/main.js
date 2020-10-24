@@ -347,44 +347,8 @@ function addTooltip_SVG(Rnode, text) {
 function showModalDialogForStar() {
     let star = $(this).data("star");
     let constellation = $(this).data("constellation");
-
-    let table2inner = "";
-    let numplanets = 0;
-    $.each(star["planets"], function (planetID, planet) {
-        numplanets += 1;
-        let devicesStr = " ";
-        let homeworldsStr = " "
-        if (planet["Devices"] != undefined) {
-            $.each(planet["Devices"], function (deviceIndex, device) {
-                devicesStr += " <span class=\"label\">Device: " + device + "</span>";
-            });
-        }
-        if (planet["Homeworlds"] != undefined) {
-            $.each(planet["Homeworlds"], function (homeworldIndex, homeworld) {
-                homeworldsStr += " <span class=\"label label-info\">" + homeworld + " Homeworld</span>";
-            });
-        }
-        table2inner += "<tr><td>" + planetID + devicesStr + homeworldsStr + "</td><td>" + planet.Type + "</td><td>" + planet.MinVolume + "</td><td>" + planet.MinValue + "</td><td>" + planet.BioUnits + "</td><td>" + getHazardBadge(planet.Tectonics, "tectonics") + getHazardBadge(planet.Weather, "weather") + getHazardBadge(planet.Thermal, "thermal") + (parseInt(planet.BioUnits) > 0 ? getHazardBadge(planet.BioHazard, "biological") : getHazardBadge("-", "biological")) + "</td></tr>";
-    });
-
-    let table_contents = "";
-    if (star["planetsInfo"] != undefined) {
-        table_contents = "<tbody>" +
-            "<tr><th>Bio data</th><td>" + star["planetsInfo"]["BioUnits"] + "</td></tr>" +
-            "<tr><th>Mineral data</th><td>" + star["planetsInfo"]["MinValue"] + "</td></tr>" +
-            "<tr><th>Number of worlds</th><td>" + numplanets + "</td></tr>" +
-            "</tbody>";
-    }
-
-    let table = $("<div><table class=\"table table-striped table-bordered table-condensed\">" + table_contents + "</table>"
-        + "</div>");
-    let table2 = $("<div><table class=\"table table-striped table-bordered table-condensed\"><thead><tr><th>Planet ID</th><th>Type</th><th>Minerals (volume)</th><th>Minerals (value)</th><th>Bio Data</th><th>Hazards (Tec/Wet/Therm/Bio)</th></tr></thead><tbody>" +
-        table2inner +
-        "</tbody></table></div>");
-
     let title = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
-    let content = table.html() + table2.html();
-    showModal(title, content);
+    starTableViewInstance.showStar(star, title);
 }
 
 function drawConstellation_SVG(constellation) {
@@ -583,6 +547,55 @@ function renderMappingLegend(mapping, type) {
     legend.mapping = mapping;
     legend.type = type;
 }
+
+const StarTableView = {
+    data() {
+        return {
+            opened: false,
+            star: undefined,
+            headerText: undefined,
+        }
+    },
+    methods: {
+        showStar(star, starName) {
+            this.opened = true;
+            this.star = star;
+            this.headerText = starName;
+        },
+        close() {
+            this.opened = false;
+        }
+    }
+}
+const app = Vue.createApp(StarTableView);
+app.component('hazard', {
+    props: ["hazardType", "hazardValue"],
+    computed: {
+        hValue: function () {
+            return this.hazardValue !== undefined && this.hazardValue !== "" ? this.hazardValue : '-'
+        }
+    },
+    template: `
+      <span class="badge" v-bind:class="[
+        'badge-planet-hazard-' + hazardType,
+        'badge-planet-hazard' + hValue,
+        'badge-planet-hazard' + hValue + '-' + hazardType,
+        ]">{{hValue}}</span>
+    `
+});
+app.component('device', {
+    props: ["device"],
+    template: `
+      <span class="label">Device: {{device}}</span>
+    `
+});
+app.component('homeworld', {
+    props: ["homeworld"],
+    template: `
+      <span class="label label-info">{{homeworld}} Homeworld</span>
+    `
+});
+const starTableViewInstance = app.mount("#starModal");
 
 function drawStar_SVG(star, constellation) {
     let starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
