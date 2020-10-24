@@ -10,104 +10,128 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <html>
-    <head>
-        <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
-        <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
-        <link type="text/css" rel="stylesheet" href="vendor/jquery.qtip.min.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="vendor/jquery.min.js"></script>     
-        <link rel="stylesheet" type="text/css" href="vendor/jquery.svg.css" />
-        <script type="text/javascript" src="vendor/jquery.svg.min.js"></script>
-        <script type="text/javascript" src="vendor/jquery.svgdom-mod.js"></script>
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="vendor/SVGPan.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="main.js" type="module"></script>
-    </head>
-    <body>
-        <div class="navbar">
-            <div id="svgStarmap" style="float:left; position:absolute; bottom:0px; left:0px; right:0px; top:45px; overflow:hidden; z-index:-1"></div>
-            <div class="navbar-inner">                
-                <div class="container">
-                    <a class="brand" href="#">StarmapJS v1.07</a>
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
-                        <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
-                        <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
-                        <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
-                    </a>
-                    <ul class="nav nav-collapse">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" onclick="displayStarmap('sc2'); ShowSpheres('oldSpheres');"><i id="starmapdata-sc2" class="starmapdata-icon icon-ok"></i> Star Control 2</a></li>
-                                <li><a href="#" onclick="displayStarmap('p6014'); ShowSpheres('none');"><i id="starmapdata-p6014" class="starmapdata-icon"></i> Project 6014</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap sphere selection<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" onclick="ShowSpheres('oldSpheres');"><i id="spheredata-oldSpheres" class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper Starmap (spoiler-free) <span class="label">SC2 only</span> </a></li>
-                                <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres" class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!) <span class="label">SC2 only</span></a></li>
-                                <li><a href="#" onclick="ShowSpheres('none');"><i id="spheredata-none" class="spheredata-icon"></i> None</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color stars using<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" onclick="ShowStarColor(0);"><i id="colortype-0" class="colortype-icon icon-ok"></i> Their truespace colors</a></li>
-                                <li><a href="#" onclick="ShowStarColor(1);"><i id="colortype-1" class="colortype-icon"></i> Available minerals (value)</a></li>
-                                <li><a href="#" onclick="ShowStarColor(2);"><i id="colortype-2" class="colortype-icon"></i> Available biological data (units)</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Star highlighting<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" onclick="unhighlightAll();">Remove all highlights</a></li>
-                                <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
-                                <li><a href="#" onclick="findHomeworlds();">Highlight stars with Alien Homeworlds</a></li>
-                                <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
-                            </ul>
-                        </li>
-                        <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
-                            <input id="findstar" type="text" placeholder="Search for stars/devices/homeworlds" autocomplete="off"/>
-                        </form>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://github.com/jorisvddonk/StarmapJS">GitHub Page</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<head>
+    <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <link type="text/css" rel="stylesheet" href="vendor/jquery.qtip.min.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="vendor/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendor/jquery.svg.css" />
+    <script type="text/javascript" src="vendor/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="vendor/jquery.svgdom-mod.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/SVGPan.js"></script>
 
-            <div id="rightdata" style="position:absolute;bottom:0px;top:50px;right:0px;">
-                <h3 style="background:#fff">Star color legend</h3>
-                <table class="table table-striped table-bordered table-condensed" style="background:#fff">
-                    <tbody id="legendbody">
-                        <tr v-for="m in mapping">
-                            <td>
-                                <span class="label" :style="{ backgroundColor: m.color, color: '#000' }">[ {{ m.min }}, {{m.max}} ]</span>
-                                <span :if="type !== undefined">&nbsp;{{type}}</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>                
+    <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="main.js" type="module"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div id="svgStarmap"
+            style="float:left; position:absolute; bottom:0px; left:0px; right:0px; top:45px; overflow:hidden; z-index:-1">
+        </div>
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">StarmapJS v1.07</a>
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
+                    <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
+                    <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
+                    <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
+                </a>
+                <ul class="nav nav-collapse">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap selection<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="displayStarmap('sc2'); ShowSpheres('oldSpheres');"><i
+                                        id="starmapdata-sc2" class="starmapdata-icon icon-ok"></i> Star Control 2</a>
+                            </li>
+                            <li><a href="#" onclick="displayStarmap('p6014'); ShowSpheres('none');"><i
+                                        id="starmapdata-p6014" class="starmapdata-icon"></i> Project 6014</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Starmap sphere selection<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="ShowSpheres('oldSpheres');"><i id="spheredata-oldSpheres"
+                                        class="spheredata-icon icon-ok"></i> AD 2134: Original Star Control 2 paper
+                                    Starmap (spoiler-free) <span class="label">SC2 only</span> </a></li>
+                            <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres"
+                                        class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!) <span
+                                        class="label">SC2 only</span></a></li>
+                            <li><a href="#" onclick="ShowSpheres('none');"><i id="spheredata-none"
+                                        class="spheredata-icon"></i> None</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color stars using<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="ShowStarColor(0);"><i id="colortype-0"
+                                        class="colortype-icon icon-ok"></i> Their truespace colors</a></li>
+                            <li><a href="#" onclick="ShowStarColor(1);"><i id="colortype-1" class="colortype-icon"></i>
+                                    Available minerals (value)</a></li>
+                            <li><a href="#" onclick="ShowStarColor(2);"><i id="colortype-2" class="colortype-icon"></i>
+                                    Available biological data (units)</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Star highlighting<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="unhighlightAll();">Remove all highlights</a></li>
+                            <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
+                            <li><a href="#" onclick="findHomeworlds();">Highlight stars with Alien Homeworlds</a></li>
+                            <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
+                        </ul>
+                    </li>
+                    <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">
+                        <input id="findstar" type="text" placeholder="Search for stars/devices/homeworlds"
+                            autocomplete="off" />
+                    </form>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://github.com/jorisvddonk/StarmapJS">GitHub Page</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="modal" id="myModal">
-            <div class="modal-header">
-                <a class="close" data-dismiss="modal">×</a>
-                <h3 id="modalHeader">Loading starmap...</h3>
-            </div>
-            <div class="modal-body" id="modalBody">
-            </div>
-            <div class="modal-footer">
-            </div>
+
+        <div id="rightdata" style="position:absolute;bottom:0px;top:50px;right:0px;">
+            <h3 style="background:#fff">Star color legend</h3>
+            <table class="table table-striped table-bordered table-condensed" style="background:#fff">
+                <tbody id="legendbody">
+                    <tr v-for="m in mapping">
+                        <td>
+                            <span class="label" :style="{ backgroundColor: m.color, color: '#000' }">[ {{ m.min }},
+                                {{m.max}} ]</span>
+                            <span :if="type !== undefined">&nbsp;{{type}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <script type="text/javascript" src="vendor/jquery.qtip.min.js"></script>
-    </body>
+    </div>
+    <div class="modal" id="myModal">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3 id="modalHeader">Loading starmap...</h3>
+        </div>
+        <div class="modal-body" id="modalBody">
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+
+    <script type="text/javascript" src="vendor/jquery.qtip.min.js"></script>
+</body>
+
 </html>
