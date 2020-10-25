@@ -3,6 +3,7 @@ import map_sc2 from "./data/map_sc2.js";
 import map_p6014 from "./data/map_p6014.js";
 import starmap_spheres from "./data/starmap-spheres.js";
 import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
+import { convertPrefix, getStarColor_normal } from "./util.js";
 
 const starmaps = {
     sc2: map_sc2,
@@ -136,7 +137,7 @@ function ShowStarColor(selection) {
     let funct = function () { };
     switch (colortype) {
         case 0:
-            funct = getColor_norm;
+            funct = getStarColor_normal;
             break;
         case 1:
             funct = getColor_minData;
@@ -393,60 +394,6 @@ function drawConstellationLine_SVG(cline, constellation) {
     }
 }
 
-function convertPrefix(prefix) {
-    //Converts a 'prefix' ('A', 'B') to a proper name ("Alpha", "Beta")
-    prefix = prefix.toLowerCase();
-    //alpha, beta, gamma, delta, epsilon, zeta, eta, theta, iota, kappa, lambda, mu, nu, xi, omicron, pi, rho, sigma, tau, upsilon, phi, chi, psi, omega
-    switch (prefix) {
-        case "a":
-            return "Alpha";
-        case "b":
-            return "Beta";
-        case "c":
-            return "Gamma";
-        case "d":
-            return "Delta";
-        case "e":
-            return "Epsilon";
-        case "f":
-            return "Zeta";
-        case "g":
-            return "Eta";
-        case "h":
-            return "Theta";
-        case "i":
-            return "Iota";
-        case "j":
-            return "Kappa"; //This isn't wrong, no.
-        case "k":
-            return "Lambda";
-        case "l":
-            return "Mu";
-        case "m":
-            return "Nu";
-        case "n":
-            return "Xi";
-        case "o":
-            return "Omicron";
-        case "p":
-            return "Pi";
-        case "q":
-            return "Rho";
-        case "r":
-            return "Sigma";
-        case "s":
-            return "Tau";
-        case "t":
-            return "Upsilon";
-        case "u":
-            return "Phi";
-        case "*":
-            return "Prime";
-        default:
-            return "UNKNOWN";
-    }
-}
-
 function getColor_minData(star, constellation) {
     let rvalue = getMinData(star, constellation);
     return getColor_FromMapping(rvalue, mindata_mapping);
@@ -477,36 +424,6 @@ function getColor_bioData(star, constellation) {
     return getColor_FromMapping(rvalue, biodata_mapping);
 }
 
-
-function getColor_norm(star) {
-    if (star.color.toUpperCase() == "BLUE") {
-        return "#1464FF";
-    }
-    if (star.color.toUpperCase() == "ORANGE") {
-        return "#FF6400";
-    }
-    if (star.color.toUpperCase() == "GREEN") {
-        return "#00C800";
-    }
-    if (star.color.toUpperCase() == "RED") {
-        return "#f00";
-    }
-    if (star.color.toUpperCase() == "WHITE" || star.color.toUpperCase() == "GRAY") {
-        return "#C8EBEB";
-    }
-    if (star.color.toUpperCase() == "YELLOW") {
-        return "#ff0";
-    }
-    if (star.color.toUpperCase() == "CYAN") {
-        return "#0ff";
-    }
-    if (star.color.toUpperCase() == "PURPLE") {
-        return "#800080";
-    }
-    if (star.color.toUpperCase() == "VIOLET") {
-        return "#7F00FF";
-    }
-}
 
 function showModal(title, content) {
     $("#modalHeader").html(title);
