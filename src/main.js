@@ -395,23 +395,8 @@ function drawConstellationLine_SVG(cline, constellation) {
     }
 }
 
-function showModal(title, content) {
-    $("#modalHeader").html(title);
-    $("#modalBody").html(content);
-    $("#myModal").modal('show');
-}
-
 function checkEnter(e) {
     return e.which !== 13;
-}
-
-function getHazardLevelCSS(level, type) {
-    level = parseInt(level);
-    return "badge-planet-hazard" + level + (type == undefined ? "" : " badge-planet-hazard-" + type + " badge-planet-hazard" + level + "-" + type);
-}
-
-function getHazardBadge(value, type) {
-    return "<span class=\"badge " + getHazardLevelCSS(value, type) + "\">" + value + "</span>";
 }
 
 const Legend = {
