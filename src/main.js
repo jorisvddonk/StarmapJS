@@ -3,7 +3,7 @@ import map_sc2 from "./data/map_sc2.js";
 import map_p6014 from "./data/map_p6014.js";
 import starmap_spheres from "./data/starmap-spheres.js";
 import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
-import { convertPrefix, getStarColor_normal } from "./util.js";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js";
 
 const starmaps = {
     sc2: map_sc2,
@@ -140,10 +140,10 @@ function ShowStarColor(selection) {
             funct = getStarColor_normal;
             break;
         case 1:
-            funct = getColor_minData;
+            funct = getStarColor_mineralData;
             break;
         case 2:
-            funct = getColor_bioData;
+            funct = getStarColor_bioData;
             break;
     }
     $.each($(".circle-Star"), function (b, c) {
@@ -393,37 +393,6 @@ function drawConstellationLine_SVG(cline, constellation) {
         console.log("WARNING: constellationLine not drawn (constellation=" + constellation.name + ", from=" + cline.from + ", to=" + cline.to + ")");
     }
 }
-
-function getColor_minData(star, constellation) {
-    let rvalue = getMinData(star, constellation);
-    return getColor_FromMapping(rvalue, mindata_mapping);
-}
-
-function getMinData(star) {
-    return parseInt(star["planetsInfo"]["MinValue"]);
-}
-
-function getBioData(star) {
-    return parseInt(star["planetsInfo"]["BioUnits"]);
-}
-
-function getColor_FromMapping(value, mapping) {
-    value = parseInt(value);
-    for (const m in mapping) {
-        const cmap = mapping[m];
-        if (value >= cmap.min && value <= cmap.max) {
-            return cmap.color;
-        }
-    }
-    console.log("Error: VALUE IS " + value + ", no color data mapped in " + mapping);
-    return "#BEBEBE";
-}
-
-function getColor_bioData(star, constellation) {
-    let rvalue = getBioData(star, constellation);
-    return getColor_FromMapping(rvalue, biodata_mapping);
-}
-
 
 function showModal(title, content) {
     $("#modalHeader").html(title);

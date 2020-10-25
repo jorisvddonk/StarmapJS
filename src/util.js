@@ -1,3 +1,5 @@
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
+
 export function convertPrefix(prefix) {
   //Converts a 'prefix' ('A', 'B') to a proper name ("Alpha", "Beta")
   //alpha, beta, gamma, delta, epsilon, zeta, eta, theta, iota, kappa, lambda, mu, nu, xi, omicron, pi, rho, sigma, tau, upsilon, phi, chi, psi, omega
@@ -66,4 +68,26 @@ const starColors = {
 }
 export function getStarColor_normal(star) {
   return starColors[star.color.toLowerCase()];
+}
+
+export function getStarColor_mineralData(star) {
+  let rvalue = parseInt(star.planetsInfo.MinValue);
+  return getColor_FromMapping(rvalue, mindata_mapping);
+}
+
+function getColor_FromMapping(value, mapping) {
+  value = parseInt(value);
+  for (const m in mapping) {
+    const cmap = mapping[m];
+    if (value >= cmap.min && value <= cmap.max) {
+      return cmap.color;
+    }
+  }
+  console.log("Error: VALUE IS " + value + ", no color data mapped in " + mapping);
+  return "#BEBEBE";
+}
+
+export function getStarColor_bioData(star) {
+  let rvalue = parseInt(star.planetsInfo.BioUnits);
+  return getColor_FromMapping(rvalue, biodata_mapping);
 }
