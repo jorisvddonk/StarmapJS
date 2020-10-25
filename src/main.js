@@ -5,6 +5,7 @@ import starmap_spheres from "./data/starmap-spheres.js";
 import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
 import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js";
 import { starTable } from "./starTable.js";
+import { legend } from "./legend.js";
 
 const starmaps = {
     sc2: map_sc2,
@@ -399,25 +400,11 @@ function checkEnter(e) {
     return e.which !== 13;
 }
 
-const Legend = {
-    data() {
-        return {
-            mapping: undefined,
-            type: undefined
-        }
-    },
-    methods: {
-        useLegend(mapping, type) {
-            this.mapping = mapping;
-            this.type = type;
-        }
-    }
-};
-const legend = Vue.createApp(Legend).mount('#legendbody');
+const legendInstance = legend.mount('#legendbody');
 
 function renderMappingLegend(mapping, type) {
-    legend.mapping = mapping;
-    legend.type = type;
+    legendInstance.mapping = mapping;
+    legendInstance.type = type;
 }
 
 const starTableViewInstance = starTable.mount("#starModal");
