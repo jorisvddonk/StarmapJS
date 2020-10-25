@@ -4,6 +4,7 @@ import map_p6014 from "./data/map_p6014.js";
 import starmap_spheres from "./data/starmap-spheres.js";
 import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
 import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js";
+import { starTable } from "./starTable.js";
 
 const starmaps = {
     sc2: map_sc2,
@@ -434,54 +435,7 @@ function renderMappingLegend(mapping, type) {
     legend.type = type;
 }
 
-const StarTableView = {
-    data() {
-        return {
-            opened: false,
-            star: undefined,
-            headerText: undefined,
-        }
-    },
-    methods: {
-        showStar(star, starName) {
-            this.opened = true;
-            this.star = star;
-            this.headerText = starName;
-        },
-        close() {
-            this.opened = false;
-        }
-    }
-}
-const app = Vue.createApp(StarTableView);
-app.component('hazard', {
-    props: ["hazardType", "hazardValue"],
-    computed: {
-        hValue: function () {
-            return this.hazardValue !== undefined && this.hazardValue !== "" ? this.hazardValue : '-'
-        }
-    },
-    template: `
-      <span class="badge" v-bind:class="[
-        'badge-planet-hazard-' + hazardType,
-        'badge-planet-hazard' + hValue,
-        'badge-planet-hazard' + hValue + '-' + hazardType,
-        ]">{{hValue}}</span>
-    `
-});
-app.component('device', {
-    props: ["device"],
-    template: `
-      <span class="label">Device: {{device}}</span>
-    `
-});
-app.component('homeworld', {
-    props: ["homeworld"],
-    template: `
-      <span class="label label-info">{{homeworld}} Homeworld</span>
-    `
-});
-const starTableViewInstance = app.mount("#starModal");
+const starTableViewInstance = starTable.mount("#starModal");
 
 function drawStar_SVG(star, constellation) {
     let starname = (star.id == "*" ? "" : convertPrefix(star.id) + " ") + constellation.name;
