@@ -19,6 +19,25 @@ let showingSpheres = "oldSpheres";
 let showingStarmap = "sc2";
 let colortype = 0;
 
+//Which starmap each Sphere of Influence set belongs to:
+const sphereSetStarmaps = {
+    oldSpheres: "sc2",
+    newSpheres: "sc2",
+    p6014InitialSpheres: "p6014",
+    p6014AllSpheres: "p6014"
+};
+
+//Sphere of Influence set to show when switching to each starmap:
+const defaultSpheres = {
+    sc2: "oldSpheres",
+    p6014: "p6014InitialSpheres"
+};
+
+const starmapNames = {
+    sc2: "Star Control 2",
+    p6014: "Project 6014"
+};
+
 //SVG:
 let svg;
 let svg_paper;
@@ -47,6 +66,9 @@ function initPaper(svgt) {
 function displayStarmap(starmapName) {
     showingStarmap = starmapName;
     starmapdata = starmaps[starmapName];
+    if (sphereSetStarmaps[showingSpheres] != undefined && sphereSetStarmaps[showingSpheres] != showingStarmap) {
+        showingSpheres = defaultSpheres[showingStarmap];
+    }
     $(".starmapdata-icon").removeClass("icon-ok");
     $("#starmapdata-" + starmapName).addClass("icon-ok");
 
@@ -112,10 +134,10 @@ function paintLegend() {
     }
 }
 
-//Show a Sphere of Influece set
+//Show a Sphere of Influence set
 function ShowSpheres(selection) {
-    if ((selection == "oldSpheres" || selection == "newSpheres") && showingStarmap == "p6014") {
-        alert("These spheres of Influence aren't available for the Project 6014 starmap!");
+    if (selection != undefined && sphereSetStarmaps[selection] != undefined && sphereSetStarmaps[selection] != showingStarmap) {
+        alert("This Sphere of Influence set isn't available for the " + starmapNames[showingStarmap] + " starmap!");
         return;
     }
     if (selection != undefined) {
@@ -205,7 +227,10 @@ function drawSphere_SVG(grp, sphere) {
     svg.circle(grp, tx(sphere.x), ty(sphere.y), ts(sphere.size), { "class": "SoI SoI-" + sphere.name });
 }
 function drawSphereText_SVG(grp, sphere) {
-    svg.text(grp, tx(sphere.x), ty(sphere.y), sphere.name, { "font-size": ts(sphere.size) * 0.5 + "px", "class": "SoI-text SoI-" + sphere.name.replace(" ", "_") + " SoI-" + sphere.name.replace(" ", "_") + "-text" });
+    //The small spheres around home stars (as shown at the start of Project 6014) are too small to read
+    //with a font-size that scales with the sphere, so use a minimum font-size for those:
+    const fontSize = Math.max(ts(sphere.size) * 0.5, 7);
+    svg.text(grp, tx(sphere.x), ty(sphere.y), sphere.name, { "font-size": fontSize + "px", "class": "SoI-text SoI-" + sphere.name.replace(" ", "_") + " SoI-" + sphere.name.replace(" ", "_") + "-text" });
 }
 
 function findStar(text) {

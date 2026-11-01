@@ -17,6 +17,10 @@ npx http-server -c-1 -p 8081
 
 ## Changelog
 
+## 1.08
+
+The Project 6014 starmap now has its own Sphere of Influence selections: the official spoiler-free map (matching Project 6014's downloadable starmap) and an "ultimate spoilers" map showing every sphere of influence in Project 6014's galaxy, including the Lurg, Pkunk and Ilwrath. The data is taken from the Project 6014 game source and its starmap generator configuration.
+
 ## 1.07
 
 If no biological hazard data is available for a planet (because there are no biological signs at all), a grey '-' label is now shown, instead of nothing.

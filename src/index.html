@@ -36,7 +36,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         </div>
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">StarmapJS v1.07</a>
+                <a class="brand" href="#">StarmapJS v1.08</a>
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
                     <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
@@ -51,7 +51,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                             <li><a href="#" onclick="displayStarmap('sc2'); ShowSpheres('oldSpheres');"><i
                                         id="starmapdata-sc2" class="starmapdata-icon icon-ok"></i> Star Control 2</a>
                             </li>
-                            <li><a href="#" onclick="displayStarmap('p6014'); ShowSpheres('none');"><i
+                            <li><a href="#" onclick="displayStarmap('p6014'); ShowSpheres('p6014InitialSpheres');"><i
                                         id="starmapdata-p6014" class="starmapdata-icon"></i> Project 6014</a></li>
                         </ul>
                     </li>
@@ -65,6 +65,13 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                             <li><a href="#" onclick="ShowSpheres('newSpheres');"><i id="spheredata-newSpheres"
                                         class="spheredata-icon"></i> AD 2155: Star Control 2 in-game (spoilers!) <span
                                         class="label">SC2 only</span></a></li>
+                            <li><a href="#" onclick="ShowSpheres('p6014InitialSpheres');"><i
+                                        id="spheredata-p6014InitialSpheres" class="spheredata-icon"></i> AD 2165: Project
+                                    6014 spoiler-free starmap <span class="label">P6014 only</span></a></li>
+                            <li><a href="#" onclick="ShowSpheres('p6014AllSpheres');"><i
+                                        id="spheredata-p6014AllSpheres" class="spheredata-icon"></i> AD 2165: Project
+                                    6014 ultimate spoilers (all spheres!) <span class="label">P6014 only</span></a>
+                            </li>
                             <li><a href="#" onclick="ShowSpheres('none');"><i id="spheredata-none"
                                         class="spheredata-icon"></i> None</a></li>
                         </ul>

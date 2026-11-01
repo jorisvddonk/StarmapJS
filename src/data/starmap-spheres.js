@@ -99,6 +99,124 @@ export default {
     }    
     ],
 
+    // Project 6014 spoiler-free starmap, copied from the official map generator configuration
+    // (project6014/tools/map/large300-p6014.map, the same data as starmap-spoilerfree.svg).
+    p6014InitialSpheres: [
+    {
+        name: "Chmmr",
+        x: 556.2,
+        y: 851.8,
+        size: 139.0
+    },
+    {
+        name: "Earthling",
+        x: 675.2,
+        y: 745.0,
+        size: 38.0
+    },
+    {
+        name: "Orz",
+        x: 858.7,
+        y: 856.6,
+        size: 33.25
+    },
+    {
+        name: "Shofixti",
+        x: 790.8,
+        y: 626.9,
+        size: 23.75
+    },
+    {
+        name: "Syreen",
+        x: 912.5,
+        y: 977.0,
+        size: 33.25
+    },
+    {
+        name: "Yehat",
+        x: 992.3,
+        y: 629.4,
+        size: 76.0
+    }
+    ],
+
+    // "Ultimate spoilers": every race that has a homeworld in Project 6014's galaxy, at full
+    // sphere of influence size. On top of the spoiler-free set this adds Spathi and Vux (their
+    // P6014 SoI radius value is only 50, so they remain tiny dots) plus Pkunk, Ilwrath and
+    // Lurg. Pkunk and Ilwrath have no SoI radius in P6014's ship data, so their classic radii
+    // are used; Lurg's radius is the one commented out in ships/lurg/lurg.c. Races such as the
+    // Mycon, Druuge and Umgah have no homeworld left in P6014's galaxy; the Melnorme SoI is
+    // infinite and Kohr-Ah's is never drawn by the game. Radii follow the official starmap's
+    // scale (radius value * 0.095), except Chmmr, which the official config sets to 139.
+    p6014AllSpheres: [
+    {
+        name: "Chmmr",
+        x: 556.2,
+        y: 851.8,
+        size: 139.0
+    },
+    {
+        name: "Earthling",
+        x: 675.2,
+        y: 745.0,
+        size: 38.0
+    },
+    {
+        name: "Ilwrath",
+        x: 522.9,
+        y: 966.6,
+        size: 134.0
+    },
+    {
+        name: "Lurg",
+        x: 371.0,
+        y: 438.7,
+        size: 144.9
+    },
+    {
+        name: "Orz",
+        x: 858.7,
+        y: 856.6,
+        size: 33.25
+    },
+    {
+        name: "Pkunk",
+        x: 552.2,
+        y: 652.5,
+        size: 63.3
+    },
+    {
+        name: "Shofixti",
+        x: 790.8,
+        y: 626.9,
+        size: 23.75
+    },
+    {
+        name: "Spathi",
+        x: 741.6,
+        y: 968.7,
+        size: 4.75
+    },
+    {
+        name: "Syreen",
+        x: 912.5,
+        y: 977.0,
+        size: 33.25
+    },
+    {
+        name: "Vux",
+        x: 933.3,
+        y: 768.7,
+        size: 4.75
+    },
+    {
+        name: "Yehat",
+        x: 992.3,
+        y: 629.4,
+        size: 76.0
+    }
+    ],
+
     oldSpheres: [
     {
         name: "Earthling",
