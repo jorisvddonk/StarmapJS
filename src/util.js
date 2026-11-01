@@ -1,4 +1,4 @@
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.09";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.09.2";
 
 export function convertPrefix(prefix) {
   //Converts a 'prefix' ('A', 'B') to a proper name ("Alpha", "Beta")

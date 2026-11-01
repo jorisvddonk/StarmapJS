@@ -19,7 +19,7 @@ npx http-server -c-1 -p 8081
 
 ## 1.09
 
-Project 6014's star colouring (truespace colours, mineral value and bio data) and star highlighting (rainbow worlds, homeworlds and devices) now work with data extracted from the Project 6014 game itself. Per-planet mineral and bio values were regenerated with a new `P6014_STARMAP_DUMP` mode in the game's source, and the colour legends got extra buckets for Project 6014's higher values.
+Project 6014's star colouring (truespace colours, mineral value and bio data) and star highlighting (rainbow worlds, homeworlds and devices) now work with data extracted from the Project 6014 game itself. Per-planet mineral and bio values were regenerated with a new `P6014_STARMAP_DUMP` mode in the game's source, and the colour legends got extra buckets for Project 6014's higher values. Because Project 6014 is set after Star Control 2, the already-acquired Taalo Shield and Shofixti Maidens are not marked as devices on the Project 6014 map; the Black Orb at the Shofixti crash site is.
 
 ## 1.08
 
