@@ -67,20 +67,50 @@ const starColors = {
   "violet": "#7F00FF",
 }
 export function getStarColor_normal(star) {
-  return starColors[star.color.toLowerCase()];
+  const color = starColors[(star.color || "").toLowerCase()];
+  return color !== undefined ? color : "#BEBEBE";
+}
+
+function getPlanetTotal(star, field) {
+  //Fall back to summing the planets for maps without a planetsInfo summary:
+  let total = 0;
+  if (star.planets !== undefined) {
+    for (const planetI in star.planets) {
+      const value = parseInt(star.planets[planetI][field]);
+      if (!isNaN(value)) {
+        total += value;
+      }
+    }
+  }
+  return total;
 }
 
 export function getStarColor_mineralData(star) {
-  let rvalue = parseInt(star.planetsInfo.MinValue);
+  const rvalue = star.planetsInfo !== undefined && star.planetsInfo.MinValue !== undefined
+    ? parseInt(star.planetsInfo.MinValue)
+    : getPlanetTotal(star, "MinValue");
   return getColor_FromMapping(rvalue, mindata_mapping);
 }
 
 function getColor_FromMapping(value, mapping) {
   value = parseInt(value);
+  if (isNaN(value)) {
+    return "#BEBEBE";
+  }
   for (const m in mapping) {
     const cmap = mapping[m];
     if (value >= cmap.min && value <= cmap.max) {
       return cmap.color;
+    }
+  }
+  //Clamp values outside the mapping to the closest bucket.
+  if (mapping.length > 0) {
+    if (value < mapping[0].min) {
+      return mapping[0].color;
+    }
+    const last = mapping[mapping.length - 1];
+    if (value > last.max) {
+      return last.color;
     }
   }
   console.log("Error: VALUE IS " + value + ", no color data mapped in " + mapping);
@@ -88,6 +118,8 @@ function getColor_FromMapping(value, mapping) {
 }
 
 export function getStarColor_bioData(star) {
-  let rvalue = parseInt(star.planetsInfo.BioUnits);
+  const rvalue = star.planetsInfo !== undefined && star.planetsInfo.BioUnits !== undefined
+    ? parseInt(star.planetsInfo.BioUnits)
+    : getPlanetTotal(star, "BioUnits");
   return getColor_FromMapping(rvalue, biodata_mapping);
 }

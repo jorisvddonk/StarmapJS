@@ -36,7 +36,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         </div>
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">StarmapJS v1.08</a>
+                <a class="brand" href="#">StarmapJS v1.09</a>
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
                     <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
@@ -120,7 +120,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                         <td>
                             <span class="label" :style="{ backgroundColor: m.color, color: '#000' }">[ {{ m.min }},
                                 {{m.max}} ]</span>
-                            <span :if="type !== undefined">&nbsp;{{type}}</span>
+                            <span v-if="type !== undefined">&nbsp;{{type}}</span>
                         </td>
                     </tr>
                 </tbody>

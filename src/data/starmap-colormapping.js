@@ -25,6 +25,11 @@ export const mindata_mapping = [
         min: 4000,
         max: 15000,
         color: "#FF0000"
+    },
+    {
+        min: 15000,
+        max: 30000,
+        color: "#B000B0"
     }
 ];
 
@@ -58,5 +63,25 @@ export const biodata_mapping = [
         min: 300,
         max: 399,
         color: "#FF0000"
+    },
+    {
+        min: 400,
+        max: 599,
+        color: "#FF00FF"
+    },
+    {
+        min: 600,
+        max: 799,
+        color: "#C000C0"
+    },
+    {
+        min: 800,
+        max: 999,
+        color: "#900090"
+    },
+    {
+        min: 1000,
+        max: 1500,
+        color: "#600060"
     }
 ];

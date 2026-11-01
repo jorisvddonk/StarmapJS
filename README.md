@@ -17,6 +17,10 @@ npx http-server -c-1 -p 8081
 
 ## Changelog
 
+## 1.09
+
+Project 6014's star colouring (truespace colours, mineral value and bio data) and star highlighting (rainbow worlds, homeworlds and devices) now work with data extracted from the Project 6014 game itself. Per-planet mineral and bio values were regenerated with a new `P6014_STARMAP_DUMP` mode in the game's source, and the colour legends got extra buckets for Project 6014's higher values.
+
 ## 1.08
 
 The Project 6014 starmap now has its own Sphere of Influence selections: the official spoiler-free map (matching Project 6014's downloadable starmap) and an "ultimate spoilers" map showing every sphere of influence in Project 6014's galaxy, including the Lurg, Pkunk and Ilwrath. The data is taken from the Project 6014 game source and its starmap generator configuration.
