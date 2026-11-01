@@ -1,11 +1,11 @@
 /* global $, resizeStars, initSVGPan */
-import map_sc2 from "./data/map_sc2.js";
-import map_p6014 from "./data/map_p6014.js";
-import starmap_spheres from "./data/starmap-spheres.js";
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js";
-import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js";
-import { starTable } from "./starTable.js";
-import { legend } from "./legend.js";
+import map_sc2 from "./data/map_sc2.js?v=1.09";
+import map_p6014 from "./data/map_p6014.js?v=1.09";
+import starmap_spheres from "./data/starmap-spheres.js?v=1.09";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.09";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.09";
+import { starTable } from "./starTable.js?v=1.09";
+import { legend } from "./legend.js?v=1.09";
 
 const starmaps = {
     sc2: map_sc2,
