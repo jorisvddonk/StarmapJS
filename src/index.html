@@ -14,6 +14,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
 <head>
     <title>StarmapJS: Star Control 2 interactive JavaScript starmap</title>
     <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
     <link type="text/css" rel="stylesheet" href="vendor/jquery.qtip.min.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="vendor/jquery.min.js"></script>
@@ -26,7 +27,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
 
     <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="main.js?v=1.09.2" type="module"></script>
+    <script src="main.js?v=1.10" type="module"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
         </div>
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">StarmapJS v1.09</a>
+                <a class="brand" href="#">StarmapJS v1.10</a>
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
                     <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
@@ -96,6 +97,18 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                             <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
                             <li><a href="#" onclick="findHomeworlds();">Highlight stars with Alien Homeworlds</a></li>
                             <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Export starmap<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="exportStarmapPNG();"><i class="icon-picture"></i> PNG
+                                    image</a></li>
+                            <li><a href="#" onclick="exportStarmapPDF('a4');"><i class="icon-file"></i> PDF - A4
+                                    (landscape)</a></li>
+                            <li><a href="#" onclick="exportStarmapPDF('letter');"><i class="icon-file"></i> PDF - US
+                                    Letter (landscape)</a></li>
                         </ul>
                     </li>
                     <form onSubmit="" onkeypress="return checkEnter(event)" class="navbar-search pull-left">

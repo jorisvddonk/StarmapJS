@@ -1,11 +1,12 @@
 /* global $, resizeStars, initSVGPan */
-import map_sc2 from "./data/map_sc2.js?v=1.09.2";
-import map_p6014 from "./data/map_p6014.js?v=1.09.2";
-import starmap_spheres from "./data/starmap-spheres.js?v=1.09.2";
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.09.2";
-import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.09.2";
-import { starTable } from "./starTable.js?v=1.09.2";
-import { legend } from "./legend.js?v=1.09.2";
+import map_sc2 from "./data/map_sc2.js?v=1.10";
+import map_p6014 from "./data/map_p6014.js?v=1.10";
+import starmap_spheres from "./data/starmap-spheres.js?v=1.10";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.10";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.10";
+import { starTable } from "./starTable.js?v=1.10";
+import { legend } from "./legend.js?v=1.10";
+import { exportPNG, exportPDF } from "./export.js?v=1.10";
 
 const starmaps = {
     sc2: map_sc2,
@@ -463,6 +464,33 @@ $(document).ready(new function () {
 function findStar_() {
     findStar($("#findstar").val());
 }
+
+function getSphereSetLabel() {
+    const anchor = $("#spheredata-" + showingSpheres).parent("a").clone();
+    anchor.find(".label").remove();
+    return anchor.text().replace(/\s+/g, " ").trim();
+}
+
+function getExportOptions() {
+    return {
+        mapKey: showingStarmap,
+        mapName: starmapNames[showingStarmap],
+        sphereName: getSphereSetLabel() || "No spheres of influence",
+        colorMode: colortype
+    };
+}
+
+function showExportError(error) {
+    console.error(error);
+    alert("Export failed: " + (error && error.message ? error.message : error));
+}
+
+window.exportStarmapPNG = function () {
+    return exportPNG(getExportOptions()).catch(showExportError);
+};
+window.exportStarmapPDF = function (paperSize) {
+    return exportPDF(getExportOptions(), paperSize).catch(showExportError);
+};
 
 // "exports" for index.html
 window.displayStarmap = displayStarmap;
