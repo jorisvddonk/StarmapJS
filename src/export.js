@@ -1,5 +1,5 @@
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11";
-import { starColors } from "./util.js?v=1.11";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11.1";
+import { starColors } from "./util.js?v=1.11.1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAP_SIZE = 800; // s_width + 2 * s_pad_x
@@ -31,7 +31,7 @@ function exportFilename(options, extension) {
 }
 
 async function getExportCSS() {
-  const cssUrl = new URL("starmap-styling.css?v=1.11", import.meta.url);
+  const cssUrl = new URL("starmap-styling.css?v=1.11.1", import.meta.url);
   const response = await fetch(cssUrl);
   if (!response.ok) {
     throw new Error("Could not load starmap styling (" + response.status + ")");
@@ -154,8 +154,12 @@ export async function exportPNG(options) {
 }
 
 function hexToRgb(hex) {
-  const value = parseInt(hex.replace("#", ""), 16);
-  return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+  let value = hex.replace("#", "");
+  if (value.length === 3) {
+    value = value[0] + value[0] + value[1] + value[1] + value[2] + value[2];
+  }
+  const numeric = parseInt(value, 16);
+  return [(numeric >> 16) & 255, (numeric >> 8) & 255, numeric & 255];
 }
 
 function drawLegend(doc, x, y, width, colorMode, columns) {

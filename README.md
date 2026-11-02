@@ -19,7 +19,7 @@ npx http-server -c-1 -p 8081
 
 ## 1.11
 
-The export menu now also offers an SVG download, and the A4 and US Letter PDF exports are available in both portrait and landscape orientation. PDF headers use in-universe chart titles ("HyperSpace Star Map", "Mineral Survey Chart", "Biological Survey Chart") instead of the app name.
+The export menu now also offers an SVG download, and the A4 and US Letter PDF exports are available in both portrait and landscape orientation. PDF headers use in-universe chart titles ("HyperSpace Star Map", "Mineral Survey Chart", "Biological Survey Chart") instead of the app name. Also fixed the true-space legend swatches for short hex colours (red/yellow/cyan).
 
 ## 1.10
 

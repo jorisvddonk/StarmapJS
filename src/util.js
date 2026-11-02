@@ -1,4 +1,4 @@
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11.1";
 
 export function convertPrefix(prefix) {
   //Converts a 'prefix' ('A', 'B') to a proper name ("Alpha", "Beta")
@@ -58,11 +58,11 @@ export const starColors = {
   "blue": "#1464FF",
   "orange": "#FF6400",
   "green": "#00C800",
-  "red": "#f00",
+  "red": "#FF0000",
   "white": "#C8EBEB",
   "gray": "#C8EBEB",
-  "yellow": "#ff0",
-  "cyan": "#0ff",
+  "yellow": "#FFFF00",
+  "cyan": "#00FFFF",
   "purple": "#800080",
   "violet": "#7F00FF",
 }
