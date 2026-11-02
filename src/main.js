@@ -1,12 +1,12 @@
 /* global $, resizeStars, initSVGPan */
-import map_sc2 from "./data/map_sc2.js?v=1.10";
-import map_p6014 from "./data/map_p6014.js?v=1.10";
-import starmap_spheres from "./data/starmap-spheres.js?v=1.10";
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.10";
-import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.10";
-import { starTable } from "./starTable.js?v=1.10";
-import { legend } from "./legend.js?v=1.10";
-import { exportPNG, exportPDF } from "./export.js?v=1.10";
+import map_sc2 from "./data/map_sc2.js?v=1.11";
+import map_p6014 from "./data/map_p6014.js?v=1.11";
+import starmap_spheres from "./data/starmap-spheres.js?v=1.11";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.11";
+import { starTable } from "./starTable.js?v=1.11";
+import { legend } from "./legend.js?v=1.11";
+import { exportPNG, exportPDF, exportSVG } from "./export.js?v=1.11";
 
 const starmaps = {
     sc2: map_sc2,
@@ -485,11 +485,14 @@ function showExportError(error) {
     alert("Export failed: " + (error && error.message ? error.message : error));
 }
 
+window.exportStarmapSVG = function () {
+    return exportSVG(getExportOptions()).catch(showExportError);
+};
 window.exportStarmapPNG = function () {
     return exportPNG(getExportOptions()).catch(showExportError);
 };
-window.exportStarmapPDF = function (paperSize) {
-    return exportPDF(getExportOptions(), paperSize).catch(showExportError);
+window.exportStarmapPDF = function (paperSize, orientation) {
+    return exportPDF(getExportOptions(), paperSize, orientation).catch(showExportError);
 };
 
 // "exports" for index.html

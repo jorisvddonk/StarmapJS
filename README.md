@@ -17,6 +17,10 @@ npx http-server -c-1 -p 8081
 
 ## Changelog
 
+## 1.11
+
+The export menu now also offers an SVG download, and the A4 and US Letter PDF exports are available in both portrait and landscape orientation. PDF headers use in-universe chart titles ("HyperSpace Star Map", "Mineral Survey Chart", "Biological Survey Chart") instead of the app name.
+
 ## 1.10
 
 Added export options for the starmap: a PNG image, and landscape PDFs in A4 or US Letter size. The PDF includes the current starmap, the selected spheres of influence, the star colour mode and a star colour legend.

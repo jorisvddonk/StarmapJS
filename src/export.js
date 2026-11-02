@@ -1,5 +1,5 @@
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.10";
-import { starColors } from "./util.js?v=1.10";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11";
+import { starColors } from "./util.js?v=1.11";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAP_SIZE = 800; // s_width + 2 * s_pad_x
@@ -19,13 +19,19 @@ const COLOR_MODE_LABELS = [
   "Available biological data (units)"
 ];
 
+const CHART_TITLES = [
+  "HyperSpace Star Map",
+  "Mineral Survey Chart",
+  "Biological Survey Chart"
+];
+
 function exportFilename(options, extension) {
   const date = new Date().toISOString().slice(0, 10);
   return "starmapjs-" + options.mapKey + "-" + date + "." + extension;
 }
 
 async function getExportCSS() {
-  const cssUrl = new URL("starmap-styling.css?v=1.10", import.meta.url);
+  const cssUrl = new URL("starmap-styling.css?v=1.11", import.meta.url);
   const response = await fetch(cssUrl);
   if (!response.ok) {
     throw new Error("Could not load starmap styling (" + response.status + ")");
@@ -152,7 +158,7 @@ function hexToRgb(hex) {
   return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
 }
 
-function drawLegend(doc, x, y, width, colorMode) {
+function drawLegend(doc, x, y, width, colorMode, columns) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(11);
   doc.setTextColor(0);
@@ -177,31 +183,36 @@ function drawLegend(doc, x, y, width, colorMode) {
   doc.setLineWidth(0.2);
   doc.line(x, y + 9, x + width, y + 9);
 
-  let rowY = y + 16;
+  const columnCount = columns || 1;
+  const rowsPerColumn = Math.ceil(rows.length / columnCount);
+  const columnWidth = width / columnCount;
   const rowHeight = 6;
-  rows.forEach(function (row) {
+  rows.forEach(function (row, index) {
+    const column = Math.floor(index / rowsPerColumn);
+    const rowY = y + 16 + (index % rowsPerColumn) * rowHeight;
+    const rowX = x + column * columnWidth;
     const rgb = hexToRgb(row.color);
     doc.setFillColor(rgb[0], rgb[1], rgb[2]);
-    doc.rect(x, rowY - 3.5, 4.5, 4.5, "F");
+    doc.rect(rowX, rowY - 3.5, 4.5, 4.5, "F");
     doc.setDrawColor(80);
     doc.setLineWidth(0.1);
-    doc.rect(x, rowY - 3.5, 4.5, 4.5, "S");
+    doc.rect(rowX, rowY - 3.5, 4.5, 4.5, "S");
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
     doc.setTextColor(0);
-    doc.text(row.label, x + 7, rowY);
-    rowY += rowHeight;
+    doc.text(row.label, rowX + 7, rowY);
   });
 }
 
-function buildPDFDocument(options, paperSize, canvas) {
+function buildPDFDocument(options, paperSize, orientation, canvas) {
   const jsPDF = window.jspdf && window.jspdf.jsPDF;
   if (!jsPDF) {
     throw new Error("The PDF library could not be loaded. Check your internet connection and try again.");
   }
 
+  const isPortrait = orientation === "portrait";
   const doc = new jsPDF({
-    orientation: "landscape",
+    orientation: isPortrait ? "portrait" : "landscape",
     unit: "mm",
     format: paperSize
   });
@@ -209,37 +220,56 @@ function buildPDFDocument(options, paperSize, canvas) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 12;
-  const mapTop = 36;
+  const mapTop = 32;
   const footerHeight = 10;
-  const legendWidth = 62;
-  const mapSize = Math.min(
-    pageHeight - mapTop - footerHeight - margin,
-    pageWidth - (2 * margin) - legendWidth - 10
-  );
-  const mapX = margin;
-  const mapY = mapTop + Math.max(0, (pageHeight - mapTop - footerHeight - margin - mapSize) / 2);
+  let mapX, mapY, mapSize, legendX, legendY, legendWidth, legendColumns;
+
+  if (isPortrait) {
+    const legendHeight = 46;
+    mapSize = Math.min(
+      pageWidth - (2 * margin),
+      pageHeight - mapTop - footerHeight - margin - 6 - legendHeight
+    );
+    mapX = (pageWidth - mapSize) / 2;
+    mapY = mapTop;
+    legendX = margin;
+    legendY = mapY + mapSize + 8;
+    legendWidth = pageWidth - (2 * margin);
+    legendColumns = 2;
+  } else {
+    const landscapeLegendWidth = 62;
+    mapSize = Math.min(
+      pageHeight - mapTop - footerHeight - margin,
+      pageWidth - (2 * margin) - landscapeLegendWidth - 10
+    );
+    mapX = margin;
+    mapY = mapTop + Math.max(0, (pageHeight - mapTop - footerHeight - margin - mapSize) / 2);
+    legendX = mapX + mapSize + 10;
+    legendY = mapY + 2;
+    legendWidth = pageWidth - legendX - margin;
+    legendColumns = 1;
+  }
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(20);
   doc.setTextColor(0);
-  doc.text("StarmapJS", margin, 15);
+  doc.text(CHART_TITLES[options.colorMode], margin, 15);
 
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(12);
-  doc.text(options.mapName, margin, 22);
+  doc.setFontSize(11);
+  doc.text(options.mapName, margin, 21.5);
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   doc.setTextColor(80);
-  doc.text(options.sphereName, margin, 27.5);
-  doc.text(COLOR_MODE_LABELS[options.colorMode], margin, 31.5);
+  doc.text(options.sphereName, margin, 26.5);
 
   doc.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", mapX, mapY, mapSize, mapSize);
   doc.setDrawColor(0);
   doc.setLineWidth(0.25);
   doc.rect(mapX, mapY, mapSize, mapSize);
 
-  drawLegend(doc, mapX + mapSize + 10, mapY + 2, pageWidth - (mapX + mapSize + 10) - margin, options.colorMode);
+  drawLegend(doc, legendX, legendY, legendWidth, options.colorMode, legendColumns);
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(7);
@@ -256,11 +286,21 @@ function buildPDFDocument(options, paperSize, canvas) {
   return doc;
 }
 
-export async function exportPDF(options, paperSize) {
+export async function exportPDF(options, paperSize, orientation) {
   const format = paperSize === "letter" ? "letter" : "a4";
+  const direction = orientation === "portrait" ? "portrait" : "landscape";
   const canvas = await renderStarmapCanvas(2000);
-  const doc = buildPDFDocument(options, format, canvas);
+  const doc = buildPDFDocument(options, format, direction, canvas);
   const blob = doc.output("blob");
-  downloadBlob(blob, exportFilename(options, format + ".pdf"));
+  downloadBlob(blob, exportFilename(options, format + "-" + direction + ".pdf"));
+  return blob;
+}
+
+export async function exportSVG(options) {
+  const svg = await buildExportSVG(MAP_SIZE);
+  const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    new XMLSerializer().serializeToString(svg);
+  const blob = new Blob([xml], { type: "image/svg+xml;charset=utf-8" });
+  downloadBlob(blob, exportFilename(options, "svg"));
   return blob;
 }
