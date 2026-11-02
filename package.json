@@ -1,6 +1,6 @@
 {
   "name": "starmapjs",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "This is a fairly well-featured SVG starmap for [The Ur-Quan Masters](http://sc2.sourceforge.net/) and Project 6014.",
   "main": "index.js",
   "scripts": {

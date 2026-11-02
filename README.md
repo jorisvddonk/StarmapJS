@@ -17,6 +17,10 @@ npx http-server -c-1 -p 8081
 
 ## Changelog
 
+## 1.12
+
+Map views are now shareable through the URL hash: the selected starmap, spheres of influence, star colour mode, active star highlight and pan/zoom position are all encoded. Use "Copy link to this map" in the export menu, or just copy the address bar.
+
 ## 1.11
 
 The export menu now also offers an SVG download, and the A4 and US Letter PDF exports are available in both portrait and landscape orientation. PDF headers use in-universe chart titles ("HyperSpace Star Map", "Mineral Survey Chart", "Biological Survey Chart") instead of the app name. Also fixed the true-space legend swatches for short hex colours (red/yellow/cyan).

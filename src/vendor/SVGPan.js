@@ -217,6 +217,7 @@ function handleMouseWheel(evt) {
     
     resizeStars();
     repositionQTips();
+    notifyViewChanged();
 }
 
 /**
@@ -237,6 +238,7 @@ function handleMouseMove(evt) {
         var p = getEventPoint(evt).matrixTransform(stateTf);
 
         setCTM(g, stateTf.inverse().translate(p.x - stateOrigin.x, p.y - stateOrigin.y));
+        notifyViewChanged();
     } else if(state == 'drag' && enableDrag) {
         // Drag mode
         var p = getEventPoint(evt).matrixTransform(g.getCTM().inverse());
@@ -298,10 +300,17 @@ function handleMouseUp(evt) {
         state = '';
     }
     repositionQTips();
+    notifyViewChanged();
 }
 
 function repositionQTips() {
     $('.qtip.ui-tooltip').qtip('reposition');
+}
+
+function notifyViewChanged() {
+    if (typeof window.starmapViewChanged === "function") {
+        window.starmapViewChanged();
+    }
 }
 
 function resizeStars() {

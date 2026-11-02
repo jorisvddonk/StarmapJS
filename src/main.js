@@ -1,12 +1,12 @@
 /* global $, resizeStars, initSVGPan */
-import map_sc2 from "./data/map_sc2.js?v=1.11.1";
-import map_p6014 from "./data/map_p6014.js?v=1.11.1";
-import starmap_spheres from "./data/starmap-spheres.js?v=1.11.1";
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.11.1";
-import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.11.1";
-import { starTable } from "./starTable.js?v=1.11.1";
-import { legend } from "./legend.js?v=1.11.1";
-import { exportPNG, exportPDF, exportSVG } from "./export.js?v=1.11.1";
+import map_sc2 from "./data/map_sc2.js?v=1.12";
+import map_p6014 from "./data/map_p6014.js?v=1.12";
+import starmap_spheres from "./data/starmap-spheres.js?v=1.12";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.12";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.12";
+import { starTable } from "./starTable.js?v=1.12";
+import { legend } from "./legend.js?v=1.12";
+import { exportPNG, exportPDF, exportSVG } from "./export.js?v=1.12";
 
 const starmaps = {
     sc2: map_sc2,
@@ -19,6 +19,8 @@ const spheres = starmap_spheres; // Filled in starmap-spheres.js
 let showingSpheres = "oldSpheres";
 let showingStarmap = "sc2";
 let colortype = 0;
+let showingHighlights = [];
+let hashUpdateTimer;
 
 //Which starmap each Sphere of Influence set belongs to:
 const sphereSetStarmaps = {
@@ -62,10 +64,12 @@ function initPaper(svgt) {
     $("svg").attr("width", "100%");
     svg_paper = svg.group(null, "viewport", { transform: "translate(0,0)" });
     displayStarmap(showingStarmap);
+    loadStateFromHash();
 }
 
 function displayStarmap(starmapName) {
     showingStarmap = starmapName;
+    showingHighlights = [];
     starmapdata = starmaps[starmapName];
     if (sphereSetStarmaps[showingSpheres] != undefined && sphereSetStarmaps[showingSpheres] != showingStarmap) {
         showingSpheres = defaultSpheres[showingStarmap];
@@ -74,6 +78,7 @@ function displayStarmap(starmapName) {
     $("#starmapdata-" + starmapName).addClass("icon-ok");
 
     paintPaper_SVG();
+    scheduleHashUpdate();
 }
 
 let s_width = 750; //Inner starmap width in px
@@ -153,6 +158,7 @@ function ShowSpheres(selection) {
     }
     $(".spheredata-icon").removeClass("icon-ok");
     $("#spheredata-" + showingSpheres).addClass("icon-ok");
+    scheduleHashUpdate();
 }
 
 function ShowStarColor(selection) {
@@ -179,6 +185,7 @@ function ShowStarColor(selection) {
     $(".colortype-icon").removeClass("icon-ok");
     $("#colortype-" + colortype).addClass("icon-ok");
     paintLegend();
+    scheduleHashUpdate();
 }
 
 function parseTypeAhead() {
@@ -296,15 +303,20 @@ function _anim_star_highlight_Off() {
 
 
 function unhighlightAll() {
+    showingHighlights = [];
     $(".circle-Star").each(function (a, b) {
         const star = $(b).data('star');
         if (star != undefined) {
             unhighlightStar(b);
         }
     });
+    scheduleHashUpdate();
 }
 
 function findRainbowWorlds() {
+    if (showingHighlights.indexOf("rainbow") < 0) {
+        showingHighlights.push("rainbow");
+    }
     $(".circle-Star").each(function (a, b) {
         let star = $(b).data('star');
         let fndR = false;
@@ -319,9 +331,13 @@ function findRainbowWorlds() {
             }
         }
     });
+    scheduleHashUpdate();
 }
 
 function findDevices() {
+    if (showingHighlights.indexOf("device") < 0) {
+        showingHighlights.push("device");
+    }
     $(".circle-Star").each(function (a, b) {
         let star = $(b).data('star');
         let fndR = false;
@@ -336,9 +352,13 @@ function findDevices() {
             }
         }
     });
+    scheduleHashUpdate();
 }
 
 function findHomeworlds() {
+    if (showingHighlights.indexOf("home") < 0) {
+        showingHighlights.push("home");
+    }
     $(".circle-Star").each(function (a, b) {
         let star = $(b).data('star');
         let fndR = false;
@@ -353,6 +373,7 @@ function findHomeworlds() {
             }
         }
     });
+    scheduleHashUpdate();
 }
 
 function addTooltip_SVG(Rnode, text) {
@@ -453,6 +474,11 @@ window.onload = function () {
     $("#myModal").modal('hide');
 }
 
+//Keep the shared map hash when clicking menu/nav links that use href="#".
+$(document).on("click", 'a[href="#"]', function (event) {
+    event.preventDefault();
+});
+
 let timer;
 $(document).ready(new function () {
     $('#findstar').live('change', function () {
@@ -463,6 +489,166 @@ $(document).ready(new function () {
 
 function findStar_() {
     findStar($("#findstar").val());
+}
+
+function normalizeTransform(transform) {
+    const matrix = transform.replace(/\s+/g, "").match(/^matrix\(([^)]+)\)$/);
+    if (matrix) {
+        const values = matrix[1].split(",").map(function (value) { return parseFloat(value); });
+        if (values.length !== 6 || values.some(isNaN)) {
+            return "";
+        }
+        if (values[0] === 1 && values[1] === 0 && values[2] === 0
+                && values[3] === 1 && values[4] === 0 && values[5] === 0) {
+            return "";
+        }
+        return "matrix(" + values.map(function (value) {
+            return parseFloat(value.toFixed(3));
+        }).join(",") + ")";
+    }
+    const translate = transform.replace(/\s+/g, "").match(/^translate\(([^)]+)\)$/);
+    if (translate) {
+        const values = translate[1].split(",").map(function (value) { return parseFloat(value); });
+        if (values.length !== 2 || values.some(isNaN) || (values[0] === 0 && values[1] === 0)) {
+            return "";
+        }
+        return "translate(" + values.map(function (value) {
+            return parseFloat(value.toFixed(3));
+        }).join(",") + ")";
+    }
+    const scale = transform.replace(/\s+/g, "").match(/^scale\(([^)]+)\)$/);
+    if (scale) {
+        const value = parseFloat(scale[1]);
+        return isNaN(value) || value === 1 ? "" : "scale(" + parseFloat(value.toFixed(3)) + ")";
+    }
+    return "";
+}
+
+function getViewTransform() {
+    const viewport = document.querySelector("#viewport");
+    if (!viewport) {
+        return "";
+    }
+    const transform = viewport.getAttribute("transform");
+    return transform ? normalizeTransform(transform) : "";
+}
+
+function buildHash() {
+    const params = new URLSearchParams();
+    params.set("map", showingStarmap);
+    params.set("spheres", showingSpheres);
+    params.set("color", String(colortype));
+    if (showingHighlights.length > 0) {
+        params.set("highlight", showingHighlights.join(","));
+    }
+    const view = getViewTransform();
+    if (view) {
+        params.set("view", view);
+    }
+    return params.toString();
+}
+
+function writeHash() {
+    const hash = "#" + buildHash();
+    if (window.location.hash === hash) {
+        return;
+    }
+    try {
+        history.replaceState(null, "", hash);
+    } catch (error) {
+        window.location.hash = hash;
+    }
+}
+
+function scheduleHashUpdate() {
+    clearTimeout(hashUpdateTimer);
+    hashUpdateTimer = setTimeout(writeHash, 200);
+}
+
+function applyViewTransform(transform) {
+    if (!transform || !/^(matrix|translate|scale)\([-0-9.,\se]+\)$/.test(transform)) {
+        return;
+    }
+    const viewport = document.querySelector("#viewport");
+    if (!viewport) {
+        return;
+    }
+    viewport.setAttribute("transform", transform);
+    let zoom = 1;
+    const matrix = transform.match(/^matrix\(([^)]+)\)$/);
+    if (matrix) {
+        const values = matrix[1].split(",").map(function (value) { return parseFloat(value); });
+        if (values.length === 6) {
+            zoom = Math.sqrt(values[0] * values[0] + values[1] * values[1]);
+        }
+    } else {
+        const scale = transform.match(/^scale\(([^)]+)\)$/);
+        if (scale) {
+            zoom = parseFloat(scale[1]) || 1;
+        }
+    }
+    if (isFinite(zoom) && zoom > 0) {
+        window.totalZoom = zoom;
+        if (typeof resizeStars === "function") {
+            resizeStars();
+        }
+    }
+}
+
+function loadStateFromHash() {
+    if (!svg_paper) {
+        return;
+    }
+    const raw = window.location.hash.replace(/^#/, "");
+    if (!raw) {
+        return;
+    }
+    const params = new URLSearchParams(raw);
+    const map = params.get("map");
+    if (map && starmaps[map] && map !== showingStarmap) {
+        displayStarmap(map);
+    }
+    const sphereKey = params.get("spheres");
+    if (sphereKey) {
+        if (sphereSetStarmaps[sphereKey] === undefined
+                || sphereSetStarmaps[sphereKey] === showingStarmap) {
+            ShowSpheres(sphereKey);
+        } else {
+            ShowSpheres(defaultSpheres[showingStarmap]);
+        }
+    }
+    const color = parseInt(params.get("color"), 10);
+    if (!isNaN(color) && color >= 0 && color <= 2) {
+        ShowStarColor(color);
+    }
+    unhighlightAll();
+    const highlights = (params.get("highlight") || "").split(",");
+    if (highlights.indexOf("rainbow") >= 0) {
+        findRainbowWorlds();
+    }
+    if (highlights.indexOf("home") >= 0) {
+        findHomeworlds();
+    }
+    if (highlights.indexOf("device") >= 0) {
+        findDevices();
+    }
+    applyViewTransform(params.get("view"));
+    scheduleHashUpdate();
+}
+
+function copyStarmapLink() {
+    clearTimeout(hashUpdateTimer);
+    writeHash();
+    const url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+            alert("Link copied to clipboard.");
+        }).catch(function () {
+            prompt("Copy this link:", url);
+        });
+    } else {
+        prompt("Copy this link:", url);
+    }
 }
 
 function getSphereSetLabel() {
@@ -504,3 +690,9 @@ window.unhighlightAll = unhighlightAll;
 window.findHomeworlds = findHomeworlds;
 window.findDevices = findDevices;
 window.checkEnter = checkEnter;
+window.copyStarmapLink = copyStarmapLink;
+window.starmapViewChanged = scheduleHashUpdate;
+
+window.addEventListener("hashchange", function () {
+    loadStateFromHash();
+});
