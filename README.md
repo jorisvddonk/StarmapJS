@@ -15,7 +15,36 @@ cd src
 npx http-server -c-1 -p 8081
 ```
 
+## Importing a UQM save game
+
+The **Game save** menu can import a vanilla UQM save (`uqmsave.NN`, with the
+`UMS` header). Project 6014, UQM-HD and MegaMod saves are rejected because they
+use incompatible save formats.
+
+The import reads the game's per-planet scan records and:
+
+- marks a star as **visited** when at least one artifact, mineral deposit or
+  biological lifeform was retrieved from any of its planets or moons;
+- subtracts the retrieved deposits from the planet and star mineral value,
+  mineral volume and bio values, so a fully mined system reports **0**
+  minerals and a fully collected planet reports **0** bio units;
+- updates the mineral and biological star colour modes immediately.
+
+Use **Game save -> Highlight visited stars** to show the visited systems, and
+**Game save -> Clear imported save** to restore the original dataset. Save
+data is processed locally in the browser and is not uploaded. Imported values
+are not encoded in shareable map links.
+
 ## Changelog
+
+## 1.13
+
+Added import for vanilla UQM save games. The **Game save** menu marks systems
+where an artifact, mineral or bio was retrieved as visited, and reduces the
+per-planet and per-star mineral/bio totals to the amounts still available. Fully
+mined systems now report 0. Includes per-deposit value data generated with the
+vanilla UQM 0.8 planet generator, plus Node tests for the save parser and
+resource arithmetic.
 
 ## 1.12
 

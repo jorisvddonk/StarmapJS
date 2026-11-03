@@ -1,5 +1,5 @@
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.12";
-import { starColors } from "./util.js?v=1.12";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.13";
+import { starColors } from "./util.js?v=1.13";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAP_SIZE = 800; // s_width + 2 * s_pad_x
@@ -31,7 +31,7 @@ function exportFilename(options, extension) {
 }
 
 async function getExportCSS() {
-  const cssUrl = new URL("starmap-styling.css?v=1.12", import.meta.url);
+  const cssUrl = new URL("starmap-styling.css?v=1.13", import.meta.url);
   const response = await fetch(cssUrl);
   if (!response.ok) {
     throw new Error("Could not load starmap styling (" + response.status + ")");

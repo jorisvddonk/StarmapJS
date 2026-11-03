@@ -1,10 +1,10 @@
 {
   "name": "starmapjs",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "This is a fairly well-featured SVG starmap for [The Ur-Quan Masters](http://sc2.sourceforge.net/) and Project 6014.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/saveimport.test.mjs"
   },
   "repository": {
     "type": "git",

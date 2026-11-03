@@ -27,17 +27,20 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
 
     <link rel="stylesheet" type="text/css" href="starmap-styling.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="main.js?v=1.12" type="module"></script>
+    <script src="main.js?v=1.13" type="module"></script>
 </head>
 
 <body>
     <div class="navbar">
+        <input id="uqmSaveInput" type="file" style="display:none" onchange="importUqmSaveFile(event)" />
         <div id="svgStarmap"
             style="float:left; position:absolute; bottom:0px; left:0px; right:0px; top:45px; overflow:hidden; z-index:-1">
         </div>
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">StarmapJS v1.12</a>
+                <a class="brand" href="#">StarmapJS v1.13</a>
+                <span id="saveStatus" class="label label-info"
+                    style="display:none; margin-left:8px; vertical-align:middle;"></span>
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <!-- Needed for the Phone/Tablet interface menu button; do not remove -->
                     <span class="icon-bar"></span> <!-- Don't remove this these three spans form an icon -->
@@ -97,6 +100,19 @@ Copyright (c) 2012, Joris van de Donk (this copyright notice applies to this fil
                             <li><a href="#" onclick="findRainbowWorlds();">Highlight stars with Rainbow Worlds</a></li>
                             <li><a href="#" onclick="findHomeworlds();">Highlight stars with Alien Homeworlds</a></li>
                             <li><a href="#" onclick="findDevices();">Highlight stars with worlds with devices</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Game save<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="document.getElementById('uqmSaveInput').click();"><i
+                                        class="icon-folder-open"></i> Import vanilla UQM save...</a></li>
+                            <li><a href="#" onclick="findVisitedStars();"><i class="icon-eye-open"></i> Highlight
+                                    visited stars</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" onclick="clearUqmSave();"><i class="icon-trash"></i> Clear imported
+                                    save</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

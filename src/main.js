@@ -1,12 +1,13 @@
 /* global $, resizeStars, initSVGPan */
-import map_sc2 from "./data/map_sc2.js?v=1.12";
-import map_p6014 from "./data/map_p6014.js?v=1.12";
-import starmap_spheres from "./data/starmap-spheres.js?v=1.12";
-import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.12";
-import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.12";
-import { starTable } from "./starTable.js?v=1.12";
-import { legend } from "./legend.js?v=1.12";
-import { exportPNG, exportPDF, exportSVG } from "./export.js?v=1.12";
+import map_sc2 from "./data/map_sc2.js?v=1.13";
+import map_p6014 from "./data/map_p6014.js?v=1.13";
+import starmap_spheres from "./data/starmap-spheres.js?v=1.13";
+import { mindata_mapping, biodata_mapping } from "./data/starmap-colormapping.js?v=1.13";
+import { convertPrefix, getStarColor_normal, getStarColor_mineralData, getStarColor_bioData } from "./util.js?v=1.13";
+import { starTable } from "./starTable.js?v=1.13";
+import { legend } from "./legend.js?v=1.13";
+import { exportPNG, exportPDF, exportSVG } from "./export.js?v=1.13";
+import { parseVanillaSave, applySaveToStarmap, clearImportedSave } from "./saveimport.js?v=1.13";
 
 const starmaps = {
     sc2: map_sc2,
@@ -20,6 +21,7 @@ let showingSpheres = "oldSpheres";
 let showingStarmap = "sc2";
 let colortype = 0;
 let showingHighlights = [];
+let visitedStars = new Set();
 let hashUpdateTimer;
 
 //Which starmap each Sphere of Influence set belongs to:
@@ -376,6 +378,19 @@ function findHomeworlds() {
     scheduleHashUpdate();
 }
 
+function findVisitedStars() {
+    if (showingHighlights.indexOf("visited") < 0) {
+        showingHighlights.push("visited");
+    }
+    $(".circle-Star").each(function (a, b) {
+        const star = $(b).data('star');
+        if (star != undefined && visitedStars.has(star)) {
+            highlightStar(b);
+        }
+    });
+    scheduleHashUpdate();
+}
+
 function addTooltip_SVG(Rnode, text) {
     $(Rnode).qtip({
         content: {
@@ -538,8 +553,12 @@ function buildHash() {
     params.set("map", showingStarmap);
     params.set("spheres", showingSpheres);
     params.set("color", String(colortype));
-    if (showingHighlights.length > 0) {
-        params.set("highlight", showingHighlights.join(","));
+    const sharedHighlights = showingHighlights.filter(function (name) {
+        // Imported save data is local; a link cannot restore it.
+        return name !== "visited";
+    });
+    if (sharedHighlights.length > 0) {
+        params.set("highlight", sharedHighlights.join(","));
     }
     const view = getViewTransform();
     if (view) {
@@ -632,6 +651,9 @@ function loadStateFromHash() {
     if (highlights.indexOf("device") >= 0) {
         findDevices();
     }
+    if (highlights.indexOf("visited") >= 0) {
+        findVisitedStars();
+    }
     applyViewTransform(params.get("view"));
     scheduleHashUpdate();
 }
@@ -671,6 +693,98 @@ function showExportError(error) {
     alert("Export failed: " + (error && error.message ? error.message : error));
 }
 
+function repaintStarmapWithHighlights() {
+    const modes = showingHighlights.slice();
+    paintPaper_SVG();
+    ShowSpheres(showingSpheres);
+    ShowStarColor(colortype);
+    showingHighlights = [];
+    if (modes.indexOf("rainbow") >= 0) {
+        findRainbowWorlds();
+    }
+    if (modes.indexOf("home") >= 0) {
+        findHomeworlds();
+    }
+    if (modes.indexOf("device") >= 0) {
+        findDevices();
+    }
+    if (modes.indexOf("visited") >= 0) {
+        findVisitedStars();
+    }
+    scheduleHashUpdate();
+}
+
+function setSaveStatus(text) {
+    const status = document.getElementById("saveStatus");
+    if (!status) {
+        return;
+    }
+    status.textContent = text || "";
+    status.style.display = text ? "" : "none";
+}
+
+function importUqmSaveData(buffer, fileName) {
+    const scans = parseVanillaSave(buffer);
+    if (showingStarmap !== "sc2") {
+        displayStarmap("sc2");
+        ShowSpheres(defaultSpheres.sc2);
+    }
+    const result = applySaveToStarmap(starmaps.sc2, scans);
+    visitedStars = result.visited;
+    if (showingHighlights.indexOf("visited") < 0) {
+        showingHighlights.push("visited");
+    }
+    repaintStarmapWithHighlights();
+    setSaveStatus("save: " + (fileName || "imported") + " (" + result.visited.size + " visited)");
+    const label = fileName ? '"' + fileName + '"' : "save";
+    if (result.matchedStars === 0) {
+        alert("Imported " + label + ", but it contains no scanned star systems.");
+    } else {
+        alert("Imported " + label + ". " + result.visited.size
+            + " star system(s) visited; resources updated.");
+    }
+    return result;
+}
+
+window.importUqmSaveFile = function (event) {
+    const input = event && event.target ? event.target : document.getElementById("uqmSaveInput");
+    const file = input && input.files ? input.files[0] : null;
+    if (!file) {
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = function () {
+        try {
+            importUqmSaveData(reader.result, file.name);
+        } catch (error) {
+            alert("Could not import UQM save: " + (error && error.message ? error.message : error));
+        }
+        input.value = "";
+    };
+    reader.onerror = function () {
+        alert("Could not read the save file.");
+        input.value = "";
+    };
+    reader.readAsArrayBuffer(file);
+};
+
+// Useful for automated tests / console use.
+window.importUqmSaveBuffer = function (buffer, name) {
+    return importUqmSaveData(buffer, name);
+};
+
+window.clearUqmSave = function () {
+    clearImportedSave(starmaps.sc2);
+    setSaveStatus("");
+    visitedStars = new Set();
+    showingHighlights = showingHighlights.filter(function (name) {
+        return name !== "visited";
+    });
+    if (showingStarmap === "sc2") {
+        repaintStarmapWithHighlights();
+    }
+};
+
 window.exportStarmapSVG = function () {
     return exportSVG(getExportOptions()).catch(showExportError);
 };
@@ -689,6 +803,7 @@ window.findRainbowWorlds = findRainbowWorlds;
 window.unhighlightAll = unhighlightAll;
 window.findHomeworlds = findHomeworlds;
 window.findDevices = findDevices;
+window.findVisitedStars = findVisitedStars;
 window.checkEnter = checkEnter;
 window.copyStarmapLink = copyStarmapLink;
 window.starmapViewChanged = scheduleHashUpdate;
