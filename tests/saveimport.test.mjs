@@ -65,6 +65,16 @@ for (const constellation of map_sc2) {
   }
 }
 
+// Upper-half energy bits are special-world ruin visit markers, not
+// artifacts, and must not mark a star as visited on their own.
+const upperOnly = new Array(502).fill(null);
+upperOnly[1] = nodeData[1][2].map(function () {
+  return { mineral: 0, energy: 0x10000, biological: 0 };
+});
+const upperResult = applySaveToStarmap(map_sc2, upperOnly);
+assert.equal(upperResult.visited.size, 0);
+assert.equal(upperResult.updatedStars, 0);
+
 clearImportedSave(map_sc2);
 assert.equal(andromedae.planetsInfo.MinValue, 4317);
 assert.equal(andromedae.planetsInfo.BioUnits, 46);

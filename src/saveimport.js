@@ -257,7 +257,12 @@ export function applySaveToStarmap(starmapdata, scans) {
             const energyMask = record.energy;
             const bioMask = record.biological;
 
-            if ((mineralMask | energyMask | bioMask) !== 0) {
+            // The upper 16 energy bits are used by a few special worlds
+            // (for example the Androsynth ruins) to remember visited ruin
+            // reports.  They are not artifact pickups, so only count the
+            // lower 16 bits as evidence of a retrieved artifact/device.
+            const artifactMask = energyMask & 0xFFFF;
+            if ((mineralMask | artifactMask | bioMask) !== 0) {
                 starVisited = true;
             }
 
